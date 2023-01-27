@@ -1,0 +1,30 @@
+{
+  "name": "@the-poolz/poolzreacthelper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Poolz/PoolzReactHelper.git"
+  },
+  "author": "Poolz team",
+  "license": "MIT",
+  "prettier": {
+    "printWidth": 80,
+    "semi": false,
+    "singleQuote": false
+  },
+  "bugs": {
+    "url": "https://github.com/The-Poolz/PoolzReactHelper/issues"
+  },
+  "homepage": "https://github.com/The-Poolz/PoolzReactHelper#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "react": "^18.2.0",
+    "typescript": "^4.9.4"
+  }
+}
