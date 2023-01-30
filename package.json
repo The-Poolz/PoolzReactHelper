@@ -1,15 +1,22 @@
 {
-  "name": "@the-poolz/poolzreacthelper",
+  "name": "@the-poolz/reacthelper",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc --build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "copy": "cp package.json dist/ && cp README.md dist/",
+    "build": "pnpm clean && tsc --build && pnpm copy"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/The-Poolz/PoolzReactHelper.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "author": "Poolz team",
   "license": "MIT",
