@@ -1,6 +1,6 @@
 {
   "name": "@the-poolz/reacthelper",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/esm/index.js",
   "files": [
