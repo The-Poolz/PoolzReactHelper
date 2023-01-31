@@ -2,14 +2,22 @@
   "name": "@the-poolz/reacthelper",
   "version": "1.5.1",
   "description": "",
-  "main": "dist/esm/index.js",
+  "type": "module",
+  "source": "src/index.ts",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
   "files": [
     "dist"
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "copy": "cp package.json dist/ && cp README.md dist/",
-    "build": "pnpm clean && tsc --build && pnpm copy"
+    "build": "microbundle --jsx React.createElement",
+    "dev": "microbundle watch"
   },
   "repository": {
     "type": "git",
@@ -31,6 +39,7 @@
   "homepage": "https://github.com/The-Poolz/PoolzReactHelper#readme",
   "devDependencies": {
     "@types/react": "^18.0.27",
+    "microbundle": "^0.15.1",
     "react": "^18.2.0",
     "typescript": "^4.9.4"
   }
