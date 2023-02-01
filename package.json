@@ -1,6 +1,6 @@
 {
   "name": "@the-poolz/reacthelper",
-  "version": "1.11.1-0",
+  "version": "1.11.1-1",
   "description": "",
   "type": "module",
   "source": "src/index.ts",
