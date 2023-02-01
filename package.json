@@ -1,5 +1,5 @@
 {
-  "name": "@the-poolz/reacthelper",
+  "name": "@poolzfinance/reacthelper",
   "version": "1.12.0",
   "description": "",
   "type": "module",
@@ -18,15 +18,12 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "pnpm clean && pnpm version prerelease --force && microbundle --jsx React.createElement && pnpm pack",
-    "prepublishOnly": "pnpm version minor --force",
+    "prepublishOnly": "pnpm version minor",
     "dev": "microbundle watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/The-Poolz/PoolzReactHelper.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   },
   "author": "Poolz team",
   "license": "MIT",

@@ -11,7 +11,7 @@ export const Context = createContext<ThePoolzContext>({
 })
 
 const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
-  const [thePoolzInstance, setProvider] = React.useState("test")
+  const [thePoolzInstance, setProvider] = React.useState("test2")
 
   return (
     <Context.Provider value={{ thePoolz: thePoolzInstance, setProvider }}>

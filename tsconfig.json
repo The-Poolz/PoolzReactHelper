@@ -1,9 +1,10 @@
 {
-  "include": ["src", "tests"],
+  "include": ["src", "tests", "node_modules/microbundle/index.d.ts"],
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["dom", "ESNext"],
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
