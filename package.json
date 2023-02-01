@@ -1,6 +1,6 @@
 {
   "name": "@the-poolz/reacthelper",
-  "version": "1.11.0",
+  "version": "1.11.1-0",
   "description": "",
   "type": "module",
   "source": "src/index.ts",
@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "pnpm clean && microbundle --jsx React.createElement",
+    "build": "pnpm clean && pnpm version prerelease --force && microbundle --jsx React.createElement",
     "dev": "microbundle watch"
   },
   "repository": {
