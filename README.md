@@ -2,6 +2,7 @@
 
 ### Development
 
+0. pnpm login
 1. Make changes
 2. pnpm build
 
@@ -10,5 +11,4 @@
 
 3. git commit
 4. pnpm version minor
-5. pnpm login
-   5.1 pnpm publish --access public
+5. pnpm publish --access public
