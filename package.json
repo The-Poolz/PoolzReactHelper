@@ -1,6 +1,6 @@
 {
   "name": "@poolzfinance/reacthelper",
-  "version": "1.14.1-8",
+  "version": "1.14.1-10",
   "description": "",
   "type": "module",
   "source": "src/index.ts",
@@ -17,9 +17,8 @@
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "pnpm clean && pnpm version prerelease --force && microbundle --jsx React.createElement && pnpm pack",
-    "postpack": "echo \"yarn add $1\"",
-    "dev": "microbundle watch"
+    "prebuild": "pnpm clean && pnpm version prerelease --force --no-git-tag-version",
+    "build": "pnpm prebuild && microbundle --jsx React.createElement && pnpm pack"
   },
   "repository": {
     "type": "git",
