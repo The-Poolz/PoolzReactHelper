@@ -1,6 +1,6 @@
 {
   "name": "@poolzfinance/reacthelper",
-  "version": "1.14.0",
+  "version": "1.14.1-0",
   "description": "",
   "type": "module",
   "source": "src/index.ts",
@@ -36,6 +36,8 @@
   },
   "homepage": "https://github.com/The-Poolz/PoolzReactHelper#readme",
   "peerDependencies": {
+    "@types/react": "^16.0.0 || ^17.0.0 || ^18.0.0",
+    "@types/react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0",
     "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0"
   },
