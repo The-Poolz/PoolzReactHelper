@@ -1,14 +1,11 @@
-# PoolzReactHelper
+# ReactHelper
 
-### Development
+### Reporting Bugs / Feature Requests
 
-0. pnpm login
-1. Make changes
-2. pnpm build
+[![Open Bugs](https://img.shields.io/github/issues/The-Poolz/PoolzReactHelper/bug?color=d73a4a&label=bugs)](https://github.com/The-Poolz/PoolzReactHelper/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+[![Feature Requests](https://img.shields.io/github/issues/The-Poolz/PoolzReactHelper/feature-request?color=ff9001&label=feature%20requests)](https://github.com/The-Poolz/PoolzReactHelper/issues?q=is%3Aissue+label%3Afeature-request+is%3Aopen)
+[![Closed Issues](https://img.shields.io/github/issues-closed/The-Poolz/PoolzReactHelper?color=%2325CC00&label=issues%20closed)](https://github.com/The-Poolz/PoolzReactHelper/issues?q=is%3Aissue+is%3Aclosed+)
 
-- pack file will be created
-- testing, install pack to test app (npm i <path_to_pack>)
-
-3. git commit
-4. pnpm version minor
-5. pnpm publish --access public
+```js
+import { ThePoolzProvider } from "@poolzfinance/reacthelper"
+```
