@@ -24,6 +24,56 @@ yarn add @poolzfinance/reacthelper
 
 ## Usage
 
+src/index.tsx
+
 ```typescript
+import { StrictMode } from "react"
+import { createRoot } from "react-dom/client"
 import { ThePoolzProvider } from "@poolzfinance/reacthelper"
+import App from "./App"
+
+const rootElement = document.getElementById("root")
+const root = createRoot(rootElement!)
+
+root.render(
+  <StrictMode>
+    <ThePoolzProvider>
+      <App />
+    </ThePoolzProvider>
+  </StrictMode>
+)
 ```
+
+### Connect MetaMask wallet
+
+src/App.tsx
+
+```typescript
+import { useThePoolz, useConnectWallet } from "@poolzfinance/reacthelper"
+
+export default function App() {
+  const thePoolz = useThePoolz()
+  const { account } = thePoolz
+  const { isMetamask, connectMetamask } = useConnectWallet()
+
+  return (
+    <div>
+      <h1>ReactHelper</h1>
+      {account || (
+        <button
+          onClick={async () => {
+            try {
+              await connectMetamask()
+            } catch (error) {
+              console.error(error)
+            }
+          }}>
+          {!isMetamask && "Install"} Metamask
+        </button>
+      )}
+    </div>
+  )
+}
+```
+
+Demo: [SandBox](https://codesandbox.io/s/reacthelper-t9vhd5)
