@@ -1,3 +1,4 @@
-import ThePoolzProvider, { Context } from "./components/Provider"
+import ThePoolzProvider from "./components/Provider"
+import ThePoolzContext from "./components/Context"
 
-export { ThePoolzProvider, Context }
+export { ThePoolzProvider, ThePoolzContext }

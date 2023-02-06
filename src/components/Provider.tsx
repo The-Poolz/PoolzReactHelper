@@ -1,22 +1,38 @@
-import React, { createContext } from "react"
+import React from "react"
+import Web3 from "web3"
+import ThePoolzContext from "./Context"
+import ThePoolz from "../poolz/ThePoolz"
+import { IThePoolzInterface } from "../types/IThePoolzInterface"
 
-interface ThePoolzContext {
-  thePoolz: string
-  setProvider: React.Dispatch<React.SetStateAction<string>>
+const initionalState: IThePoolzInterface = {
+  account: null,
+  chainId: null,
+  web3: null
 }
 
-export const Context = createContext<ThePoolzContext>({
-  thePoolz: "",
-  setProvider: () => { },
-})
-
 const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
-  const [thePoolzInstance, setProvider] = React.useState("test2")
+  const [thePoolzInstance, setThePoolzInstance] = React.useState(initionalState)
+  const [provider, setProvider] = React.useState(Web3.givenProvider)
+
+  React.useEffect(() => {
+    const init = async () => {
+      const instance = new ThePoolz(provider)
+      const thePoolz = await instance.init()
+      setThePoolzInstance(thePoolz)
+    }
+
+    if (provider) {
+      init()
+      provider
+        .on("accountsChanged", init)
+        .on("chainChanged", init)
+    }
+  }, [provider])
 
   return (
-    <Context.Provider value={{ thePoolz: thePoolzInstance, setProvider }}>
+    <ThePoolzContext.Provider value={{ thePoolz: thePoolzInstance, setProvider }}>
       {children}
-    </Context.Provider>
+    </ThePoolzContext.Provider>
   )
 }
 
