@@ -1,4 +1,5 @@
 import ThePoolzProvider from "./components/Provider"
-import ThePoolzContext from "./components/Context"
+import { useSetProvider, useThePoolz } from "./hooks/useThePoolz"
+import { useConnectWallet } from "./hooks/useConnectWallet"
 
-export { ThePoolzProvider, ThePoolzContext }
+export { ThePoolzProvider, useSetProvider, useThePoolz, useConnectWallet }

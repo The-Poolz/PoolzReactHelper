@@ -11,10 +11,23 @@ class ThePoolz implements IThePoolzInterface {
     this.web3 = new Web3(provider)
   }
   async init() {
-    // await this.initChainId()
-    // await this.initAccount()
+    await this.initChainId()
+    await this.initAccount()
     // await this.initContracts()
     return this
+  }
+  async initChainId() {
+    try {
+      this.chainId = await this.web3.eth.getChainId()
+    } catch (error) {}
+  }
+
+  async initAccount() {
+    try {
+      const accounts = await this.web3.eth.getAccounts()
+      console.log("accounts", accounts)
+      this.account = accounts.length ? accounts[0] : null
+    } catch (error) {}
   }
 }
 
