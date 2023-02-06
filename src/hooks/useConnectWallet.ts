@@ -6,7 +6,6 @@ export const useConnectWallet = () => {
 
   const thePoolz = useThePoolz()
   const { web3 } = thePoolz
-  //   const setProvider = useSetProvider()
 
   const connectMetamask = useCallback(async () => {
     if (!isWallets.isMetamask) return window.open(`https://metamask.app.link/dapp/${window.location.host}`, "_blank", "noreferrer noopener")
@@ -16,6 +15,15 @@ export const useConnectWallet = () => {
       ? await providerMap.get("MetaMask").request({ method: "eth_requestAccounts" })
       : await request({ method: "eth_requestAccounts" })
   }, [isWallets.isMetamask, web3])
+
+  const connectCoinbaseWallet = useCallback(async () => {
+    if (!isWallets.isCoinbaseWallet) return window.open(`https://www.coinbase.com/wallet`, "_blank", "noreferrer noopener")
+
+    const { providers = [], providerMap, request } = web3.currentProvider
+    return providers.length
+      ? await providerMap.get("CoinbaseWallet").request({ method: "eth_requestAccounts" })
+      : await request({ method: "eth_requestAccounts" })
+  }, [isWallets.isCoinbaseWallet, web3])
 
   useEffect(() => {
     if (!web3 || !("currentProvider" in web3)) return
@@ -30,5 +38,5 @@ export const useConnectWallet = () => {
     })
   }, [web3])
 
-  return { ...isWallets, connectMetamask }
+  return { ...isWallets, connectMetamask, connectCoinbaseWallet }
 }

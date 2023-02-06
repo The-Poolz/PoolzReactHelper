@@ -25,7 +25,6 @@ class ThePoolz implements IThePoolzInterface {
   async initAccount() {
     try {
       const accounts = await this.web3.eth.getAccounts()
-      console.log("accounts", accounts)
       this.account = accounts.length ? accounts[0] : null
     } catch (error) {}
   }
