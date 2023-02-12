@@ -5,7 +5,7 @@
     "module": "ESNext",
     "target": "ESNext",
     "lib": ["dom", "ESNext"],
-    "importHelpers": true,
+    "importHelpers": false,
     "declaration": true,
     "sourceMap": true,
     "strict": true,
