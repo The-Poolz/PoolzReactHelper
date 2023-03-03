@@ -1,42 +1,47 @@
-import { useCallback, useEffect, useState } from "react"
-import { useThePoolz } from "./useThePoolz"
+import { useMemo } from "react"
+import { useThePoolz, useSetProvider } from "./useThePoolz"
+
+const initionalState = {
+  isMetaMask: false,
+  isCoinbaseWallet: false,
+  connectMetamask: () => Promise.resolve(window.open(`https://metamask.app.link/dapp/${window.location.host}`, "_blank", "noreferrer noopener")),
+  connectCoinbaseWallet: () => Promise.resolve(window.open(`https://www.coinbase.com/wallet`, "_blank", "noreferrer noopener"))
+}
 
 export const useConnectWallet = () => {
-  const [isWallets, setIsWallets] = useState({ isMetamask: false, isCoinbaseWallet: false })
-
+  const setProvider = useSetProvider()
   const thePoolz = useThePoolz()
   const { web3 } = thePoolz
 
-  const connectMetamask = useCallback(async () => {
-    if (!isWallets.isMetamask) return window.open(`https://metamask.app.link/dapp/${window.location.host}`, "_blank", "noreferrer noopener")
+  return useMemo(() => {
+    if (!web3) return initionalState
 
-    const { providers = [], providerMap, request } = web3.currentProvider
-    return providers.length
-      ? await providerMap.get("MetaMask").request({ method: "eth_requestAccounts" })
-      : await request({ method: "eth_requestAccounts" })
-  }, [isWallets.isMetamask, web3])
+    const { isMetaMask = false, isCoinbaseWallet = false, providers = [], request } = web3.givenProvider
 
-  const connectCoinbaseWallet = useCallback(async () => {
-    if (!isWallets.isCoinbaseWallet) return window.open(`https://www.coinbase.com/wallet`, "_blank", "noreferrer noopener")
+    if (providers.length) {
+      for (const provider of providers) {
+        const connect = async () => {
+          setProvider(provider)
+          return await provider.request({ method: "eth_requestAccounts" })
+        }
+        if (provider.isMetaMask) {
+          initionalState.isMetaMask = true
+          initionalState.connectMetamask = connect
+          continue
+        }
+        if (provider.isCoinbaseWallet) {
+          initionalState.isCoinbaseWallet = true
+          initionalState.connectCoinbaseWallet = connect
+          continue
+        }
+      }
+      return initionalState
+    }
+    const connect = async () => await request({ method: "eth_requestAccounts" })
 
-    const { providers = [], providerMap, request } = web3.currentProvider
-    return providers.length
-      ? await providerMap.get("CoinbaseWallet").request({ method: "eth_requestAccounts" })
-      : await request({ method: "eth_requestAccounts" })
-  }, [isWallets.isCoinbaseWallet, web3])
+    if (isMetaMask) initionalState.connectMetamask = connect
+    if (isCoinbaseWallet) initionalState.connectCoinbaseWallet = connect
 
-  useEffect(() => {
-    if (!web3 || !("currentProvider" in web3)) return
-
-    const { isMetaMask = false, isCoinbaseWallet = false, providerMap = new Map() } = web3.currentProvider
-
-    setIsWallets((state) => {
-      const newState = { ...state }
-      newState["isMetamask"] = !!providerMap.get("MetaMask") || isMetaMask
-      newState["isCoinbaseWallet"] = !!providerMap.get("CoinbaseWallet") || isCoinbaseWallet
-      return newState
-    })
-  }, [web3])
-
-  return { ...isWallets, connectMetamask, connectCoinbaseWallet }
+    return { ...initionalState, isMetaMask, isCoinbaseWallet }
+  }, [web3, setProvider])
 }

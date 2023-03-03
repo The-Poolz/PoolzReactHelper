@@ -2,36 +2,33 @@ import React from "react"
 import Web3 from "web3"
 import ThePoolzContext from "./Context"
 import ThePoolz from "../poolz/ThePoolz"
-import { IThePoolzInterface } from "../types/IThePoolzInterface"
-
-const initionalState: IThePoolzInterface = {
-  account: null,
-  chainId: null,
-  web3: null
-}
 
 const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
-  const [thePoolzInstance, setThePoolzInstance] = React.useState(initionalState)
+  const [thePoolzInstance, setThePoolzInstance] = React.useState(new ThePoolz())
   const [provider, setProvider] = React.useState(Web3.givenProvider)
 
   React.useEffect(() => {
+    if (!provider) return
+
     const init = async () => {
       const instance = new ThePoolz(provider)
-      const thePoolz = await instance.init()
-      setThePoolzInstance(thePoolz)
+      await instance.init()
+      setThePoolzInstance(instance)
     }
+    init()
+    provider
+      .on("accountsChanged", init)
+      .on("chainChanged", init)
 
-    if (provider) {
-      init()
-      provider
-        .on("accountsChanged", init)
-        .on("chainChanged", init)
-    }
-  }, [provider])
+
+  }, [provider, setThePoolzInstance]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <ThePoolzContext.Provider value={{ thePoolz: thePoolzInstance, setProvider }}>
-      {children}
+      <>
+        {children}
+        {console.log("thePoolzInstance", (async () => console.log(await thePoolzInstance.getChaincoinInfo(97)))())}
+      </>
     </ThePoolzContext.Provider>
   )
 }
