@@ -25,10 +25,7 @@ const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ThePoolzContext.Provider value={{ thePoolz: thePoolzInstance, setProvider }}>
-      <>
-        {children}
-        {console.log("thePoolzInstance", (async () => console.log(await thePoolzInstance.getChaincoinInfo(97)))())}
-      </>
+      {children}
     </ThePoolzContext.Provider>
   )
 }
