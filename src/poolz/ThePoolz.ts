@@ -3,6 +3,8 @@ import { Contract } from "web3-eth-contract"
 import { AbiItem } from "web3-utils"
 import { IThePoolzInterface } from "../types/IThePoolzInterface"
 import { defaultChainId } from "../constants"
+import ERC20 from "../abi/ERC20.json"
+import CHAINS from "../constants/chains.json"
 
 class ThePoolz implements IThePoolzInterface {
   public account: IThePoolzInterface["account"]
@@ -51,17 +53,18 @@ class ThePoolz implements IThePoolzInterface {
   async getChaincoinInfo(chainId?: typeof this.chainId) {
     if (!chainId) chainId = this.chainId
     try {
-      const chains = await import("../constants/chains.json")
-      return chains.default.find((chain) => chain.chainId === chainId)
+      // const CHAINS = await require("../constants/chains.json")
+      // return CHAINS.find((chain: any) => chain.chainId === chainId)
+      return CHAINS.find((chain) => chain.chainId === chainId)
     } catch (error) {}
   }
 
-  async ERC20() {
+  /*async ERC20() {
     try {
       const chains = await import("../abi/ERC20.json")
       return chains.default.abi
     } catch (error) {}
-  }
+  }*/
 
   async Contract(name: "ERC20", address?: string): Promise<Contract | undefined> {
     if (!this.web3) return
@@ -70,8 +73,10 @@ class ThePoolz implements IThePoolzInterface {
     if (this.#contracts.has(collectionName)) return this.#contracts.get(collectionName)
     try {
       if (name === "ERC20") {
-        const abi = await this.ERC20()
-        const contract = new this.web3.eth.Contract(abi as AbiItem[], address)
+        // const abi = await this.ERC20()
+        // const contract = new this.web3.eth.Contract(abi as AbiItem[], address)
+
+        const contract = new this.web3.eth.Contract(ERC20.abi as AbiItem[], address)
         this.#contracts.set(collectionName, contract)
         return contract
       }

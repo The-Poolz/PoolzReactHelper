@@ -29,7 +29,7 @@ describe("ThePoolz", () => {
     expect(thePoolz).toBeInstanceOf(ThePoolz)
     expect(typeof thePoolz.init).toBe("function")
     await thePoolz.init()
-    await thePoolz.ERC20()
+    // await thePoolz.ERC20()
     await thePoolz.Contract("ERC20")
     await thePoolz.getChaincoinInfo()
   })

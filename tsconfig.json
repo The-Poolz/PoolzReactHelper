@@ -1,7 +1,8 @@
 {
-  "include": ["src", "tests", "node_modules/microbundle/index.d.ts"],
+  "include": ["src", "node_modules/microbundle/index.d.ts"],
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
+    "rootDir": "./src",
     "module": "ESNext",
     "target": "ESNext",
     "lib": ["dom", "ESNext"],
