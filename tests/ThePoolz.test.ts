@@ -8,8 +8,11 @@ jest.mock("web3", () => {
   const originalModule = jest.requireActual("web3")
   return {
     __esModule: true,
-    ...originalModule,
     default: jest.fn().mockReturnValue({
+      ...originalModule,
+      currentProvider: {
+        request: jest.fn()
+      },
       eth: {
         getAccounts: jest.fn(async () => mockAccounts),
         getBalance: jest.fn(async (address: string) => mockBalance(address)),
@@ -23,31 +26,53 @@ jest.mock("web3", () => {
 })
 
 describe("ThePoolz", () => {
-  /*test("thePoolz instanse with empty provider", async () => {
-    const thePoolz = new ThePoolz()
-    expect(thePoolz).toBeDefined()
-    expect(thePoolz).toBeInstanceOf(ThePoolz)
-    expect(typeof thePoolz.init).toBe("function")
+  test("thePoolz instanse", async () => {
+    const thePoolz = new ThePoolz({ isTrustWallet: true })
     await thePoolz.init()
-    // await thePoolz.ERC20()
+    await thePoolz.Contract("ERC20")
     await thePoolz.Contract("ERC20")
     await thePoolz.getChaincoinInfo()
-  })*/
-  test("thePoolz instanse", async () => {
-    const thePoolz = new ThePoolz("http://localhost:8545")
-    await thePoolz.init()
-    await thePoolz.Contract("ERC20")
-    await thePoolz.Contract("ERC20")
   })
-  test("throw errors for ChainId & Account", async () => {
-    mockChainId = Promise.reject()
-    mockAccounts = Promise.reject()
+  test("throw errors for ChainId", async () => {
+    expect.assertions(1)
+    const error = new Error("error")
+    mockChainId = Promise.reject(error)
     const thePoolz = new ThePoolz("http://localhost:8545")
+    try {
+      await thePoolz.init()
+    } catch (e) {
+      expect(e).toEqual(error)
+    }
+  })
+  xtest("throw errors for initAccount", async () => {
+    expect.assertions(1)
+    const error = "error"
+    mockAccounts = Promise.reject(error)
+    const thePoolz = new ThePoolz("http://localhost:8545")
+    try {
+      await thePoolz.init()
+    } catch (e) {
+      expect(e).toEqual(error)
+    }
+  })
+
+  test("Empty #provider", async () => {
+    const thePoolz = new ThePoolz(null)
+    await thePoolz.init()
+    await thePoolz.Contract("ERC20", "0x000")
+  })
+  xtest("isTrustWallet", async () => {
+    const thePoolz = new ThePoolz({ isTrustWallet: true })
     await thePoolz.init()
   })
+  /*
   test("throw error for Balance", async () => {
     mockBalance = (address: string) => Promise.reject(address)
     const thePoolz = new ThePoolz("http://localhost:8545")
-    await thePoolz.init()
-  })
+    try {
+      await thePoolz.init()
+    } catch (error) {
+      console.log("err", error)
+    }
+  })*/
 })

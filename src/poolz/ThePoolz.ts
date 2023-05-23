@@ -53,9 +53,7 @@ class ThePoolz implements IThePoolzInterface {
 
   async getChaincoinInfo(chainId?: typeof this.chainId) {
     if (!chainId) chainId = this.chainId
-    try {
-      return CHAINS.find((chain) => chain.chainId === chainId)
-    } catch (error) {}
+    return CHAINS.find((chain) => chain.chainId === chainId)
   }
 
   /*async ERC20() {
@@ -70,16 +68,14 @@ class ThePoolz implements IThePoolzInterface {
 
     const collectionName = name + address ?? ""
     if (this.#contracts.has(collectionName)) return this.#contracts.get(collectionName)
-    try {
-      if (name === "ERC20") {
-        // const abi = await this.ERC20()
-        // const contract = new this.web3.eth.Contract(abi as AbiItem[], address)
+    if (name === "ERC20") {
+      // const abi = await this.ERC20()
+      // const contract = new this.web3.eth.Contract(abi as AbiItem[], address)
 
-        const contract = new this.web3.eth.Contract(ERC20.abi as AbiItem[], address)
-        this.#contracts.set(collectionName, contract)
-        return contract
-      }
-    } catch (error) {}
+      const contract = new this.web3.eth.Contract(ERC20.abi as AbiItem[], address)
+      this.#contracts.set(collectionName, contract)
+      return contract
+    }
   }
 }
 
