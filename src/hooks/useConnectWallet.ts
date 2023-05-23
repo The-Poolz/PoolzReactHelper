@@ -4,7 +4,8 @@ import { useThePoolz, useSetProvider } from "./useThePoolz"
 const initionalState = {
   isMetaMask: false,
   isCoinbaseWallet: false,
-  connectMetamask: () => Promise.resolve(window.open(`https://metamask.app.link/dapp/${window.location.host}`, "_blank", "noreferrer noopener")),
+  connectMetamask: () =>
+    Promise.resolve(window.open(`https://metamask.app.link/dapp/${window.location.host}`, "_blank", "noreferrer noopener")),
   connectCoinbaseWallet: () => Promise.resolve(window.open(`https://www.coinbase.com/wallet`, "_blank", "noreferrer noopener"))
 }
 
@@ -32,7 +33,6 @@ export const useConnectWallet = () => {
         if (provider.isCoinbaseWallet) {
           initionalState.isCoinbaseWallet = true
           initionalState.connectCoinbaseWallet = connect
-          continue
         }
       }
       return initionalState

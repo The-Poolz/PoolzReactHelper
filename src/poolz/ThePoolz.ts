@@ -20,7 +20,7 @@ class ThePoolz implements IThePoolzInterface {
     await this.initChainId()
     await this.initAccount()
     await this.getBalance()
-    await this.initContracts()
+    // await this.initContracts()
   }
   private async initChainId() {
     if (!this.web3) return
@@ -45,16 +45,11 @@ class ThePoolz implements IThePoolzInterface {
   }
 
   // Init the Poolz contracts
-  private async initContracts() {
-    try {
-    } catch (error) {}
-  }
+  // private async initContracts() {}
 
   async getChaincoinInfo(chainId?: typeof this.chainId) {
     if (!chainId) chainId = this.chainId
     try {
-      // const CHAINS = await require("../constants/chains.json")
-      // return CHAINS.find((chain: any) => chain.chainId === chainId)
       return CHAINS.find((chain) => chain.chainId === chainId)
     } catch (error) {}
   }

@@ -7,6 +7,8 @@ const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
   const [thePoolzInstance, setThePoolzInstance] = React.useState(new ThePoolz())
   const [provider, setProvider] = React.useState(Web3.givenProvider)
 
+  const contextValue = React.useMemo(() => ({ thePoolz: thePoolzInstance, setProvider }), [thePoolzInstance, setProvider])
+
   React.useEffect(() => {
     if (!provider) return
 
@@ -24,7 +26,7 @@ const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
   }, [provider, setThePoolzInstance]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <ThePoolzContext.Provider value={{ thePoolz: thePoolzInstance, setProvider }}>
+    <ThePoolzContext.Provider value={contextValue}>
       {children}
     </ThePoolzContext.Provider>
   )
