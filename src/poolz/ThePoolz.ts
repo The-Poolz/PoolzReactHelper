@@ -11,37 +11,41 @@ class ThePoolz implements IThePoolzInterface {
   public chainId: IThePoolzInterface["chainId"] = defaultChainId
   public web3: IThePoolzInterface["web3"]
   public balance: IThePoolzInterface["balance"] = "0"
+  #provider: typeof Web3.givenProvider
   #contracts = new Map()
+  #isTrustWallet = false
 
-  constructor(provider?: typeof Web3.givenProvider) {
-    if (provider) this.web3 = new Web3(provider)
+  constructor(provider: typeof Web3.givenProvider) {
+    this.#provider = provider
+    this.web3 = new Web3(provider)
+    this.#isTrustWallet = !!provider?.isTrustWallet
   }
   async init() {
+    await this.initTrust()
     await this.initChainId()
     await this.initAccount()
     await this.getBalance()
     // await this.initContracts()
   }
+  private async initTrust() {
+    if (!this.web3.currentProvider || !this.#isTrustWallet) return
+    // @ts-ignore
+    await this.web3.currentProvider.request({ method: "eth_requestAccounts" })
+  }
   private async initChainId() {
-    if (!this.web3) return
-    try {
-      this.chainId = await this.web3.eth.getChainId()
-    } catch (error) {}
+    if (!this.#provider) return
+    this.chainId = await this.web3.eth.getChainId()
   }
 
   private async initAccount() {
-    if (!this.web3) return
-    try {
-      const accounts = await this.web3.eth.getAccounts()
-      if (accounts.length) this.account = accounts[0]
-    } catch (error) {}
+    if (!this.#provider) return
+    const accounts = await this.web3.eth.getAccounts()
+    if (accounts.length) this.account = accounts[0]
   }
 
   private async getBalance() {
-    if (!this.web3 || !this.account) return
-    try {
-      this.balance = await this.web3.eth.getBalance(this.account)
-    } catch (error) {}
+    if (!this.#provider || !this.account) return
+    this.balance = await this.web3.eth.getBalance(this.account)
   }
 
   // Init the Poolz contracts
@@ -62,7 +66,7 @@ class ThePoolz implements IThePoolzInterface {
   }*/
 
   async Contract(name: "ERC20", address?: string): Promise<Contract | undefined> {
-    if (!this.web3) return
+    if (!this.#provider) return
 
     const collectionName = name + address ?? ""
     if (this.#contracts.has(collectionName)) return this.#contracts.get(collectionName)

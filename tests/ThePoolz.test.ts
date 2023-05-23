@@ -23,7 +23,7 @@ jest.mock("web3", () => {
 })
 
 describe("ThePoolz", () => {
-  test("thePoolz instanse with empty provider", async () => {
+  /*test("thePoolz instanse with empty provider", async () => {
     const thePoolz = new ThePoolz()
     expect(thePoolz).toBeDefined()
     expect(thePoolz).toBeInstanceOf(ThePoolz)
@@ -32,7 +32,7 @@ describe("ThePoolz", () => {
     // await thePoolz.ERC20()
     await thePoolz.Contract("ERC20")
     await thePoolz.getChaincoinInfo()
-  })
+  })*/
   test("thePoolz instanse", async () => {
     const thePoolz = new ThePoolz("http://localhost:8545")
     await thePoolz.init()

@@ -2,11 +2,14 @@ import { useMemo } from "react"
 import { useThePoolz, useSetProvider } from "./useThePoolz"
 
 const initionalState = {
+  isMultipleWallets: false,
   isMetaMask: false,
   isCoinbaseWallet: false,
+  isTrustWallet: false,
   connectMetamask: () =>
     Promise.resolve(window.open(`https://metamask.app.link/dapp/${window.location.host}`, "_blank", "noreferrer noopener")),
-  connectCoinbaseWallet: () => Promise.resolve(window.open(`https://www.coinbase.com/wallet`, "_blank", "noreferrer noopener"))
+  connectCoinbaseWallet: () => Promise.resolve(window.open(`https://www.coinbase.com/wallet`, "_blank", "noreferrer noopener")),
+  connectTrustWallet: () => Promise.resolve(window.open(`https://trustwallet.com/download`, "_blank", "noreferrer noopener"))
 }
 
 export const useConnectWallet = () => {
@@ -17,9 +20,10 @@ export const useConnectWallet = () => {
   return useMemo(() => {
     if (!web3) return initionalState
 
-    const { isMetaMask = false, isCoinbaseWallet = false, providers = [], request } = web3.givenProvider
+    const { isMetaMask = false, isCoinbaseWallet = false, isTrustWallet = false, providers = [], request } = web3.givenProvider
 
     if (providers.length) {
+      initionalState.isMultipleWallets = true
       for (const provider of providers) {
         const connect = async () => {
           setProvider(provider)
@@ -41,7 +45,8 @@ export const useConnectWallet = () => {
 
     if (isMetaMask) initionalState.connectMetamask = connect
     if (isCoinbaseWallet) initionalState.connectCoinbaseWallet = connect
+    if (isTrustWallet) initionalState.connectTrustWallet = connect
 
-    return { ...initionalState, isMetaMask, isCoinbaseWallet }
+    return { ...initionalState, isMetaMask, isCoinbaseWallet, isTrustWallet }
   }, [web3, setProvider])
 }

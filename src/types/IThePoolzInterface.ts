@@ -13,7 +13,7 @@ export interface IThePoolzInterface {
   account?: string
   chainId: number
   balance: string
-  web3?: Web3
+  web3: Web3
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
   Contract(name: string, address?: string): Promise<Contract | undefined>
 }

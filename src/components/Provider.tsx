@@ -4,7 +4,7 @@ import ThePoolzContext from "./Context"
 import ThePoolz from "../poolz/ThePoolz"
 
 const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
-  const [thePoolzInstance, setThePoolzInstance] = React.useState(new ThePoolz())
+  const [thePoolzInstance, setThePoolzInstance] = React.useState(new ThePoolz(Web3.givenProvider))
   const [provider, setProvider] = React.useState(Web3.givenProvider)
 
   const contextValue = React.useMemo(() => ({ thePoolz: thePoolzInstance, setProvider }), [thePoolzInstance, setProvider])
@@ -14,7 +14,11 @@ const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
 
     const init = async () => {
       const instance = new ThePoolz(provider)
-      await instance.init()
+      try {
+        await instance.init()
+      } catch (e) {
+        console.error(e)
+      }
       setThePoolzInstance(instance)
     }
     init()
