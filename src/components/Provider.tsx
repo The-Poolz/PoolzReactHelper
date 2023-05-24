@@ -14,14 +14,10 @@ const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
 
     const init = async () => {
       const instance = new ThePoolz(provider)
-      try {
-        await instance.init()
-      } catch (e) {
-        console.error(e)
-      }
+      await instance.init()
       setThePoolzInstance(instance)
     }
-    init()
+    init().catch(console.error)
     provider
       .on("accountsChanged", init)
       .on("chainChanged", init)
