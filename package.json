@@ -5,6 +5,7 @@
   "type": "module",
   "source": "src/index.ts",
   "exports": {
+    "types": "./dist/index.d.ts",
     "require": "./dist/index.cjs",
     "default": "./dist/index.modern.js"
   },
