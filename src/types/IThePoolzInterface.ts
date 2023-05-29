@@ -15,6 +15,11 @@ export interface IThePoolzInterface {
   balance: string
   web3: Web3
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
+  ERC20Balance(token: string, account: string): Promise<string>
+  ERC20Info(token: string): Promise<{ decimals: number; symbol?: string; name?: string }>
+  /**
+   * @deprecated Use {@link ERC20Balance} instead.
+   */
   Contract(name: string, address?: string): Promise<Contract | undefined>
 }
 

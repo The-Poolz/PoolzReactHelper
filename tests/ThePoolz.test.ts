@@ -18,7 +18,12 @@ jest.mock("web3", () => {
         getBalance: jest.fn(async (address: string) => mockBalance(address)),
         getChainId: jest.fn(async () => mockChainId),
         Contract: jest.fn(() => ({
-          methods: {}
+          methods: {
+            balanceOf: jest.fn(() => jest.fn),
+            name: jest.fn(() => jest.fn),
+            symbol: jest.fn(() => jest.fn),
+            decimals: jest.fn(() => jest.fn)
+          }
         }))
       }
     })
@@ -29,6 +34,8 @@ describe("ThePoolz", () => {
   test("thePoolz instanse", async () => {
     const thePoolz = new ThePoolz({ isTrustWallet: true })
     await thePoolz.init()
+    await thePoolz.ERC20Balance("ERC20", "0x000")
+    await thePoolz.ERC20Info("ERC20")
     await thePoolz.Contract("ERC20")
     await thePoolz.Contract("ERC20")
     await thePoolz.getChaincoinInfo()
@@ -59,20 +66,5 @@ describe("ThePoolz", () => {
   test("Empty #provider", async () => {
     const thePoolz = new ThePoolz(null)
     await thePoolz.init()
-    await thePoolz.Contract("ERC20", "0x000")
   })
-  xtest("isTrustWallet", async () => {
-    const thePoolz = new ThePoolz({ isTrustWallet: true })
-    await thePoolz.init()
-  })
-  /*
-  test("throw error for Balance", async () => {
-    mockBalance = (address: string) => Promise.reject(address)
-    const thePoolz = new ThePoolz("http://localhost:8545")
-    try {
-      await thePoolz.init()
-    } catch (error) {
-      console.log("err", error)
-    }
-  })*/
 })

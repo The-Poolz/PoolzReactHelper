@@ -1,7 +1,7 @@
 import Web3 from "web3"
-import { Contract } from "web3-eth-contract"
-import { AbiItem } from "web3-utils"
-import { IThePoolzInterface } from "../types/IThePoolzInterface"
+import type { Contract } from "web3-eth-contract"
+import type { AbiItem } from "web3-utils"
+import type { IThePoolzInterface } from "../types/IThePoolzInterface"
 import { defaultChainId } from "../constants"
 import ERC20 from "../abi/ERC20.json"
 import CHAINS from "../constants/chains.json"
@@ -12,7 +12,7 @@ class ThePoolz implements IThePoolzInterface {
   public web3: IThePoolzInterface["web3"]
   public balance: IThePoolzInterface["balance"] = "0"
   #provider: typeof Web3.givenProvider
-  #contracts = new Map()
+  #contracts = new Map<string, Contract>()
   #isTrustWallet = false
 
   constructor(provider: typeof Web3.givenProvider) {
@@ -56,22 +56,36 @@ class ThePoolz implements IThePoolzInterface {
     return CHAINS.find((chain) => chain.chainId === chainId)
   }
 
-  /*async ERC20() {
-    try {
-      const chains = await import("../abi/ERC20.json")
-      return chains.default.abi
-    } catch (error) {}
-  }*/
+  async ERC20(token: string) {
+    const cache = this.#contracts.get(token)
+    if (cache) return cache
 
-  async Contract(name: "ERC20", address?: string): Promise<Contract | undefined> {
-    if (!this.#provider) return
+    const contract = new this.web3.eth.Contract(ERC20.abi as AbiItem[], token)
+    this.#contracts.set(token, contract)
+    return contract
+  }
 
+  async ERC20Balance(token: string, account: string) {
+    const ERC20Contract = await this.ERC20(token)
+    return (await ERC20Contract.methods.balanceOf(account).call()) as string
+  }
+
+  async ERC20Info(token: string) {
+    const ERC20Contract = await this.ERC20(token)
+
+    const data = await Promise.all([
+      ERC20Contract.methods.name().call(),
+      ERC20Contract.methods.symbol().call(),
+      ERC20Contract.methods.decimals().call()
+    ])
+
+    return { decimals: parseInt(data[2]), symbol: data[1] as string | undefined, name: data[0] as string | undefined }
+  }
+
+  async Contract(name: "ERC20", address?: string) {
     const collectionName = name + address ?? ""
     if (this.#contracts.has(collectionName)) return this.#contracts.get(collectionName)
     if (name === "ERC20") {
-      // const abi = await this.ERC20()
-      // const contract = new this.web3.eth.Contract(abi as AbiItem[], address)
-
       const contract = new this.web3.eth.Contract(ERC20.abi as AbiItem[], address)
       this.#contracts.set(collectionName, contract)
       return contract
