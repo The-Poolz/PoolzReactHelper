@@ -1,5 +1,6 @@
 import { useMemo } from "react"
 import { useThePoolz, useSetProvider } from "./useThePoolz"
+import { TGivenProvider } from "../types/TConnectWallet"
 
 const initionalState = {
   isMultipleWallets: false,
@@ -17,18 +18,15 @@ export const useConnectWallet = () => {
   const { web3 } = thePoolz
 
   return useMemo(() => {
-    if (!web3) return initionalState
+    const { isMetaMask, isCoinbaseWallet, isTrustWallet, providers, request } = (web3.givenProvider || {
+      isMetaMask: false,
+      isCoinbaseWallet: false,
+      isTrustWallet: false,
+      providers: [],
+      request: Promise.resolve
+    }) as TGivenProvider
 
-    type TProvider = {
-      isMetaMask?: boolean
-      isCoinbaseWallet?: boolean
-      isTrustWallet?: boolean
-      providers?: TProvider[]
-      request({ method }: { method: string }): Promise<Window | null>
-    }
-    const { isMetaMask = false, isCoinbaseWallet = false, isTrustWallet = false, providers = [], request } = web3.givenProvider as TProvider
-
-    if (providers.length) {
+    if (Array.isArray(providers) && providers.length) {
       initionalState.isMultipleWallets = true
       for (const provider of providers) {
         const connect = async () => {
