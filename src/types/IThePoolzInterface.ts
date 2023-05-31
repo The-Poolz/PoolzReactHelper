@@ -60,7 +60,7 @@ export interface IThePoolzInterface {
 
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
   ERC20Balance(token: string, account: string): Promise<string>
-  ERC20Info(token: string): Promise<{ decimals: number; symbol?: string; name?: string }>
+  ERC20Info(token: string): Promise<{ address: string; decimals: number; symbol?: string; name?: string }>
   /**
    * @deprecated Use {@link ERC20Balance} instead.
    */

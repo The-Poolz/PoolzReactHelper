@@ -52,18 +52,6 @@ describe("ThePoolz", () => {
       expect(e).toEqual(error)
     }
   })
-  xtest("throw errors for initAccount", async () => {
-    expect.assertions(1)
-    const error = "error"
-    mockAccounts = Promise.reject(error)
-    const thePoolz = new ThePoolz("http://localhost:8545")
-    try {
-      await thePoolz.init()
-    } catch (e) {
-      expect(e).toEqual(error)
-    }
-  })
-
   test("Empty #provider", async () => {
     const thePoolz = new ThePoolz(null)
     await thePoolz.init()

@@ -155,7 +155,7 @@ class ThePoolz implements IThePoolzInterface {
       ERC20Contract.methods.decimals().call()
     ])
 
-    return { decimals: parseInt(data[2]), symbol: data[1] as string | undefined, name: data[0] as string | undefined }
+    return { address: token, decimals: parseInt(data[2]), symbol: data[1] as string | undefined, name: data[0] as string | undefined }
   }
 
   async Contract(name: "ERC20", address?: string) {
