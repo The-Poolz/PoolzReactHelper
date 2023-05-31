@@ -23,7 +23,8 @@ jest.mock("web3", () => {
             name: jest.fn(() => jest.fn),
             symbol: jest.fn(() => jest.fn),
             decimals: jest.fn(() => jest.fn)
-          }
+          },
+          options: { address: "0x000" }
         }))
       }
     })
@@ -36,8 +37,8 @@ describe("ThePoolz", () => {
     await thePoolz.init()
     await thePoolz.ERC20Balance("ERC20", "0x000")
     await thePoolz.ERC20Info("ERC20")
-    await thePoolz.Contract("ERC20")
-    await thePoolz.Contract("ERC20")
+    await thePoolz.Contract("ERC20", "0x000")
+    await thePoolz.Contract("ERC20", "0x000")
     await thePoolz.getChaincoinInfo()
   })
   test("throw errors for ChainId", async () => {
@@ -65,6 +66,11 @@ describe("ThePoolz", () => {
 
   test("Empty #provider", async () => {
     const thePoolz = new ThePoolz(null)
+    await thePoolz.init()
+  })
+  test("Binance chain", async () => {
+    mockChainId = Promise.resolve(56)
+    const thePoolz = new ThePoolz("http://localhost:8545")
     await thePoolz.init()
   })
 })

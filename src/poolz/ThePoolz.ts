@@ -159,7 +159,7 @@ class ThePoolz implements IThePoolzInterface {
   }
 
   async Contract(name: "ERC20", address?: string) {
-    const collectionName = name + address ?? ""
+    const collectionName = name + (address ?? "")
     if (this.#contracts.has(collectionName)) return this.#contracts.get(collectionName)
     if (name === "ERC20") {
       const contract = new this.web3.eth.Contract(ERC20.abi as AbiItem[], address)
