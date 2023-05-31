@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import type { Contract } from "web3-eth-contract"
 import type { AbiItem } from "web3-utils"
-import type { IThePoolzInterface } from "../types/IThePoolzInterface"
+import type { IThePoolzInterface, IERC20Info } from "../types/IThePoolzInterface"
 import { DEFAULT_CHAIN_ID, AVAILABLE_CHAINS } from "../constants"
 import ERC20 from "../contracts/abi/ERC20.json"
 import POOLZ from "../contracts/abi/ThePoolz.json"
@@ -155,7 +155,7 @@ class ThePoolz implements IThePoolzInterface {
       ERC20Contract.methods.decimals().call()
     ])
 
-    return { address: token, decimals: parseInt(data[2]), symbol: data[1] as string | undefined, name: data[0] as string | undefined }
+    return { address: token, decimals: parseInt(data[2]), symbol: data[1], name: data[0] } as IERC20Info
   }
 
   async Contract(name: "ERC20", address?: string) {

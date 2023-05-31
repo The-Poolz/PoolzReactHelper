@@ -14,7 +14,12 @@ export interface IContractInfo {
   nameVersion: string
   contract: Contract
 }
-
+export interface IERC20Info {
+  address: string
+  decimals: number
+  symbol?: string
+  name?: string
+}
 export interface IThePoolzInterface {
   account?: string
   chainId: number
@@ -60,7 +65,7 @@ export interface IThePoolzInterface {
 
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
   ERC20Balance(token: string, account: string): Promise<string>
-  ERC20Info(token: string): Promise<{ address: string; decimals: number; symbol?: string; name?: string }>
+  ERC20Info(token: string): Promise<IERC20Info>
   /**
    * @deprecated Use {@link ERC20Balance} instead.
    */
@@ -81,7 +86,7 @@ export interface IThePoolzContextInterface {
   setProvider: React.Dispatch<React.SetStateAction<typeof Web3.givenProvider>>
 }
 
-export interface IChainConfig {
+interface IChainConfig {
   poolzAddress: IThePoolzInterface["poolzAddress"]
   poolzContract: IThePoolzInterface["poolzContract"]
   CPoolx: IThePoolzInterface["CPoolx"]
