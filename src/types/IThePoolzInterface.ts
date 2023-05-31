@@ -86,7 +86,7 @@ export interface IThePoolzContextInterface {
   setProvider: React.Dispatch<React.SetStateAction<typeof Web3.givenProvider>>
 }
 
-interface IChainConfig {
+export interface IChainConfig {
   poolzAddress: IThePoolzInterface["poolzAddress"]
   poolzContract: IThePoolzInterface["poolzContract"]
   CPoolx: IThePoolzInterface["CPoolx"]
