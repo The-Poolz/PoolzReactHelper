@@ -65,6 +65,15 @@ export interface IThePoolzInterface {
    * @deprecated Use {@link ERC20Balance} instead.
    */
   Contract(name: string, address?: string): Promise<Contract | undefined>
+
+  /**
+   * @deprecated Need remove.
+   */
+  lockedDealContract?: Contract
+  /**
+   * @deprecated Need remove.
+   */
+  lotteryContract?: Contract
 }
 
 export interface IThePoolzContextInterface {
