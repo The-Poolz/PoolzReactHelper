@@ -92,7 +92,7 @@ export interface IChainConfig {
   // CBackWithdraw: IThePoolzInterface["CBackWithdraw"]
 
   poolzTokenAddress: IThePoolzInterface["poolzTokenAddress"]
-  delayVault: IThePoolzInterface["delayVaultContract"]
+  delayVault: Omit<NonNullable<IThePoolzInterface["delayVaultContract"]>, "contract">
 }
 
 export type TChainConfig = Partial<IChainConfig>
