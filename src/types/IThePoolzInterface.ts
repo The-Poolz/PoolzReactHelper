@@ -69,7 +69,7 @@ export interface IThePoolzInterface {
   /**
    * @deprecated Need remove.
    */
-  lockedDealContract?: Contract
+  lockedDealContract?: Contract[]
   /**
    * @deprecated Need remove.
    */
