@@ -26,11 +26,11 @@ export interface IThePoolzInterface {
   balance: string
   web3: Web3
   /**
-   * @deprecated Use {@link CPoolx} instead.
+   * @deprecated Use {@link CPoolx.address} instead.
    */
   poolzAddress?: string
   /**
-   * @deprecated Use {@link CPoolx} instead.
+   * @deprecated Use {@link CPoolx.contract} instead.
    */
   poolzContract?: Contract
   CPoolx?: IContractInfo
@@ -38,20 +38,20 @@ export interface IThePoolzInterface {
   lockedDealV2?: IContractInfo
 
   /**
-   * @deprecated Use {@link CWhiteList} instead.
+   * @deprecated Use {@link CWhiteList.address} instead.
    */
   whiteListAddress?: string
   /**
-   * @deprecated Use {@link CWhiteList} instead.
+   * @deprecated Use {@link CWhiteList.contract} instead.
    */
   whiteListContract?: Contract
   CWhiteList?: IContractInfo
   /**
-   * @deprecated Use {@link CSignUp} instead.
+   * @deprecated Use {@link CSignUp.address} instead.
    */
   signUpAddress?: string
   /**
-   * @deprecated Use {@link CSignUp} instead.
+   * @deprecated Use {@link CSignUp.contract} instead.
    */
   signUpContract?: Contract
   CSignUp?: IContractInfo
