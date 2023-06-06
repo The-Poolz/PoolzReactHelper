@@ -1,5 +1,5 @@
 import { getAvailableNets } from "../src/utils"
 
 test("getAvailableNets", () => {
-  getAvailableNets("whiteListAddress")
+  expect(getAvailableNets("delayVault")).toEqual([56, 97])
 })
