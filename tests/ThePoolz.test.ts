@@ -39,7 +39,7 @@ describe("ThePoolz", () => {
     await thePoolz.init()
     await thePoolz.ERC20Balance("ERC20", "0x000")
     await thePoolz.ERC20Allowance("ERC20", "0x000", "0x001")
-    await thePoolz.ERC20Approve("ERC20", "0x000", "0000001")
+    await thePoolz.ERC20Approve("ERC20", "0x000", "0x000", "0000001")
     await thePoolz.ERC20Info("ERC20")
     await thePoolz.Contract("ERC20", "0x000")
     await thePoolz.Contract("ERC20", "0x000")
