@@ -66,6 +66,7 @@ export interface IThePoolzInterface {
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
   ERC20Balance(token: string, account: string): Promise<string>
   ERC20Allowance(token: string, account: string, spender: string): Promise<string>
+  ERC20Approve(token: string, spender: string, amount: string): Promise<void>
   ERC20Info(token: string): Promise<IERC20Info>
   /**
    * @deprecated Use {@link ERC20Balance} instead.
