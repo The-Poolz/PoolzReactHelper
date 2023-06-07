@@ -22,7 +22,9 @@ jest.mock("web3", () => {
             balanceOf: jest.fn(() => jest.fn),
             name: jest.fn(() => jest.fn),
             symbol: jest.fn(() => jest.fn),
-            decimals: jest.fn(() => jest.fn)
+            decimals: jest.fn(() => jest.fn),
+            allowance: jest.fn(() => jest.fn),
+            approve: jest.fn(() => ({ send: jest.fn(() => jest.fn) }))
           },
           options: { address: "0x000" }
         }))
@@ -36,6 +38,8 @@ describe("ThePoolz", () => {
     const thePoolz = new ThePoolz({ isTrustWallet: true })
     await thePoolz.init()
     await thePoolz.ERC20Balance("ERC20", "0x000")
+    await thePoolz.ERC20Allowance("ERC20", "0x000", "0x001")
+    await thePoolz.ERC20Approve("ERC20", "0x000", "0000001")
     await thePoolz.ERC20Info("ERC20")
     await thePoolz.Contract("ERC20", "0x000")
     await thePoolz.Contract("ERC20", "0x000")
