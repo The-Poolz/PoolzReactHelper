@@ -163,9 +163,9 @@ class ThePoolz implements IThePoolzInterface {
     return (await ERC20Contract.methods.allowance(account, spender).call()) as string
   }
 
-  async ERC20Approve(token: string, spender: string, amount: string) {
+  async ERC20Approve(token: string, account: string, spender: string, amount: string) {
     const ERC20Contract = await this.ERC20(token)
-    return ERC20Contract.methods.approve(spender, amount).send({ from: this.account })
+    return ERC20Contract.methods.approve(spender, amount).send({ from: account })
   }
 
   async Contract(name: "ERC20", address?: string) {
