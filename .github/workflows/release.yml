@@ -16,7 +16,16 @@ jobs:
           fetch-depth: 0
           ref: master
 
-      - name: Publish
-        uses: JS-DevTools/npm-publish@v2
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          version: 8
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+      - run: pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
