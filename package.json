@@ -18,8 +18,8 @@
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "prebuild": "pnpm clean && pnpm version prerelease --force --no-git-tag-version",
-    "build": "pnpm prebuild && microbundle --jsx React.createElement && pnpm pack",
+    "prebuild": "pnpm clean",
+    "build": "pnpm prebuild && microbundle --jsx React.createElement",
     "test": "jest"
   },
   "repository": {
