@@ -1,4 +1,4 @@
-name: Installing and testing
+name: Testing and Coverage
 on:
   - push
 
