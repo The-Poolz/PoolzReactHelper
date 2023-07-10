@@ -6,7 +6,12 @@
 [![Feature Requests](https://img.shields.io/github/issues/The-Poolz/PoolzReactHelper/feature-request?color=ff9001&label=feature%20requests)](https://github.com/The-Poolz/PoolzReactHelper/issues?q=is%3Aissue+label%3Afeature-request+is%3Aopen)
 [![Closed Issues](https://img.shields.io/github/issues-closed/The-Poolz/PoolzReactHelper?color=%2325CC00&label=issues%20closed)](https://github.com/The-Poolz/PoolzReactHelper/issues?q=is%3Aissue+is%3Aclosed+)
 
-[![codecov](https://codecov.io/gh/The-Poolz/PoolzReactHelper/branch/master/graph/badge.svg?token=fwZGFiYhmO)](https://codecov.io/gh/The-Poolz/PoolzReactHelper)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=The-Poolz_PoolzReactHelper&metric=coverage)](https://sonarcloud.io/summary/new_code?id=The-Poolz_PoolzReactHelper)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=The-Poolz_PoolzReactHelper&metric=bugs)](https://sonarcloud.io/summary/new_code?id=The-Poolz_PoolzReactHelper)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=The-Poolz_PoolzReactHelper&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=The-Poolz_PoolzReactHelper)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=The-Poolz_PoolzReactHelper&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=The-Poolz_PoolzReactHelper)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=The-Poolz_PoolzReactHelper&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=The-Poolz_PoolzReactHelper)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=The-Poolz_PoolzReactHelper&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=The-Poolz_PoolzReactHelper)
 
 ## Installation
 
