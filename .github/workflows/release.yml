@@ -24,13 +24,23 @@ jobs:
         id: pnpm-install
         with:
           version: 8
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
 
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+          cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
-      - run: pnpm build
-      - run: pnpm version ${{ env.tag }}
-      - run: pnpm publish
+
+      - name: Build
+        run: pnpm build
+
+      - name: Set version ${{ env.tag }}
+        run: pnpm version ${{ env.tag }}
+
+      - name: Publish
+        run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
