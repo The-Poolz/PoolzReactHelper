@@ -31,12 +31,16 @@ jobs:
           pnpm install --frozen-lockfile
           pnpm build
 
-      - name: Set version
+      - name: Set git user
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          pnpm version from-git
-          git status
+
+      - name: Set version
+        run: pnpm version from-git
+
+      - name: Check Status
+        run: git status
 
       - name: Publish
         run: pnpm publish
