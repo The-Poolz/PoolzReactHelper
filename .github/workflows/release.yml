@@ -33,7 +33,6 @@ jobs:
 
       - name: Set version
         run: |
-          git status
           git config user.name github-actions
           git config user.email github-actions@github.com
           pnpm version from-git
