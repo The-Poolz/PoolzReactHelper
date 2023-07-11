@@ -26,6 +26,9 @@ jobs:
           # cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
 
+      - name: Get Release Tag
+        run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
       - name: Build
         run: |
           pnpm install --frozen-lockfile
@@ -36,8 +39,8 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-      - name: Set version
-        run: pnpm version from-git
+      - name: Set version ${{ env.tag }}
+        run: pnpm version ${{ env.tag }}
 
       - name: Check Status
         run: git status
