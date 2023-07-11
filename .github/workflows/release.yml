@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: master
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -21,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: "pnpm"
+          # cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
 
       - name: Build
@@ -31,9 +33,11 @@ jobs:
 
       - name: Set version
         run: |
+          git status
           git config user.name github-actions
           git config user.email github-actions@github.com
           pnpm version from-git
+          git status
 
       - name: Publish
         run: pnpm publish
