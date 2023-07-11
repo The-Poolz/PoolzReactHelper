@@ -68,10 +68,7 @@ export interface IThePoolzInterface {
   ERC20Allowance(token: string, account: string, spender: string): Promise<string>
   ERC20Approve(token: string, account: string, spender: string, amount: string): Promise<void>
   ERC20Info(token: string): Promise<IERC20Info>
-  /**
-   * @deprecated Use {@link ERC20Balance} instead.
-   */
-  Contract(name: string, address?: string): Promise<Contract | undefined>
+  Contract(name: string, address: string): Promise<Contract | undefined>
 
   /**
    * @deprecated Need remove.

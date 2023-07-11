@@ -33,6 +33,12 @@ jest.mock("web3", () => {
   }
 })
 
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve([{ ABI: { rates: { CAD: 1.42 } } }])
+  })
+) as jest.Mock
+
 describe("ThePoolz", () => {
   test("thePoolz instanse", async () => {
     const thePoolz = new ThePoolz({ isTrustWallet: true })

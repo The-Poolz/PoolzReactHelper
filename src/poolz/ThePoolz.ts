@@ -168,14 +168,15 @@ class ThePoolz implements IThePoolzInterface {
     return ERC20Contract.methods.approve(spender, amount).send({ from: account })
   }
 
-  async Contract(name: "ERC20", address?: string) {
-    const collectionName = name + (address ?? "")
+  async Contract(name: string, address: string) {
+    const collectionName = name + address
     if (this.#contracts.has(collectionName)) return this.#contracts.get(collectionName)
-    if (name === "ERC20") {
-      const contract = new this.web3.eth.Contract(ERC20.abi as AbiItem[], address)
+    try {
+      const abi = await this.fetchContractAbi(name)
+      const contract = new this.web3.eth.Contract(abi as AbiItem[], address)
       this.#contracts.set(collectionName, contract)
       return contract
-    }
+    } catch (e) {}
   }
   private async fetchContractAbi(nameVersion: string) {
     const response = await fetch(`https://poolzfinancedata.com/contracts?_where[0][NameVersion]=${nameVersion}`)
