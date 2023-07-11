@@ -16,7 +16,6 @@ jobs:
           ref: master
 
       - uses: pnpm/action-setup@v2
-        name: Install pnpm
         with:
           version: 8
 
@@ -29,10 +28,19 @@ jobs:
       - name: Get Release Tag
         run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        id: cache-npm
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        name: Pnpm install
+        run: pnpm recursive install --frozen-lockfile --strict-peer-dependencies
+
       - name: Build
-        run: |
-          pnpm install --frozen-lockfile
-          pnpm build
+        run: pnpm build
 
       - name: Set git user
         run: |
@@ -40,7 +48,9 @@ jobs:
           git config user.email github-actions@github.com
 
       - name: Set version ${{ env.tag }}
-        run: pnpm version ${{ env.tag }}
+        run: |
+          pnpm version ${{ env.tag }}
+          git push
 
       - name: Check Status
         run: git status
