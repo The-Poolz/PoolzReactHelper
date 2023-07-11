@@ -16,6 +16,11 @@ jobs:
           fetch-depth: 0
           ref: master
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
       - name: Get Release Tag
         run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
@@ -24,23 +29,32 @@ jobs:
         id: pnpm-install
         with:
           version: 8
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
+          run_install: false
 
-      - uses: actions/setup-node@v3
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
         with:
-          node-version: 20
-          cache: "pnpm"
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Build
-        run: pnpm build
+        run: |
+          pnpm install --frozen-lockfile --strict-peer-dependencies
+          pnpm build
 
       - name: Set version ${{ env.tag }}
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          pnpm version from-git
+          pnpm version ${{ env.tag }}
 
       - name: Publish
         run: pnpm publish
