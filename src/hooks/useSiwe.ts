@@ -3,6 +3,7 @@ import { useThePoolz } from "./useThePoolz"
 
 interface ISiwe {
   Domain: string
+  URI: string
   Statement: string
   Version: number
   ChainId: number
@@ -10,17 +11,17 @@ interface ISiwe {
   IssuedAt: string
 }
 
-export const useSiwe = ({ Domain, Statement, Version, ChainId, Nonce, IssuedAt }: Partial<ISiwe>) => {
+export const useSiwe = ({ Domain, URI, Statement, Version, ChainId, Nonce, IssuedAt }: Partial<ISiwe>) => {
   const thePoolz = useThePoolz()
   const { web3, account } = thePoolz
 
-  const { host: domain } = window.location
+  const { host: domain, href: uri } = window.location
   const MessageTemplate = `${Domain ?? domain} wants you to sign in with your Ethereum account:
 ${account}
 
 ${Statement ?? "I accept the Poolz Terms & Conditions: https://www.poolz.finance/terms-conditions"}
 
-URI: ${Domain ?? domain}
+URI: ${URI ?? uri}
 Version: ${Version ?? 1}
 Chain ID: ${ChainId ?? 56}
 Nonce: ${Nonce ?? new Date().getTime()}
