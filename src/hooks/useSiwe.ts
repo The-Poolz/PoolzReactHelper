@@ -9,9 +9,10 @@ interface ISiwe {
   ChainId: number
   Nonce: number
   IssuedAt: string
+  ExpirationAt: string
 }
 
-export const useSiwe = ({ Domain, URI, Statement, Version, ChainId, Nonce, IssuedAt }: Partial<ISiwe>) => {
+export const useSiwe = ({ Domain, URI, Statement, Version, ChainId, Nonce, IssuedAt, ExpirationAt }: Partial<ISiwe>) => {
   const thePoolz = useThePoolz()
   const { web3, account } = thePoolz
 
@@ -26,22 +27,19 @@ Version: ${Version ?? 1}
 Chain ID: ${ChainId ?? 56}
 Nonce: ${Nonce ?? new Date().getTime()}
 Issued At: ${IssuedAt ?? new Date().toISOString()}
-Expiration Time: ${new Date(new Date().getTime() + 1000 * 60 * 60 * 24).toISOString()}`
+Expiration Time: ${ExpirationAt ?? new Date(new Date().getTime() + 1000 * 60 * 60 * 24).toISOString()}`
 
   return useMemo(() => {
     const signInWithEthereum = async () => {
-      if (!web3.currentProvider || !account) return
-      try {
-        // @ts-ignore
-        const signature = (await web3.currentProvider.request({
-          method: "personal_sign",
-          params: [MessageTemplate.replace(/[\r\n]/g, "\n"), account]
-        })) as string
+      if (!web3.currentProvider || !account) throw new Error("No web3 provider or account")
 
-        return { MessageTemplate, signature, formatedMessage: MessageTemplate.replace(/\n/g, "\\n") }
-      } catch (error) {
-        console.error(error)
-      }
+      // @ts-ignore
+      const signature = (await web3.currentProvider.request({
+        method: "personal_sign",
+        params: [MessageTemplate.replace(/[\r\n]/g, "\n"), account]
+      })) as string
+
+      return { MessageTemplate, signature, formatedMessage: MessageTemplate.replace(/\n/g, "\\n") }
     }
     return { signInWithEthereum }
   }, [web3, MessageTemplate, account])
