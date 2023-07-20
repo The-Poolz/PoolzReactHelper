@@ -17,7 +17,7 @@ export const useSiwe = ({ Domain, URI, Statement, Version, ChainId, Nonce, Issue
   const { web3, account } = thePoolz
 
   const { host: domain, href: uri } = window.location
-  const MessageTemplate = `${Domain ?? domain} wants you to sign in with your Ethereum account:
+  const eip4361message = `${Domain ?? domain} wants you to sign in with your Ethereum account:
 ${account}
 
 ${Statement ?? "I accept the Poolz Terms & Conditions: https://www.poolz.finance/terms-conditions"}
@@ -36,11 +36,11 @@ Expiration Time: ${ExpirationAt ?? new Date(new Date().getTime() + 1000 * 60 * 6
       // @ts-ignore
       const signature = (await web3.currentProvider.request({
         method: "personal_sign",
-        params: [MessageTemplate.replace(/[\r\n]/g, "\n"), account]
+        params: [eip4361message.replace(/[\r\n]/g, "\n"), account]
       })) as string
 
-      return { MessageTemplate, signature, formatedMessage: MessageTemplate.replace(/\n/g, "\\n") }
+      return { eip4361message, signature, formatedMessage: eip4361message.replace(/\n/g, "\\n") }
     }
     return { signInWithEthereum }
-  }, [web3, MessageTemplate, account])
+  }, [web3, eip4361message, account])
 }
