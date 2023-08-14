@@ -16,3 +16,5 @@ AVAILABLE_CHAINS.set(97, BinanceTestChainConfig)
 AVAILABLE_CHAINS.set(137, MaticMainChainConfig)
 AVAILABLE_CHAINS.set(42161, ArbitrumOneChainConfig)
 AVAILABLE_CHAINS.set(43114, AvalancheChainConfig)
+
+export const CUSTOMER_ACCOUNT_VARIABLE = "__CUSTOMER_ACCOUNT__"
