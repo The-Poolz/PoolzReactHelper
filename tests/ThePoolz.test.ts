@@ -39,6 +39,28 @@ global.fetch = jest.fn(() =>
   })
 ) as jest.Mock
 
+type TLocalStorageMock = {
+  [key: string]: string
+}
+const localStorageMock = (function () {
+  let store: TLocalStorageMock = {}
+  return {
+    getItem: function (key: string) {
+      return store[key]
+    },
+    setItem: function (key: string, value: string) {
+      store[key] = value
+    },
+    clear: function () {
+      store = {}
+    },
+    removeItem: function (key: string) {
+      delete store[key]
+    }
+  }
+})()
+Object.defineProperty(global, "localStorage", { value: localStorageMock })
+
 describe("ThePoolz", () => {
   test("thePoolz instanse", async () => {
     const thePoolz = new ThePoolz({ isTrustWallet: true })
