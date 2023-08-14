@@ -2,7 +2,7 @@ import Web3 from "web3"
 import type { Contract } from "web3-eth-contract"
 import type { AbiItem } from "web3-utils"
 import type { IThePoolzInterface, IERC20Info } from "../types/IThePoolzInterface"
-import { DEFAULT_CHAIN_ID, AVAILABLE_CHAINS } from "../constants"
+import { CUSTOMER_ACCOUNT_VARIABLE, DEFAULT_CHAIN_ID, AVAILABLE_CHAINS } from "../constants"
 import ERC20 from "../contracts/abi/ERC20.json"
 import POOLZ from "../contracts/abi/ThePoolz.json"
 import WhiteList from "../contracts/abi/WhiteList.json"
@@ -59,7 +59,7 @@ class ThePoolz implements IThePoolzInterface {
   private async initAccount() {
     if (!this.#provider) return
     const accounts = await this.web3.eth.getAccounts()
-    if (accounts.length) this.account = accounts[0]
+    if (accounts.length) this.account = localStorage.getItem(CUSTOMER_ACCOUNT_VARIABLE) ?? accounts[0]
   }
 
   private async getBalance() {
