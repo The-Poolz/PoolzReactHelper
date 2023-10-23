@@ -29,6 +29,7 @@ class ThePoolz implements IThePoolzInterface {
   public poolzBackWithdrawContract: IThePoolzInterface["poolzBackWithdrawContract"]
   public lockedDealV2: IThePoolzInterface["lockedDealV2"]
   public delayVaultContract: IThePoolzInterface["delayVaultContract"]
+  public lockDealNFTContract: IThePoolzInterface["lockDealNFTContract"]
 
   #provider: typeof Web3.givenProvider
   #contracts = new Map<string, Contract>()
@@ -70,7 +71,8 @@ class ThePoolz implements IThePoolzInterface {
   private async initPoolzContracts() {
     const chainConfig = AVAILABLE_CHAINS.get(this.chainId)
     if (!chainConfig) return
-    const { poolzTokenAddress, poolzAddress, whiteListAddress, lockedDealV2, poolzBackWithdraw, signUpAddress, delayVault } = chainConfig
+    const { poolzTokenAddress, poolzAddress, whiteListAddress, lockedDealV2, poolzBackWithdraw, signUpAddress, delayVault, lockDealNFT } =
+      chainConfig
 
     this.poolzTokenAddress = poolzTokenAddress
 
@@ -123,6 +125,12 @@ class ThePoolz implements IThePoolzInterface {
       try {
         const abi = await this.fetchContractAbi(delayVault.nameVersion)
         this.delayVaultContract = { ...delayVault, contract: new this.web3.eth.Contract(abi as AbiItem[], delayVault.address) }
+      } catch (e) {}
+    }
+    if (lockDealNFT) {
+      try {
+        const abi = await this.fetchContractAbi(lockDealNFT.nameVersion)
+        this.lockDealNFTContract = { ...lockDealNFT, contract: new this.web3.eth.Contract(abi as AbiItem[]) }
       } catch (e) {}
     }
   }
