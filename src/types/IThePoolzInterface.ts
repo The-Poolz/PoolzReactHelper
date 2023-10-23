@@ -62,6 +62,7 @@ export interface IThePoolzInterface {
 
   poolzTokenAddress?: string
   delayVaultContract?: IContractInfo
+  lockDealNFTContract?: IContractInfo
 
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
   ERC20Balance(token: string, account: string): Promise<string>
@@ -106,6 +107,7 @@ export interface IChainConfig {
 
   poolzTokenAddress: IThePoolzInterface["poolzTokenAddress"]
   delayVault: Omit<NonNullable<IThePoolzInterface["delayVaultContract"]>, "contract">
+  lockDealNFT: Omit<NonNullable<IThePoolzInterface["lockDealNFTContract"]>, "contract">
 }
 
 export type TChainConfig = Partial<IChainConfig>

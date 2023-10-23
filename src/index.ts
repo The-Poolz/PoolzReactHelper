@@ -8,3 +8,4 @@ export { ThePoolzProvider, useThePoolz, useConnectWallet, useSiwe, useSidNameFor
 export type { IThePoolzInterface, IERC20Info } from "./types/IThePoolzInterface"
 export * from "./utils"
 export * from "./constants"
+export type { Contract } from "web3-eth-contract"

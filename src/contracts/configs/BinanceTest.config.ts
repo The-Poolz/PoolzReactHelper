@@ -13,5 +13,9 @@ export const BinanceTestChainConfig: TChainConfig = {
   delayVault: {
     address: "0x607155A953d5f598d2F7CcD9a6395Af389cfecE5",
     nameVersion: "DelayVault@1.2.2"
+  },
+  lockDealNFT: {
+    address: "0xD40e523BCb4230FFA1126E301f4CA0294B8CF180",
+    nameVersion: "LockDealNFT@0.8.0"
   }
 }
