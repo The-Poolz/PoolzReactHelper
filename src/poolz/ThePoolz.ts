@@ -130,7 +130,7 @@ class ThePoolz implements IThePoolzInterface {
     if (lockDealNFT) {
       try {
         const abi = await this.fetchContractAbi(lockDealNFT.nameVersion)
-        this.lockDealNFTContract = { ...lockDealNFT, contract: new this.web3.eth.Contract(abi as AbiItem[]) }
+        this.lockDealNFTContract = { ...lockDealNFT, contract: new this.web3.eth.Contract(abi as AbiItem[], lockDealNFT.address) }
       } catch (e) {}
     }
   }
