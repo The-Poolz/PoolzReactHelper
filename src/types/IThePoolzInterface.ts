@@ -63,6 +63,14 @@ export interface IThePoolzInterface {
   poolzTokenAddress?: string
   delayVaultContract?: IContractInfo
   lockDealNFTContract?: IContractInfo
+  vaultManagerContract?: IContractInfo
+  dealProviderContract?: IContractInfo
+  lockDealProviderContract?: IContractInfo
+  timedDealProviderContract?: IContractInfo
+  collateralProviderContract?: IContractInfo
+  refundProviderContract?: IContractInfo
+  simpleBuilderContract?: IContractInfo
+  simpleRefundBuilderContract?: IContractInfo
 
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
   ERC20Balance(token: string, account: string): Promise<string>
@@ -108,6 +116,14 @@ export interface IChainConfig {
   poolzTokenAddress: IThePoolzInterface["poolzTokenAddress"]
   delayVault: Omit<NonNullable<IThePoolzInterface["delayVaultContract"]>, "contract">
   lockDealNFT: Omit<NonNullable<IThePoolzInterface["lockDealNFTContract"]>, "contract">
+  vaultManager: Omit<NonNullable<IThePoolzInterface["vaultManagerContract"]>, "contract">
+  dealProvider: Omit<NonNullable<IThePoolzInterface["dealProviderContract"]>, "contract">
+  lockDealProvider: Omit<NonNullable<IThePoolzInterface["lockDealProviderContract"]>, "contract">
+  timedDealProvider: Omit<NonNullable<IThePoolzInterface["timedDealProviderContract"]>, "contract">
+  collateralProvider: Omit<NonNullable<IThePoolzInterface["collateralProviderContract"]>, "contract">
+  refundProvider: Omit<NonNullable<IThePoolzInterface["refundProviderContract"]>, "contract">
+  simpleBuilder: Omit<NonNullable<IThePoolzInterface["simpleBuilderContract"]>, "contract">
+  simpleRefundBuilder: Omit<NonNullable<IThePoolzInterface["simpleRefundBuilderContract"]>, "contract">
 }
 
 export type TChainConfig = Partial<IChainConfig>

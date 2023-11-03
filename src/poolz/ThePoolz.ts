@@ -30,6 +30,14 @@ class ThePoolz implements IThePoolzInterface {
   public lockedDealV2: IThePoolzInterface["lockedDealV2"]
   public delayVaultContract: IThePoolzInterface["delayVaultContract"]
   public lockDealNFTContract: IThePoolzInterface["lockDealNFTContract"]
+  public vaultManagerContract: IThePoolzInterface["vaultManagerContract"]
+  public dealProviderContract: IThePoolzInterface["dealProviderContract"]
+  public lockDealProviderContract: IThePoolzInterface["lockDealProviderContract"]
+  public timedDealProviderContract: IThePoolzInterface["timedDealProviderContract"]
+  public collateralProviderContract: IThePoolzInterface["collateralProviderContract"]
+  public refundProviderContract: IThePoolzInterface["refundProviderContract"]
+  public simpleBuilderContract: IThePoolzInterface["simpleBuilderContract"]
+  public simpleRefundBuilderContract: IThePoolzInterface["simpleRefundBuilderContract"]
 
   #provider: typeof Web3.givenProvider
   #contracts = new Map<string, Contract>()
@@ -71,8 +79,24 @@ class ThePoolz implements IThePoolzInterface {
   private async initPoolzContracts() {
     const chainConfig = AVAILABLE_CHAINS.get(this.chainId)
     if (!chainConfig) return
-    const { poolzTokenAddress, poolzAddress, whiteListAddress, lockedDealV2, poolzBackWithdraw, signUpAddress, delayVault, lockDealNFT } =
-      chainConfig
+    const {
+      poolzTokenAddress,
+      poolzAddress,
+      whiteListAddress,
+      lockedDealV2,
+      poolzBackWithdraw,
+      signUpAddress,
+      delayVault,
+      lockDealNFT,
+      vaultManager,
+      dealProvider,
+      lockDealProvider,
+      timedDealProvider,
+      collateralProvider,
+      refundProvider,
+      simpleBuilder,
+      simpleRefundBuilder
+    } = chainConfig
 
     this.poolzTokenAddress = poolzTokenAddress
 
@@ -101,12 +125,6 @@ class ThePoolz implements IThePoolzInterface {
         contract: whiteListContract
       }
     }
-    if (lockedDealV2) {
-      try {
-        const abi = await this.fetchContractAbi(lockedDealV2.nameVersion)
-        this.lockedDealV2 = { ...lockedDealV2, contract: new this.web3.eth.Contract(abi as AbiItem[], lockedDealV2.address) }
-      } catch (e) {}
-    }
     if (poolzBackWithdraw) {
       this.poolzBackWithdraw = Array.isArray(poolzBackWithdraw) ? poolzBackWithdraw : [poolzBackWithdraw]
       this.poolzBackWithdrawContract = this.poolzBackWithdraw.map((address) => new this.web3.eth.Contract(POOLZ.abi as AbiItem[], address))
@@ -121,17 +139,102 @@ class ThePoolz implements IThePoolzInterface {
         contract: signUpContract
       }
     }
+
+    const abifetchPromises = []
+
+    if (lockedDealV2) {
+      abifetchPromises.push(this.fetchContractAbi(lockedDealV2.nameVersion)
+        .then(abi => {
+          this.lockedDealV2 = { ...lockedDealV2, contract: new this.web3.eth.Contract(abi as AbiItem[], lockedDealV2.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
     if (delayVault) {
-      try {
-        const abi = await this.fetchContractAbi(delayVault.nameVersion)
-        this.delayVaultContract = { ...delayVault, contract: new this.web3.eth.Contract(abi as AbiItem[], delayVault.address) }
-      } catch (e) {}
+      abifetchPromises.push(this.fetchContractAbi(delayVault.nameVersion)
+        .then(abi => {
+          this.delayVaultContract = { ...delayVault, contract: new this.web3.eth.Contract(abi as AbiItem[], delayVault.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
     }
     if (lockDealNFT) {
-      try {
-        const abi = await this.fetchContractAbi(lockDealNFT.nameVersion)
-        this.lockDealNFTContract = { ...lockDealNFT, contract: new this.web3.eth.Contract(abi as AbiItem[], lockDealNFT.address) }
-      } catch (e) {}
+      abifetchPromises.push(this.fetchContractAbi(lockDealNFT.nameVersion)
+        .then(abi => {
+          this.lockDealNFTContract = { ...lockDealNFT, contract: new this.web3.eth.Contract(abi as AbiItem[], lockDealNFT.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
+    if (vaultManager) {
+      abifetchPromises.push(this.fetchContractAbi(vaultManager.nameVersion)
+        .then(abi => {
+          this.vaultManagerContract = { ...vaultManager, contract: new this.web3.eth.Contract(abi as AbiItem[], vaultManager.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
+    if (dealProvider) {
+      abifetchPromises.push(this.fetchContractAbi(dealProvider.nameVersion)
+        .then(abi => {
+          this.dealProviderContract = { ...dealProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], dealProvider.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
+    if (lockDealProvider) {
+      abifetchPromises.push(this.fetchContractAbi(lockDealProvider.nameVersion)
+        .then(abi => {
+          this.lockDealProviderContract = { ...lockDealProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], lockDealProvider.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
+    if (timedDealProvider) {
+      abifetchPromises.push(this.fetchContractAbi(timedDealProvider.nameVersion)
+        .then(abi => {
+          this.timedDealProviderContract = { ...timedDealProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], timedDealProvider.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
+    if (collateralProvider) {
+      abifetchPromises.push(this.fetchContractAbi(collateralProvider.nameVersion)
+        .then(abi => {
+          this.collateralProviderContract = { ...collateralProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], collateralProvider.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
+    if (refundProvider) {
+      abifetchPromises.push(this.fetchContractAbi(refundProvider.nameVersion)
+        .then(abi => {
+          this.refundProviderContract = { ...refundProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], refundProvider.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
+    if (simpleBuilder) {
+      abifetchPromises.push(this.fetchContractAbi(simpleBuilder.nameVersion)
+        .then(abi => {
+          this.simpleBuilderContract = { ...simpleBuilder, contract: new this.web3.eth.Contract(abi as AbiItem[], simpleBuilder.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
+    if (simpleRefundBuilder) {
+      abifetchPromises.push(this.fetchContractAbi(simpleRefundBuilder.nameVersion)
+        .then(abi => {
+          this.simpleRefundBuilderContract = { ...simpleRefundBuilder, contract: new this.web3.eth.Contract(abi as AbiItem[], simpleRefundBuilder.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
+
+    try {
+      await Promise.allSettled(abifetchPromises)
+    } catch (e) {
+      console.error(e)
     }
   }
 
