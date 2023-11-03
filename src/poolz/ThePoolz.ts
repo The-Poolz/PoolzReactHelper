@@ -147,7 +147,7 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.lockedDealV2 = { ...lockedDealV2, contract: new this.web3.eth.Contract(abi as AbiItem[], lockedDealV2.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
     if (delayVault) {
@@ -155,7 +155,7 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.delayVaultContract = { ...delayVault, contract: new this.web3.eth.Contract(abi as AbiItem[], delayVault.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
     if (lockDealNFT) {
@@ -163,7 +163,7 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.lockDealNFTContract = { ...lockDealNFT, contract: new this.web3.eth.Contract(abi as AbiItem[], lockDealNFT.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
     if (vaultManager) {
@@ -171,7 +171,7 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.vaultManagerContract = { ...vaultManager, contract: new this.web3.eth.Contract(abi as AbiItem[], vaultManager.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
     if (dealProvider) {
@@ -179,7 +179,7 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.dealProviderContract = { ...dealProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], dealProvider.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
     if (lockDealProvider) {
@@ -187,7 +187,7 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.lockDealProviderContract = { ...lockDealProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], lockDealProvider.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
     if (timedDealProvider) {
@@ -195,7 +195,7 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.timedDealProviderContract = { ...timedDealProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], timedDealProvider.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
     if (collateralProvider) {
@@ -203,7 +203,7 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.collateralProviderContract = { ...collateralProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], collateralProvider.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
     if (refundProvider) {
@@ -211,7 +211,7 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.refundProviderContract = { ...refundProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], refundProvider.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
     if (simpleBuilder) {
@@ -219,7 +219,7 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.simpleBuilderContract = { ...simpleBuilder, contract: new this.web3.eth.Contract(abi as AbiItem[], simpleBuilder.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
     if (simpleRefundBuilder) {
@@ -227,14 +227,14 @@ class ThePoolz implements IThePoolzInterface {
         .then(abi => {
           this.simpleRefundBuilderContract = { ...simpleRefundBuilder, contract: new this.web3.eth.Contract(abi as AbiItem[], simpleRefundBuilder.address) }
         })
-        .catch(e => {console.log(e)})
+        .catch(e => {console.error(e)})
       );
     }
 
     try {
       await Promise.allSettled(abifetchPromises)
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
