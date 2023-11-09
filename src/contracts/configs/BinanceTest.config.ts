@@ -16,7 +16,7 @@ export const BinanceTestChainConfig: TChainConfig = {
   },
   lockDealNFT: {
     address: "0x522B12eB0a9807b6d13717089124ce9420d495AC",
-    nameVersion: "LockDealNFT@0.9.0"
+    nameVersion: "LockDealNFT@0.9.1-spherex"
   },
   vaultManager: {
     address: "0xe8bdd7C33eA8783176Fd0C8Df7B255cF64fEEFda",
