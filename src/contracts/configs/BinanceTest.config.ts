@@ -15,32 +15,32 @@ export const BinanceTestChainConfig: TChainConfig = {
     nameVersion: "DelayVault@1.2.2"
   },
   lockDealNFT: {
-    address: "0x522B12eB0a9807b6d13717089124ce9420d495AC",
+    address: "0xB7144D8c776E74a53F1151060737F9De68d0b5C2",
     nameVersion: "LockDealNFT@0.9.1-spherex"
   },
   vaultManager: {
-    address: "0xe8bdd7C33eA8783176Fd0C8Df7B255cF64fEEFda",
-    nameVersion: "VaultManager@0.0.4"
+    address: "0xc7720Ac2C4Eae900D0BaC9175918AD33064A257a",
+    nameVersion: "VaultManager@0.0.4-spherex"
   },
   dealProvider: {
-    address: "0x5b007F06CB9708A1E419Fe936aE826C4eba21a8d",
-    nameVersion: "DealProvider@0.9.0"
+    address: "0x911f8C076B30b3d52e5C236EB9Bd91E8f094BA26",
+    nameVersion: "DealProvider@0.9.1-spherex"
   },
   lockDealProvider: {
-    address: "0x39f5487929e68CC0242905d1f6e97d0C0992cb77",
-    nameVersion: "LockDealProvider@0.9.0"
+    address: "0x33A1F1bA6365db7Cab6fc803d54324faA5863101",
+    nameVersion: "LockDealProvider@0.9.1-spherex"
   },
   timedDealProvider: {
-    address: "0x3D0Ca2259046D6660937864b67287269268D2b61",
-    nameVersion: "TimedDealProvider@0.9.0"
+    address: "0x46658A869641620a1BC7DC228071D9d816ED3194",
+    nameVersion: "TimedDealProvider@0.9.1-spherex"
   },
   collateralProvider: {
-    address: "0xE63De121ca8Fc1C540DBCd432d1c9D3A5cDEB94A",
-    nameVersion: "CollateralProvider@0.9.0"
+    address: "0x368696C68AE3381A00D68113016280846c26521C",
+    nameVersion: "CollateralProvider@0.9.1-spherex"
   },
   refundProvider: {
-    address: "0x9a3188e32Bda4C47491186b7DBd412854A8e3921",
-    nameVersion: "RefundProvider@0.9.0"
+    address: "0x18b8b341B1d114bEb1efBfb689db5e3da7673b01",
+    nameVersion: "RefundProvider@0.9.1-spherex"
   },
   simpleBuilder: {
     address: "0x4338C2706052930C065CD7fe396f4E70494Cf7B3",
