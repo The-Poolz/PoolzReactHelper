@@ -10,5 +10,9 @@ export const BinanceMainChainConfig: TChainConfig = {
   signUpAddress: "0x41b56bF3b21C53F6394a44A2ff84f1d2bBC27841",
   poolzBackWithdraw: "0x7Ff9315f538dF7eC76Ec4815249Dd30519726460",
   poolzTokenAddress: "0xbAeA9aBA1454DF334943951d51116aE342eAB255",
-  delayVault: { address: "0x5eb57B1210338b13E3D5572d5e1670285Aa71702", nameVersion: "DelayVault@1.2.2" }
+  delayVault: { address: "0x5eb57B1210338b13E3D5572d5e1670285Aa71702", nameVersion: "DelayVault@1.2.2" },
+  multiSender: {
+    address: "0x0759EdEd403B704dc8e76b4c73026782b58E0ED7",
+    nameVersion: "MultiSender@1.0.0"
+  }
 }

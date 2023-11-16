@@ -38,6 +38,7 @@ class ThePoolz implements IThePoolzInterface {
   public refundProviderContract: IThePoolzInterface["refundProviderContract"]
   public simpleBuilderContract: IThePoolzInterface["simpleBuilderContract"]
   public simpleRefundBuilderContract: IThePoolzInterface["simpleRefundBuilderContract"]
+  public multiSenderContract: IThePoolzInterface["multiSenderContract"]
 
   #provider: typeof Web3.givenProvider
   #contracts = new Map<string, Contract>()
@@ -95,7 +96,8 @@ class ThePoolz implements IThePoolzInterface {
       collateralProvider,
       refundProvider,
       simpleBuilder,
-      simpleRefundBuilder
+      simpleRefundBuilder,
+      multiSender
     } = chainConfig
 
     this.poolzTokenAddress = poolzTokenAddress
@@ -226,6 +228,14 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(this.fetchContractAbi(simpleRefundBuilder.nameVersion)
         .then(abi => {
           this.simpleRefundBuilderContract = { ...simpleRefundBuilder, contract: new this.web3.eth.Contract(abi as AbiItem[], simpleRefundBuilder.address) }
+        })
+        .catch(e => {console.error(e)})
+      );
+    }
+    if (multiSender) {
+      abifetchPromises.push(this.fetchContractAbi(multiSender.nameVersion)
+        .then(abi => {
+          this.multiSenderContract = { ...multiSender, contract: new this.web3.eth.Contract(abi as AbiItem[], multiSender.address) }
         })
         .catch(e => {console.error(e)})
       );
