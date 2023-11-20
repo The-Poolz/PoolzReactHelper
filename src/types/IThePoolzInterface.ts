@@ -72,6 +72,7 @@ export interface IThePoolzInterface {
   simpleBuilderContract?: IContractInfo
   simpleRefundBuilderContract?: IContractInfo
   multiSenderContract?: IContractInfo
+  delayVaultProviderContract?: IContractInfo
 
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
   ERC20Balance(token: string, account: string): Promise<string>
@@ -126,6 +127,7 @@ export interface IChainConfig {
   simpleBuilder: Omit<NonNullable<IThePoolzInterface["simpleBuilderContract"]>, "contract">
   simpleRefundBuilder: Omit<NonNullable<IThePoolzInterface["simpleRefundBuilderContract"]>, "contract">
   multiSender: Omit<NonNullable<IThePoolzInterface["multiSenderContract"]>, "contract">
+  delayVaultProvider: Omit<NonNullable<IThePoolzInterface["delayVaultProviderContract"]>, "contract">
 }
 
 export type TChainConfig = Partial<IChainConfig>
