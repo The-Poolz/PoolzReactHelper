@@ -7,6 +7,7 @@ import { BinanceMainChainConfig } from "../contracts/configs/BinanceMain.config"
 import { MaticMainChainConfig } from "../contracts/configs/MaticMain.config"
 import { NeonChainConfig } from "../contracts/configs/Neon.config"
 import { TomoChainConfig } from "../contracts/configs/Tomo.config"
+import { TelosMainChainConfig } from "../contracts/configs/TelosMain.config"
 
 export const DEFAULT_CHAIN_ID = 1
 export const UINT_MINUS_ONE = "115792089237316195423570985008687907853269984665640564039457584007913129639935"
@@ -20,5 +21,6 @@ AVAILABLE_CHAINS.set(137, MaticMainChainConfig)
 AVAILABLE_CHAINS.set(42161, ArbitrumOneChainConfig)
 AVAILABLE_CHAINS.set(43114, AvalancheChainConfig)
 AVAILABLE_CHAINS.set(245022934, NeonChainConfig)
+AVAILABLE_CHAINS.set(40, TelosMainChainConfig)
 
 export const CUSTOMER_ACCOUNT_VARIABLE = "__CUSTOMER_ACCOUNT__"
