@@ -6,7 +6,6 @@ export const TelosMainChainConfig: TChainConfig = {
     nameVersion: "MultiSender@1.0.0"
   },
   whiteListAddress: "0xb16BBDf683fFd6D92290F7610bb10f22f9c71e9e",
-
   lockDealNFT: {
     address: "0x6d77B5147CDE6Fa287c1266A33e09a09651D36d0",
     nameVersion: "LockDealNFT@0.9.1"
