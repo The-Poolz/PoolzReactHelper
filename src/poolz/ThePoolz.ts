@@ -40,6 +40,7 @@ class ThePoolz implements IThePoolzInterface {
   public simpleRefundBuilderContract: IThePoolzInterface["simpleRefundBuilderContract"]
   public multiSenderContract: IThePoolzInterface["multiSenderContract"]
   public delayVaultProviderContract: IThePoolzInterface["delayVaultProviderContract"]
+  public delayVaultMigratorContract: IThePoolzInterface["delayVaultMigratorContract"]
 
   #provider: typeof Web3.givenProvider
   #contracts = new Map<string, Contract>()
@@ -99,7 +100,8 @@ class ThePoolz implements IThePoolzInterface {
       simpleBuilder,
       simpleRefundBuilder,
       multiSender,
-      delayVaultProvider
+      delayVaultProvider,
+      delayVaultMigrator
     } = chainConfig
 
     this.poolzTokenAddress = poolzTokenAddress
@@ -300,6 +302,20 @@ class ThePoolz implements IThePoolzInterface {
             this.delayVaultProviderContract = {
               ...delayVaultProvider,
               contract: new this.web3.eth.Contract(abi as AbiItem[], delayVaultProvider.address)
+            }
+          })
+          .catch((e) => {
+            console.error(e)
+          })
+      )
+    }
+    if (delayVaultMigrator) {
+      abifetchPromises.push(
+        this.fetchContractAbi(delayVaultMigrator.nameVersion)
+          .then((abi) => {
+            this.delayVaultMigratorContract = {
+              ...delayVaultMigrator,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], delayVaultMigrator.address)
             }
           })
           .catch((e) => {

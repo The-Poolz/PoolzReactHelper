@@ -15,47 +15,51 @@ export const BinanceTestChainConfig: TChainConfig = {
     nameVersion: "DelayVault@1.2.2"
   },
   lockDealNFT: {
-    address: "0xB7144D8c776E74a53F1151060737F9De68d0b5C2",
-    nameVersion: "LockDealNFT@0.9.1-spherex"
+    address: "0xe42876a77108E8B3B2af53907f5e533Cba2Ce7BE",
+    nameVersion: "LockDealNFT@0.9.1-ironblocks"
   },
   vaultManager: {
-    address: "0xc7720Ac2C4Eae900D0BaC9175918AD33064A257a",
-    nameVersion: "VaultManager@0.0.4-spherex"
+    address: "0xF0A8AAc3deB7596527A61697D0a9728E3A67D3B7",
+    nameVersion: "VaultManager@0.0.4-ironblocks"
   },
   dealProvider: {
-    address: "0x911f8C076B30b3d52e5C236EB9Bd91E8f094BA26",
-    nameVersion: "DealProvider@0.9.1-spherex"
+    address: "0x70B0F2fd774376063faCC9178307cF1E18Ea3aF0",
+    nameVersion: "DealProvider@0.9.1-ironblocks"
   },
   lockDealProvider: {
-    address: "0x33A1F1bA6365db7Cab6fc803d54324faA5863101",
-    nameVersion: "LockDealProvider@0.9.1-spherex"
+    address: "0x8FDf10F414395366b9fFbBa2058fe913D4F98cef",
+    nameVersion: "LockDealProvider@0.9.1-ironblocks"
   },
   timedDealProvider: {
-    address: "0x46658A869641620a1BC7DC228071D9d816ED3194",
-    nameVersion: "TimedDealProvider@0.9.1-spherex"
+    address: "0xD3dC0C40387F19cFE2b434D56AC4CE939c789328",
+    nameVersion: "TimedDealProvider@0.9.1-ironblocks"
   },
   collateralProvider: {
-    address: "0x368696C68AE3381A00D68113016280846c26521C",
-    nameVersion: "CollateralProvider@0.9.1-spherex"
+    address: "0xB1fa4dBEA085d10e05483A08ba6bc43a893BA921",
+    nameVersion: "CollateralProvider@0.9.1-ironblocks"
   },
   refundProvider: {
-    address: "0x18b8b341B1d114bEb1efBfb689db5e3da7673b01",
-    nameVersion: "RefundProvider@0.9.1-spherex"
+    address: "0xeC1AE4E0C8fF8973016282d70eFbc3bbC5A682D9",
+    nameVersion: "RefundProvider@0.9.1-ironblocks"
   },
   simpleBuilder: {
-    address: "0x4338C2706052930C065CD7fe396f4E70494Cf7B3",
-    nameVersion: "SimpleBuilder@0.9.0"
+    address: "0x06daa28410A8e26fC86DF3c3d2Cfb2875F4887e8",
+    nameVersion: "SimpleBuilder@0.9.1-ironblocks"
   },
   simpleRefundBuilder: {
-    address: "0x9c39a03459522185a1598D4ad2a9cCCCB0F5Ff8f",
-    nameVersion: "SimpleRefundBuilder@0.9.0"
+    address: "0x2A9E8f7a179D5Ddec77f87efB3D7b494E4d049f0",
+    nameVersion: "SimpleRefundBuilder@0.9.1-ironblocks"
   },
   multiSender: {
     address: "0x2dAc629DbD97f248A3443E446fA93330aF773571",
     nameVersion: "MultiSender@1.0.0"
   },
   delayVaultProvider: {
-    address: "0x9E060A352bD1417035049c80fd27136950AA762d",
-    nameVersion: "DelayVaultProvider@0.9.2"
+    address: "0x9fd743f499d852E3A2cFEAC037e5562126468D28",
+    nameVersion: "DelayVaultProvider@0.9.5-ironblocks"
+  },
+  delayVaultMigrator: {
+    address: "0xFc4E9DDd1E21a9BaDEb1A4C81687A20fe135A54F",
+    nameVersion: "DelayVaultMigrator@0.9.1-ironblocks"
   }
 }
