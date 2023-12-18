@@ -16,39 +16,39 @@ export const BinanceTestChainConfig: TChainConfig = {
   },
   lockDealNFT: {
     address: "0xB7144D8c776E74a53F1151060737F9De68d0b5C2",
-    nameVersion: "LockDealNFT@0.9.1-ironblocks"
+    nameVersion: "LockDealNFT@0.9.1-spherex"
   },
   vaultManager: {
     address: "0xc7720Ac2C4Eae900D0BaC9175918AD33064A257a",
-    nameVersion: "VaultManager@0.0.4-ironblocks"
+    nameVersion: "VaultManager@0.0.4-spherex"
   },
   dealProvider: {
     address: "0x911f8C076B30b3d52e5C236EB9Bd91E8f094BA26",
-    nameVersion: "DealProvider@0.9.1-ironblocks"
+    nameVersion: "DealProvider@0.9.1-spherex"
   },
   lockDealProvider: {
     address: "0x33A1F1bA6365db7Cab6fc803d54324faA5863101",
-    nameVersion: "LockDealProvider@0.9.1-ironblocks"
+    nameVersion: "LockDealProvider@0.9.1-spherex"
   },
   timedDealProvider: {
     address: "0x46658A869641620a1BC7DC228071D9d816ED3194",
-    nameVersion: "TimedDealProvider@0.9.1-ironblocks"
+    nameVersion: "TimedDealProvider@0.9.1-spherex"
   },
   collateralProvider: {
     address: "0x368696C68AE3381A00D68113016280846c26521C",
-    nameVersion: "CollateralProvider@0.9.1-ironblocks"
+    nameVersion: "CollateralProvider@0.9.1-spherex"
   },
   refundProvider: {
     address: "0x18b8b341B1d114bEb1efBfb689db5e3da7673b01",
-    nameVersion: "RefundProvider@0.9.1-ironblocks"
+    nameVersion: "RefundProvider@0.9.1-spherex"
   },
   simpleBuilder: {
     address: "0x4338C2706052930C065CD7fe396f4E70494Cf7B3",
-    nameVersion: "SimpleBuilder@0.9.1-ironblocks"
+    nameVersion: "SimpleBuilder@0.9.0"
   },
   simpleRefundBuilder: {
     address: "0x9c39a03459522185a1598D4ad2a9cCCCB0F5Ff8f",
-    nameVersion: "SimpleRefundBuilder@0.9.1-ironblocks"
+    nameVersion: "SimpleRefundBuilder@0.9.0"
   },
   multiSender: {
     address: "0x2dAc629DbD97f248A3443E446fA93330aF773571",
@@ -56,6 +56,6 @@ export const BinanceTestChainConfig: TChainConfig = {
   },
   delayVaultProvider: {
     address: "0x9E060A352bD1417035049c80fd27136950AA762d",
-    nameVersion: "DelayVaultProvider@0.9.5-ironblocks"
+    nameVersion: "DelayVaultProvider@0.9.2"
   }
 }
