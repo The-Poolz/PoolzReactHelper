@@ -7,7 +7,6 @@ export const MaticMainChainConfig: TChainConfig = {
     address: "0x9D13B213852669077131f8A24A676f27ab0C2931",
     nameVersion: "LockedDeal@2.3.2"
   },
-  poolzTokenAddress: "0x69A95185ee2a045CDC4bCd1b1Df10710395e4e23",
 
   lockDealNFT: {
     address: "0x9C36786836A594e3b355bA572A5Cd6841F69d86e",
