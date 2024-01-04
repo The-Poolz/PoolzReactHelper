@@ -35,20 +35,20 @@ export const BinanceTestChainConfig: TChainConfig = {
     nameVersion: "TimedDealProvider@0.9.1-ironblocks"
   },
   collateralProvider: {
-    address: "0xB1fa4dBEA085d10e05483A08ba6bc43a893BA921",
-    nameVersion: "CollateralProvider@0.9.1-ironblocks"
+    address: "0x6300A6121B5fA344F111Bf0B3d4a5a4ea84Cc35E",
+    nameVersion: "CollateralProvider@0.9.5"
   },
   refundProvider: {
-    address: "0xeC1AE4E0C8fF8973016282d70eFbc3bbC5A682D9",
-    nameVersion: "RefundProvider@0.9.1-ironblocks"
+    address: "0x11A895872B3a66f946A3FC06aacc5d8b27FD7940",
+    nameVersion: "RefundProvider@0.9.5"
   },
   simpleBuilder: {
     address: "0x06daa28410A8e26fC86DF3c3d2Cfb2875F4887e8",
     nameVersion: "SimpleBuilder@0.9.1-ironblocks"
   },
   simpleRefundBuilder: {
-    address: "0x2A9E8f7a179D5Ddec77f87efB3D7b494E4d049f0",
-    nameVersion: "SimpleRefundBuilder@0.9.1-ironblocks"
+    address: "0xE5213A417443206B58aB3097B7c61Cdf165E17C9",
+    nameVersion: "SimpleRefundBuilder@0.9.5"
   },
   multiSender: {
     address: "0x2dAc629DbD97f248A3443E446fA93330aF773571",
