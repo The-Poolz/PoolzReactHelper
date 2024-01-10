@@ -37,6 +37,7 @@ Expiration Time: ${ExpirationAt ?? new Date(new Date().getTime() + 1000 * 60 * 6
     const signInWithEthereum = async () => {
       if (!web3.currentProvider || !account) throw new Error("No web3 provider or account")
       const eip4361message = templateEip4361message()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const signature = (await web3.currentProvider.request({
         method: "personal_sign",
