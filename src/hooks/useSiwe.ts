@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useCallback, useMemo } from "react"
 import { useThePoolz } from "./useThePoolz"
 
 interface ISiwe {
@@ -11,13 +11,16 @@ interface ISiwe {
   IssuedAt: string
   ExpirationAt: string
 }
+type TProps = () => Partial<ISiwe>
 
-export const useSiwe = ({ Domain, URI, Statement, Version, ChainId, Nonce, IssuedAt, ExpirationAt }: Partial<ISiwe>) => {
+export const useSiwe = (props: TProps) => {
   const thePoolz = useThePoolz()
   const { web3, account } = thePoolz
 
-  const { host: domain, href: uri } = window.location
-  const eip4361message = `${Domain ?? domain} wants you to sign in with your Ethereum account:
+  const templateEip4361message = useCallback(() => {
+    const { Domain, URI, Statement, Version, ChainId, Nonce, IssuedAt, ExpirationAt } = props()
+    const { host: domain, href: uri } = window.location
+    return `${Domain ?? domain} wants you to sign in with your Ethereum account:
 ${account}
 
 ${Statement ?? "I accept the Poolz Terms & Conditions: https://www.poolz.finance/terms-conditions"}
@@ -28,11 +31,12 @@ Chain ID: ${ChainId ?? 56}
 Nonce: ${Nonce ?? new Date().getTime()}
 Issued At: ${IssuedAt ?? new Date().toISOString()}
 Expiration Time: ${ExpirationAt ?? new Date(new Date().getTime() + 1000 * 60 * 60 * 24).toISOString()}`
+  }, [props])
 
   return useMemo(() => {
     const signInWithEthereum = async () => {
       if (!web3.currentProvider || !account) throw new Error("No web3 provider or account")
-
+      const eip4361message = templateEip4361message()
       // @ts-ignore
       const signature = (await web3.currentProvider.request({
         method: "personal_sign",
@@ -42,5 +46,5 @@ Expiration Time: ${ExpirationAt ?? new Date(new Date().getTime() + 1000 * 60 * 6
       return { eip4361message, signature, formatedMessage: eip4361message.replace(/\n/g, "\\n") }
     }
     return { signInWithEthereum }
-  }, [web3, eip4361message, account])
+  }, [web3, templateEip4361message, account])
 }
