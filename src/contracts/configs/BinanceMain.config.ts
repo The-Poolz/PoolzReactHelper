@@ -37,20 +37,20 @@ export const BinanceMainChainConfig: TChainConfig = {
     nameVersion: "TimedDealProvider@0.9.1-ironblocks"
   },
   collateralProvider: {
-    address: "0xc25375dEb8aD683786F1039E031aa057d3B3d1D8",
-    nameVersion: "CollateralProvider@0.9.1-ironblocks"
+    address: "0xabc8a53b30b33190c959d304e1044b37c275d28d",
+    nameVersion: "CollateralProvider@0.9.6"
   },
   refundProvider: {
-    address: "0x7572D168d43aFdc246A070f0C3CFfEa7292b4bB5",
-    nameVersion: "RefundProvider@0.9.1-ironblocks"
+    address: "0xfd8d52ee64c85f82ebef6ae8a409e5ccddac0c04",
+    nameVersion: "RefundProvider@0.9.6"
   },
   simpleBuilder: {
     address: "0x4c6842E242B39F16328f2dEEd8cF23b407982aff",
     nameVersion: "SimpleBuilder@0.9.1-ironblocks"
   },
   simpleRefundBuilder: {
-    address: "0xC6589b786Bc6Eb8660a5679CaFB033697259060e",
-    nameVersion: "SimpleRefundBuilder@0.9.1-ironblocks"
+    address: "0x906f2db10cac66cd31859656a2d198ecae7b9ef1",
+    nameVersion: "SimpleRefundBuilder@0.9.5"
   },
   delayVaultProvider: {
     address: "0xeb88Ff7799E0e7b187D98232336722ec9936B86D",
