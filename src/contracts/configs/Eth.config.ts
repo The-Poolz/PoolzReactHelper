@@ -7,6 +7,10 @@ export const EthMainChainConfig: TChainConfig = {
   lockedDealV2: {
     address: "0x285B4866257eF51FfBDD239c10dE5f9493413d8f",
     nameVersion: "LockedDeal@2.3.3"
-  }
+  },
+  multiSender: {
+    address: "0xf283bee36abb08c2702d1d6d2fc2c4c6a8cb5ed1",
+    nameVersion: "MultiSender@1.0.0"
+  },
   // delayVault: { address: "0x674c9FDc5DcBD525cd3ea2C3A2caE6cfe79727C5", nameVersion: "DelayVault@1.2.2" }
 }

@@ -7,7 +7,10 @@ export const MaticMainChainConfig: TChainConfig = {
     address: "0x9D13B213852669077131f8A24A676f27ab0C2931",
     nameVersion: "LockedDeal@2.3.2"
   },
-
+  multiSender: {
+    address: "0x5a3892bab5c7f38c96e45f4f378056574a32df4b",
+    nameVersion: "MultiSender@1.0.0"
+  },
   lockDealNFT: {
     address: "0x9C36786836A594e3b355bA572A5Cd6841F69d86e",
     nameVersion: "LockDealNFT@0.9.1-ironblocks"
