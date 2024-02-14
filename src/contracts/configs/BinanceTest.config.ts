@@ -61,5 +61,10 @@ export const BinanceTestChainConfig: TChainConfig = {
   delayVaultMigrator: {
     address: "0xFc4E9DDd1E21a9BaDEb1A4C81687A20fe135A54F",
     nameVersion: "DelayVaultMigrator@0.9.1-ironblocks"
+  },
+  tokenNFTConnector: {
+    address: "0x0eED0587CE09C037aF79e340e3e2e53A09f81a52",
+    nameVersion: "TokenNFTConnector@1.1.1",
+    proxy: "0xF0f16f6A66462955cC9A1bAAaC0a801A5671be35"
   }
 }
