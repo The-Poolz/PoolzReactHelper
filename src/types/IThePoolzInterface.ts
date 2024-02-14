@@ -13,6 +13,8 @@ export interface IContractInfo {
   address: string
   nameVersion: string
   contract: Contract
+  proxy?: string
+  proxyСontract?: Contract
 }
 export interface IERC20Info {
   address: string
@@ -25,9 +27,7 @@ export interface IThePoolzInterface {
   chainId: number
   balance: string
   web3: Web3
-  /**
-   * @deprecated Use {@link CPoolx.address} instead.
-   */
+
   poolzAddress?: string
   /**
    * @deprecated Use {@link CPoolx.contract} instead.
@@ -74,6 +74,7 @@ export interface IThePoolzInterface {
   multiSenderContract?: IContractInfo
   delayVaultProviderContract?: IContractInfo
   delayVaultMigratorContract?: IContractInfo
+  tokenNFTConnectorContract?: IContractInfo
 
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
   ERC20Balance(token: string, account: string): Promise<string>
@@ -81,15 +82,6 @@ export interface IThePoolzInterface {
   ERC20Approve(token: string, account: string, spender: string, amount: string): Promise<void>
   ERC20Info(token: string): Promise<IERC20Info>
   Contract(name: string, address: string): Promise<Contract | undefined>
-
-  /**
-   * @deprecated Need remove.
-   */
-  lockedDealContract?: Contract[]
-  /**
-   * @deprecated Need remove.
-   */
-  lotteryContract?: Contract
 }
 
 export interface IThePoolzContextInterface {
@@ -130,6 +122,7 @@ export interface IChainConfig {
   multiSender: Omit<NonNullable<IThePoolzInterface["multiSenderContract"]>, "contract">
   delayVaultProvider: Omit<NonNullable<IThePoolzInterface["delayVaultProviderContract"]>, "contract">
   delayVaultMigrator: Omit<NonNullable<IThePoolzInterface["delayVaultMigratorContract"]>, "contract">
+  tokenNFTConnector: Omit<NonNullable<IThePoolzInterface["tokenNFTConnectorContract"]>, "contract">
 }
 
 export type TChainConfig = Partial<IChainConfig>

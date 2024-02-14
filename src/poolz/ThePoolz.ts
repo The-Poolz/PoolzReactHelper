@@ -41,6 +41,7 @@ class ThePoolz implements IThePoolzInterface {
   public multiSenderContract: IThePoolzInterface["multiSenderContract"]
   public delayVaultProviderContract: IThePoolzInterface["delayVaultProviderContract"]
   public delayVaultMigratorContract: IThePoolzInterface["delayVaultMigratorContract"]
+  public tokenNFTConnectorContract: IThePoolzInterface["tokenNFTConnectorContract"]
 
   #provider: typeof Web3.givenProvider
   #contracts = new Map<string, Contract>()
@@ -101,7 +102,8 @@ class ThePoolz implements IThePoolzInterface {
       simpleRefundBuilder,
       multiSender,
       delayVaultProvider,
-      delayVaultMigrator
+      delayVaultMigrator,
+      tokenNFTConnector
     } = chainConfig
 
     this.poolzTokenAddress = poolzTokenAddress
@@ -316,6 +318,21 @@ class ThePoolz implements IThePoolzInterface {
             this.delayVaultMigratorContract = {
               ...delayVaultMigrator,
               contract: new this.web3.eth.Contract(abi as AbiItem[], delayVaultMigrator.address)
+            }
+          })
+          .catch((e) => {
+            console.error(e)
+          })
+      )
+    }
+    if (tokenNFTConnector) {
+      abifetchPromises.push(
+        this.fetchContractAbi(tokenNFTConnector.nameVersion)
+          .then((abi) => {
+            this.tokenNFTConnectorContract = {
+              ...tokenNFTConnector,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], tokenNFTConnector.address),
+              proxyСontract: tokenNFTConnector.proxy ? new this.web3.eth.Contract(abi as AbiItem[], tokenNFTConnector.proxy) : undefined
             }
           })
           .catch((e) => {
