@@ -331,7 +331,8 @@ class ThePoolz implements IThePoolzInterface {
           .then((abi) => {
             this.tokenNFTConnectorContract = {
               ...tokenNFTConnector,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], tokenNFTConnector.address)
+              contract: new this.web3.eth.Contract(abi as AbiItem[], tokenNFTConnector.address),
+              proxyСontract: tokenNFTConnector.proxy ? new this.web3.eth.Contract(abi as AbiItem[], tokenNFTConnector.proxy) : undefined
             }
           })
           .catch((e) => {
