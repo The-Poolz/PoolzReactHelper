@@ -14,7 +14,7 @@ export interface IContractInfo {
   nameVersion: string
   contract: Contract
   proxy?: string
-  proxyСontract?: Contract
+  proxyContract?: Contract
 }
 export interface IERC20Info {
   address: string
