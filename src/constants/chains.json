@@ -903,6 +903,13 @@
     "chainId": 168
   },
   {
+    "name": "Manta Pacific Mainnet",
+    "chain": "Manta",
+    "nativeCurrency": {"name": "Ether", "symbol": "ETH", "decimals": 18},
+    "infoURL": "https://pacific-info.manta.network",
+    "chainId": 169
+  },
+  {
     "name": "HOO Smart Chain Testnet",
     "chain": "ETH",
     "nativeCurrency": { "name": "HOO", "symbol": "HOO", "decimals": 18 },
@@ -4730,6 +4737,13 @@
     "nativeCurrency": { "name": "testnet filecoin", "symbol": "tFIL", "decimals": 18 },
     "infoURL": "https://filecoin.io",
     "chainId": 3141592
+  },
+  {
+    "name": "Manta Pacific Testnet",
+    "chain": "Manta",
+    "nativeCurrency": {"name": "Manta","symbol": "MANTA","decimals": 18},
+    "infoURL": "https://manta-testnet.caldera.dev/",
+    "chainId": 3441005
   },
   {
     "name": "Imversed Mainnet",
