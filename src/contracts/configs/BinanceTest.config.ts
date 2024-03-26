@@ -58,6 +58,10 @@ export const BinanceTestChainConfig: TChainConfig = {
     address: "0x2206E8B1639800AF0868e503A1e51276E93B47a7",
     nameVersion: "MultiSenderV2@1.0.0"
   },
+  tempMultiSender: {
+    address: "0x3810fdF19f5736dE064bFFCcB1FAe4dcA62C21A7",
+    nameVersion: "TempMultiSender@1.0.0"
+  },
   delayVaultProvider: {
     address: "0x9fd743f499d852E3A2cFEAC037e5562126468D28",
     nameVersion: "DelayVaultProvider@0.9.5-ironblocks"
