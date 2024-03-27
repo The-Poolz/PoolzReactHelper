@@ -10,7 +10,7 @@ import { TomoChainConfig } from "../contracts/configs/Tomo.config"
 import { TelosMainChainConfig } from "../contracts/configs/TelosMain.config"
 import { MantaTestChainConfig } from "../contracts/configs/MantaTest.config"
 import { MantaChainConfig } from "../contracts/configs/Manta.config"
-
+import { BaseChainConfig } from "../contracts/configs/Base.config"
 
 export const DEFAULT_CHAIN_ID = 1
 export const UINT_MINUS_ONE = "115792089237316195423570985008687907853269984665640564039457584007913129639935"
@@ -27,5 +27,6 @@ AVAILABLE_CHAINS.set(245022934, NeonChainConfig)
 AVAILABLE_CHAINS.set(40, TelosMainChainConfig)
 AVAILABLE_CHAINS.set(3441005, MantaTestChainConfig)
 AVAILABLE_CHAINS.set(169, MantaChainConfig)
+AVAILABLE_CHAINS.set(8453, BaseChainConfig)
 
 export const CUSTOMER_ACCOUNT_VARIABLE = "__CUSTOMER_ACCOUNT__"
