@@ -2,8 +2,9 @@ import React from "react"
 import Web3 from "web3"
 import ThePoolzContext from "./Context"
 import ThePoolz from "../poolz/ThePoolz"
+import { ChainOverrides } from "../types/IThePoolzInterface"
 
-const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
+const ThePoolzProvider = ({ children, overrides }: { children: React.ReactNode, overrides?: ChainOverrides }) => {
   const [thePoolzInstance, setThePoolzInstance] = React.useState(new ThePoolz(Web3.givenProvider))
   const [provider, setProvider] = React.useState(Web3.givenProvider)
 
@@ -14,7 +15,7 @@ const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
 
     const init = async () => {
       const instance = new ThePoolz(provider)
-      await instance.init()
+      await instance.init(overrides)
       setThePoolzInstance(instance)
     }
     init().catch(console.error)
