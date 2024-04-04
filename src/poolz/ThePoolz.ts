@@ -163,7 +163,11 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(
         this.fetchContractAbi(lockedDealV2.nameVersion)
           .then((abi) => {
-            this.lockedDealV2 = { ...lockedDealV2, contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress) }
+            this.lockedDealV2 = { 
+              ...lockedDealV2,
+              address: contractAddress,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
+            }
           })
           .catch((e) => {
             console.error(e)
@@ -175,7 +179,11 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(
         this.fetchContractAbi(delayVault.nameVersion)
           .then((abi) => {
-            this.delayVaultContract = { ...delayVault, contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress) }
+            this.delayVaultContract = {
+              ...delayVault,
+              address: contractAddress,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
+            }
           })
           .catch((e) => {
             console.error(e)
@@ -187,7 +195,11 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(
         this.fetchContractAbi(lockDealNFT.nameVersion)
           .then((abi) => {
-            this.lockDealNFTContract = { ...lockDealNFT, contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress) }
+            this.lockDealNFTContract = {
+              ...lockDealNFT,
+              address: contractAddress,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
+            }
           })
           .catch((e) => {
             console.error(e)
@@ -199,7 +211,11 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(
         this.fetchContractAbi(vaultManager.nameVersion)
           .then((abi) => {
-            this.vaultManagerContract = { ...vaultManager, contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress) }
+            this.vaultManagerContract = {
+              ...vaultManager,
+              address: contractAddress,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
+            }
           })
           .catch((e) => {
             console.error(e)
@@ -211,7 +227,11 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(
         this.fetchContractAbi(dealProvider.nameVersion)
           .then((abi) => {
-            this.dealProviderContract = { ...dealProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress) }
+            this.dealProviderContract = {
+              ...dealProvider,
+              address: contractAddress,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
+            }
           })
           .catch((e) => {
             console.error(e)
@@ -225,6 +245,7 @@ class ThePoolz implements IThePoolzInterface {
           .then((abi) => {
             this.lockDealProviderContract = {
               ...lockDealProvider,
+              address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
           })
@@ -240,6 +261,7 @@ class ThePoolz implements IThePoolzInterface {
           .then((abi) => {
             this.timedDealProviderContract = {
               ...timedDealProvider,
+              address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
           })
@@ -255,6 +277,7 @@ class ThePoolz implements IThePoolzInterface {
           .then((abi) => {
             this.collateralProviderContract = {
               ...collateralProvider,
+              address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
           })
@@ -270,6 +293,7 @@ class ThePoolz implements IThePoolzInterface {
           .then((abi) => {
             this.refundProviderContract = {
               ...refundProvider,
+              address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
           })
@@ -283,7 +307,11 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(
         this.fetchContractAbi(simpleBuilder.nameVersion)
           .then((abi) => {
-            this.simpleBuilderContract = { ...simpleBuilder, contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress) }
+            this.simpleBuilderContract = {
+              ...simpleBuilder,
+              address: contractAddress,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
+            }
           })
           .catch((e) => {
             console.error(e)
@@ -297,6 +325,7 @@ class ThePoolz implements IThePoolzInterface {
           .then((abi) => {
             this.simpleRefundBuilderContract = {
               ...simpleRefundBuilder,
+              address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
           })
@@ -310,7 +339,11 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(
         this.fetchContractAbi(multiSender.nameVersion)
           .then((abi) => {
-            this.multiSenderContract = { ...multiSender, contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress) }
+            this.multiSenderContract = {
+              ...multiSender,
+              address: contractAddress,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
+            }
           })
           .catch((e) => {
             console.error(e)
@@ -322,7 +355,11 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(
         this.fetchContractAbi(multiSenderV2.nameVersion)
           .then((abi) => {
-            this.multiSenderV2Contract = { ...multiSenderV2, contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress) }
+            this.multiSenderV2Contract = { 
+              ...multiSenderV2,
+              address: contractAddress,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
+            }
           })
           .catch((e) => {
             console.error(e)
@@ -334,7 +371,11 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(
         this.fetchContractAbi(tempMultiSender.nameVersion)
           .then((abi) => {
-            this.tempMultiSenderContract = { ...tempMultiSender, contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress) }
+            this.tempMultiSenderContract = {
+              ...tempMultiSender,
+              address: contractAddress,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
+            }
           })
           .catch((e) => {
             console.error(e)
@@ -348,6 +389,7 @@ class ThePoolz implements IThePoolzInterface {
           .then((abi) => {
             this.delayVaultProviderContract = {
               ...delayVaultProvider,
+              address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
           })
@@ -363,6 +405,7 @@ class ThePoolz implements IThePoolzInterface {
           .then((abi) => {
             this.delayVaultMigratorContract = {
               ...delayVaultMigrator,
+              address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
           })
