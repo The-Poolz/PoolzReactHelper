@@ -113,7 +113,8 @@ class ThePoolz implements IThePoolzInterface {
     this.poolzTokenAddress = poolzTokenAddress
 
     if (poolzAddress) {
-      const contractAddress = overrides?.poolzAddress ? overrides.poolzAddress : poolzAddress
+      const overrideAddress = overrides?.poolzAddress?.address
+      const contractAddress = overrideAddress ? overrideAddress : poolzAddress
       const poolzContract = new this.web3.eth.Contract(POOLZ.abi as AbiItem[], contractAddress)
       poolzContract.options.address = contractAddress
       // deprecated
@@ -127,7 +128,8 @@ class ThePoolz implements IThePoolzInterface {
       }
     }
     if (whiteListAddress) {
-      const contractAddress = overrides?.whiteListAddress ? overrides.whiteListAddress : whiteListAddress
+      const overrideAddress = overrides?.whiteListAddress?.address
+      const contractAddress = overrideAddress ? overrideAddress : whiteListAddress
       const whiteListContract = new this.web3.eth.Contract(WhiteList.abi as AbiItem[], contractAddress)
       // deprecated
       this.whiteListAddress = contractAddress
@@ -145,7 +147,8 @@ class ThePoolz implements IThePoolzInterface {
     }
     
     if (signUpAddress) {
-      const contractAddress = overrides?.signUpAddress ? overrides.signUpAddress : signUpAddress
+      const overrideAddress = overrides?.signUpAddress?.address
+      const contractAddress = overrideAddress ? overrideAddress : signUpAddress
       this.signUpAddress = contractAddress
       const signUpContract = new this.web3.eth.Contract(SignUp.abi as AbiItem[], contractAddress)
       this.signUpContract = signUpContract
@@ -159,12 +162,15 @@ class ThePoolz implements IThePoolzInterface {
     const abifetchPromises = []
 
     if (lockedDealV2) {
-      const contractAddress = overrides?.lockedDealV2 ? overrides.lockedDealV2 : lockedDealV2.address
+      const override = overrides?.lockedDealV2
+      const contractAddress = override?.address ? override.address : lockedDealV2.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : lockedDealV2.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(lockedDealV2.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.lockedDealV2 = { 
               ...lockedDealV2,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -175,12 +181,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (delayVault) {
-      const contractAddress = overrides?.delayVault ? overrides.delayVault : delayVault.address
+      const override = overrides?.delayVault
+      const contractAddress = override?.address ? override.address : delayVault.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : delayVault.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(delayVault.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.delayVaultContract = {
               ...delayVault,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -191,12 +200,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (lockDealNFT) {
-      const contractAddress = overrides?.lockDealNFT ? overrides.lockDealNFT : lockDealNFT.address
+      const override = overrides?.lockDealNFT
+      const contractAddress = override?.address ? override.address : lockDealNFT.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : lockDealNFT.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(lockDealNFT.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.lockDealNFTContract = {
               ...lockDealNFT,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -207,12 +219,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (vaultManager) {
-      const contractAddress = overrides?.vaultManager ? overrides.vaultManager : vaultManager.address
+      const override = overrides?.vaultManager
+      const contractAddress = override?.address ? override.address : vaultManager.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : vaultManager.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(vaultManager.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.vaultManagerContract = {
               ...vaultManager,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -223,12 +238,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (dealProvider) {
-      const contractAddress = overrides?.dealProvider ? overrides.dealProvider : dealProvider.address
+      const override = overrides?.dealProvider
+      const contractAddress = override?.address ? override.address : dealProvider.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : dealProvider.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(dealProvider.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.dealProviderContract = {
               ...dealProvider,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -239,12 +257,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (lockDealProvider) {
-      const contractAddress = overrides?.lockDealProvider ? overrides.lockDealProvider : lockDealProvider.address
+      const override = overrides?.lockDealProvider
+      const contractAddress = override?.address ? override.address : lockDealProvider.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : lockDealProvider.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(lockDealProvider.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.lockDealProviderContract = {
               ...lockDealProvider,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -255,12 +276,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (timedDealProvider) {
-      const contractAddress = overrides?.timedDealProvider ? overrides.timedDealProvider : timedDealProvider.address
+      const override = overrides?.timedDealProvider
+      const contractAddress = override?.address ? override.address : timedDealProvider.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : timedDealProvider.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(timedDealProvider.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.timedDealProviderContract = {
               ...timedDealProvider,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -271,12 +295,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (collateralProvider) {
-      const contractAddress = overrides?.collateralProvider ? overrides.collateralProvider : collateralProvider.address
+      const override = overrides?.collateralProvider
+      const contractAddress = override?.address ? override.address : collateralProvider.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : collateralProvider.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(collateralProvider.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.collateralProviderContract = {
               ...collateralProvider,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -287,12 +314,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (refundProvider) {
-      const contractAddress = overrides?.refundProvider ? overrides.refundProvider : refundProvider.address
+      const override = overrides?.refundProvider
+      const contractAddress = override?.address ? override.address : refundProvider.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : refundProvider.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(refundProvider.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.refundProviderContract = {
               ...refundProvider,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -303,12 +333,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (simpleBuilder) {
-      const contractAddress = overrides?.simpleBuilder ? overrides.simpleBuilder : simpleBuilder.address
+      const override = overrides?.simpleBuilder
+      const contractAddress = override?.address ? override.address : simpleBuilder.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : simpleBuilder.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(simpleBuilder.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.simpleBuilderContract = {
               ...simpleBuilder,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -319,12 +352,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (simpleRefundBuilder) {
-      const contractAddress = overrides?.simpleRefundBuilder ? overrides.simpleRefundBuilder : simpleRefundBuilder.address
+      const override = overrides?.simpleRefundBuilder
+      const contractAddress = override?.address ? override.address : simpleRefundBuilder.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : simpleRefundBuilder.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(simpleRefundBuilder.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.simpleRefundBuilderContract = {
               ...simpleRefundBuilder,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -335,12 +371,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (multiSender) {
-      const contractAddress = overrides?.multiSender ? overrides.multiSender : multiSender.address
+      const override = overrides?.multiSender
+      const contractAddress = override?.address ? override.address : multiSender.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : multiSender.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(multiSender.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.multiSenderContract = {
               ...multiSender,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -351,12 +390,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (multiSenderV2) {
-      const contractAddress = overrides?.multiSenderV2 ? overrides.multiSenderV2 : multiSenderV2.address
+      const override = overrides?.multiSenderV2
+      const contractAddress = override?.address ? override.address : multiSenderV2.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : multiSenderV2.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(multiSenderV2.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.multiSenderV2Contract = { 
               ...multiSenderV2,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -367,12 +409,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (tempMultiSender) {
-      const contractAddress = overrides?.tempMultiSender ? overrides.tempMultiSender : tempMultiSender.address
+      const override = overrides?.tempMultiSender
+      const contractAddress = override?.address ? override.address : tempMultiSender.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : tempMultiSender.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(tempMultiSender.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.tempMultiSenderContract = {
               ...tempMultiSender,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -383,12 +428,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (delayVaultProvider) {
-      const contractAddress = overrides?.delayVaultProvider ? overrides.delayVaultProvider : delayVaultProvider.address
+      const override = overrides?.delayVaultProvider
+      const contractAddress = override?.address ? override.address : delayVaultProvider.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : delayVaultProvider.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(delayVaultProvider.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.delayVaultProviderContract = {
               ...delayVaultProvider,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }
@@ -399,12 +447,15 @@ class ThePoolz implements IThePoolzInterface {
       )
     }
     if (delayVaultMigrator) {
-      const contractAddress = overrides?.delayVaultMigrator ? overrides.delayVaultMigrator : delayVaultMigrator.address
+      const override = overrides?.delayVaultMigrator
+      const contractAddress = override?.address ? override.address : delayVaultMigrator.address
+      const nameVersion = override?.nameVersion ? override.nameVersion : delayVaultMigrator.nameVersion
       abifetchPromises.push(
-        this.fetchContractAbi(delayVaultMigrator.nameVersion)
+        this.fetchContractAbi(nameVersion)
           .then((abi) => {
             this.delayVaultMigratorContract = {
               ...delayVaultMigrator,
+              nameVersion,
               address: contractAddress,
               contract: new this.web3.eth.Contract(abi as AbiItem[], contractAddress)
             }

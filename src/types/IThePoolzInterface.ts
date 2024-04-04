@@ -132,5 +132,8 @@ export interface IChainConfig {
 export type TChainConfig = Partial<IChainConfig>
 
 export type ChainOverrides = {
-  [k in keyof Partial<IChainConfig>]: string
+  [k in keyof Partial<IChainConfig>]: {
+    address: string
+    nameVersion?: string
+  }
 }
