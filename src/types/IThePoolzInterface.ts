@@ -9,9 +9,39 @@ export interface IChainInfo {
   chainId: number
 }
 
+export type AcceptableContractNames =
+  | 'PoolzBack'
+  | 'LockedDeal'
+  | 'Whitelist'
+  | 'SignUp'
+  | 'EnvelopToken'
+  | 'BeaconToken'
+  | 'DelayVault'
+  | 'TemporaryToken'
+  | 'MultiWithdraw'
+  | 'LockDealNFT'
+  | 'VaultManager'
+  | 'DealProvider'
+  | 'LockDealProvider'
+  | 'TimedDealProvider'
+  | 'CollateralProvider'
+  | 'RefundProvider'
+  | 'SimpleBuilder'
+  | 'SimpleRefundBuilder'
+  | 'MultiSender'
+  | 'DelayVaultProvider'
+  | 'DelayVaultMigrator'
+  | 'TokenNFTConnector'
+  | 'MultiSenderV2'
+  | 'TempMultiSender'
+
+export type VersionNumber = `${number}.${number}.${number}`
+
+export type NameVersion = `${AcceptableContractNames}@${VersionNumber}` | `${AcceptableContractNames}@${VersionNumber}-${string}` | 'CPoolx' | 'CWhiteList' | 'CSignUp'
+
 export interface IContractInfo {
   address: string
-  nameVersion: string
+  nameVersion: NameVersion
   contract: Contract
   proxy?: string
   proxyContract?: Contract
@@ -134,6 +164,6 @@ export type TChainConfig = Partial<IChainConfig>
 export type ChainOverrides = {
   [k in keyof Partial<IChainConfig>]: {
     address: string
-    nameVersion?: string
+    nameVersion?: NameVersion
   }
 }
