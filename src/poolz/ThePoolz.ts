@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import type { Contract } from "web3-eth-contract"
 import type { AbiItem } from "web3-utils"
-import type { IThePoolzInterface, IERC20Info } from "../types/IThePoolzInterface"
+import type { IThePoolzInterface, IERC20Info, TChainConfig } from "../types/IThePoolzInterface"
 import { CUSTOMER_ACCOUNT_VARIABLE, DEFAULT_CHAIN_ID, AVAILABLE_CHAINS } from "../constants"
 import ERC20 from "../contracts/abi/ERC20.json"
 import POOLZ from "../contracts/abi/ThePoolz.json"
@@ -48,11 +48,13 @@ class ThePoolz implements IThePoolzInterface {
   #provider: typeof Web3.givenProvider
   #contracts = new Map<string, Contract>()
   #isTrustWallet = false
+  #overrides: TChainConfig | undefined = undefined
 
-  constructor(provider: typeof Web3.givenProvider) {
+  constructor(provider: typeof Web3.givenProvider, overrides?: TChainConfig) {
     this.#provider = provider
     this.web3 = new Web3(provider)
     this.#isTrustWallet = !!provider?.isTrustWallet
+    this.#overrides = overrides
   }
   async init() {
     await this.initTrust()
@@ -85,6 +87,7 @@ class ThePoolz implements IThePoolzInterface {
   private async initPoolzContracts() {
     const chainConfig = AVAILABLE_CHAINS.get(this.chainId)
     if (!chainConfig) return
+    if (this.#overrides) Object.assign(chainConfig, this.#overrides)
     const {
       poolzTokenAddress,
       poolzAddress,
@@ -316,7 +319,10 @@ class ThePoolz implements IThePoolzInterface {
       abifetchPromises.push(
         this.fetchContractAbi(tempMultiSender.nameVersion)
           .then((abi) => {
-            this.tempMultiSenderContract = { ...tempMultiSender, contract: new this.web3.eth.Contract(abi as AbiItem[], tempMultiSender.address) }
+            this.tempMultiSenderContract = {
+              ...tempMultiSender,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], tempMultiSender.address)
+            }
           })
           .catch((e) => {
             console.error(e)
