@@ -62,7 +62,7 @@ const localStorageMock = (function () {
 Object.defineProperty(global, "localStorage", { value: localStorageMock })
 
 describe("ThePoolz", () => {
-  xtest("thePoolz instanse", async () => {
+  test("thePoolz instanse", async () => {
     const thePoolz = new ThePoolz({ isTrustWallet: true })
     await thePoolz.init()
     await thePoolz.ERC20Balance("ERC20", "0x000")
@@ -73,7 +73,7 @@ describe("ThePoolz", () => {
     await thePoolz.Contract("ERC20", "0x000")
     await thePoolz.getChaincoinInfo()
   })
-  xtest("throw errors for ChainId", async () => {
+  test("throw errors for ChainId", async () => {
     expect.assertions(1)
     const error = new Error("error")
     mockChainId = Promise.reject(error)
@@ -84,11 +84,11 @@ describe("ThePoolz", () => {
       expect(e).toEqual(error)
     }
   })
-  xtest("Empty #provider", async () => {
+  test("Empty #provider", async () => {
     const thePoolz = new ThePoolz(null)
     await thePoolz.init()
   })
-  xtest("Binance chain", async () => {
+  test("Binance chain", async () => {
     mockChainId = Promise.resolve(56)
     const thePoolz = new ThePoolz("http://localhost:8545")
     await thePoolz.init()
