@@ -93,4 +93,10 @@ describe("ThePoolz", () => {
     const thePoolz = new ThePoolz("http://localhost:8545")
     await thePoolz.init()
   })
+
+  test("Overrides config", async () => {
+    const thePoolz = new ThePoolz("http://localhost:8545", { poolzAddress: "0x000" })
+    await thePoolz.init()
+    expect(thePoolz.CPoolx?.address).toEqual("0x000")
+  })
 })
