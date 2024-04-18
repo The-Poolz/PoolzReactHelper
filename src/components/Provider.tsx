@@ -2,8 +2,9 @@ import React from "react"
 import Web3 from "web3"
 import ThePoolzContext from "./Context"
 import ThePoolz from "../poolz/ThePoolz"
+import { TChainConfig } from "../types/IThePoolzInterface"
 
-const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
+const ThePoolzProvider = ({ children, overrides }: { children: React.ReactNode, overrides?: TChainConfig }) => {
   const [thePoolzInstance, setThePoolzInstance] = React.useState(new ThePoolz(Web3.givenProvider))
   const [provider, setProvider] = React.useState(Web3.givenProvider)
 
@@ -13,7 +14,7 @@ const ThePoolzProvider = ({ children }: { children: React.ReactNode }) => {
     if (!provider) return
 
     const init = async () => {
-      const instance = new ThePoolz(provider)
+      const instance = new ThePoolz(provider, overrides)
       await instance.init()
       setThePoolzInstance(instance)
     }
