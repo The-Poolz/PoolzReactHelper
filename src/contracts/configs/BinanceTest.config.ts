@@ -55,8 +55,8 @@ export const BinanceTestChainConfig: TChainConfig = {
     nameVersion: "MultiSender@1.0.0"
   },
   multiSenderV2: {
-    address: "0x2206E8B1639800AF0868e503A1e51276E93B47a7",
-    nameVersion: "MultiSenderV2@1.0.0"
+    address: "0xaF2F6E827728a9e0288d69b0ea97Bd188DfBb3b1",
+    nameVersion: "MultiSenderV2@2.1.0"
   },
   tempMultiSender: {
     address: "0x3810fdF19f5736dE064bFFCcB1FAe4dcA62C21A7",
