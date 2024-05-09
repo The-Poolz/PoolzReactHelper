@@ -38,7 +38,6 @@ class ThePoolz implements IThePoolzInterface {
   public refundProviderContract: IThePoolzInterface["refundProviderContract"]
   public simpleBuilderContract: IThePoolzInterface["simpleBuilderContract"]
   public simpleRefundBuilderContract: IThePoolzInterface["simpleRefundBuilderContract"]
-  public multiSenderContract: IThePoolzInterface["multiSenderContract"]
   public multiSenderV2Contract: IThePoolzInterface["multiSenderV2Contract"]
   public delayVaultProviderContract: IThePoolzInterface["delayVaultProviderContract"]
   public delayVaultMigratorContract: IThePoolzInterface["delayVaultMigratorContract"]
@@ -104,7 +103,6 @@ class ThePoolz implements IThePoolzInterface {
       refundProvider,
       simpleBuilder,
       simpleRefundBuilder,
-      multiSender,
       multiSenderV2,
       delayVaultProvider,
       delayVaultMigrator,
@@ -285,17 +283,6 @@ class ThePoolz implements IThePoolzInterface {
               ...simpleRefundBuilder,
               contract: new this.web3.eth.Contract(abi as AbiItem[], simpleRefundBuilder.address)
             }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (multiSender) {
-      abifetchPromises.push(
-        this.fetchContractAbi(multiSender.nameVersion)
-          .then((abi) => {
-            this.multiSenderContract = { ...multiSender, contract: new this.web3.eth.Contract(abi as AbiItem[], multiSender.address) }
           })
           .catch((e) => {
             console.error(e)

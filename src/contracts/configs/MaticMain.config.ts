@@ -7,10 +7,6 @@ export const MaticMainChainConfig: TChainConfig = {
     address: "0x9D13B213852669077131f8A24A676f27ab0C2931",
     nameVersion: "LockedDeal@2.3.2"
   },
-  multiSender: {
-    address: "0x5a3892bab5c7f38c96e45f4f378056574a32df4b",
-    nameVersion: "MultiSender@1.0.0"
-  },
   multiSenderV2: {
     address: "0x9c8f78e0aeab8190c9d1df7bed0b26c1edcb8de6",
     nameVersion: "MultiSenderV2@2.1.0"

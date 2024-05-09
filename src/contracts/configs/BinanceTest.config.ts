@@ -50,10 +50,6 @@ export const BinanceTestChainConfig: TChainConfig = {
     address: "0x1C371DE722Bd7eCFA921AA9e3AD500c8fd9A64FC",
     nameVersion: "SimpleRefundBuilder@0.9.5"
   },
-  multiSender: {
-    address: "0xCEC38FA35B3ea4cB56019C4e00d33F5C2307E7eB",
-    nameVersion: "MultiSender@1.0.0"
-  },
   multiSenderV2: {
     address: "0xaF2F6E827728a9e0288d69b0ea97Bd188DfBb3b1",
     nameVersion: "MultiSenderV2@2.1.0"
