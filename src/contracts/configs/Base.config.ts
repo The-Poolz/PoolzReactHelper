@@ -36,5 +36,9 @@ export const BaseChainConfig: TChainConfig = {
   simpleRefundBuilder: {
     address: "0x65f62efEb1A43064081443791d8C10Db0A1FB511",
     nameVersion: "SimpleRefundBuilder@0.9.5"
-  }
+  },
+  multiSenderV2: {
+    address: "0x120893ab6f67171d4e6b0e72c151ab96aebe44e4",
+    nameVersion: "MultiSenderV2@2.1.0"
+  },
 }

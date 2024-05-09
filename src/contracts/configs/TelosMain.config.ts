@@ -37,5 +37,9 @@ export const TelosMainChainConfig: TChainConfig = {
   simpleRefundBuilder: {
     address: "0x2dd5B5E374B2d32152507100a42CA15f7707F504",
     nameVersion: "SimpleRefundBuilder@0.9.0"
-  }
+  },
+  multiSenderV2: {
+    address: "0x9cfd8c7834Be0DfE41F3FE68C29124066D5Cd13b",
+    nameVersion: "MultiSenderV2@2.1.0"
+  },
 }
