@@ -11,11 +11,10 @@ export const BinanceMainChainConfig: TChainConfig = {
   poolzBackWithdraw: "0x7Ff9315f538dF7eC76Ec4815249Dd30519726460",
   poolzTokenAddress: "0xbAeA9aBA1454DF334943951d51116aE342eAB255",
   delayVault: { address: "0x5eb57B1210338b13E3D5572d5e1670285Aa71702", nameVersion: "DelayVault@1.2.2" },
-  multiSender: {
-    address: "0x0759EdEd403B704dc8e76b4c73026782b58E0ED7",
-    nameVersion: "MultiSender@1.0.0"
+  multiSenderV2: {
+    address: "0x114DAdDE8112A5c43aaBc6373473c282e14948Fa",
+    nameVersion: "MultiSenderV2@2.1.0"
   },
-
   lockDealNFT: {
     address: "0x3d2C83bbBbfB54087d46B80585253077509c21AE",
     nameVersion: "LockDealNFT@0.9.1-ironblocks"

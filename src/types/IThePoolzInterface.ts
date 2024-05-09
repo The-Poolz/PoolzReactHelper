@@ -28,12 +28,10 @@ export type AcceptableContractNames =
   | "RefundProvider"
   | "SimpleBuilder"
   | "SimpleRefundBuilder"
-  | "MultiSender"
   | "DelayVaultProvider"
   | "DelayVaultMigrator"
   | "TokenNFTConnector"
   | "MultiSenderV2"
-  | "TempMultiSender"
 
 export type VersionNumber = `${number}.${number}.${number}`
 
@@ -105,9 +103,7 @@ export interface IThePoolzInterface {
   refundProviderContract?: IContractInfo
   simpleBuilderContract?: IContractInfo
   simpleRefundBuilderContract?: IContractInfo
-  multiSenderContract?: IContractInfo
   multiSenderV2Contract?: IContractInfo
-  tempMultiSenderContract?: IContractInfo
   delayVaultProviderContract?: IContractInfo
   delayVaultMigratorContract?: IContractInfo
   tokenNFTConnectorContract?: IContractInfo
@@ -155,9 +151,8 @@ export interface IChainConfig {
   refundProvider: Omit<NonNullable<IThePoolzInterface["refundProviderContract"]>, "contract">
   simpleBuilder: Omit<NonNullable<IThePoolzInterface["simpleBuilderContract"]>, "contract">
   simpleRefundBuilder: Omit<NonNullable<IThePoolzInterface["simpleRefundBuilderContract"]>, "contract">
-  multiSender: Omit<NonNullable<IThePoolzInterface["multiSenderContract"]>, "contract">
+
   multiSenderV2: Omit<NonNullable<IThePoolzInterface["multiSenderV2Contract"]>, "contract">
-  tempMultiSender: Omit<NonNullable<IThePoolzInterface["tempMultiSenderContract"]>, "contract">
   delayVaultProvider: Omit<NonNullable<IThePoolzInterface["delayVaultProviderContract"]>, "contract">
   delayVaultMigrator: Omit<NonNullable<IThePoolzInterface["delayVaultMigratorContract"]>, "contract">
   tokenNFTConnector: Omit<NonNullable<IThePoolzInterface["tokenNFTConnectorContract"]>, "contract">

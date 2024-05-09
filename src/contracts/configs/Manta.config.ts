@@ -37,8 +37,8 @@ export const MantaChainConfig: TChainConfig = {
     address: "0x65f62efEb1A43064081443791d8C10Db0A1FB511",
     nameVersion: "SimpleRefundBuilder@0.9.5"
   },
-  tempMultiSender: {
-    address: "0xB1Ecee4191daaD9381DD38A545b31DDcDba7A9A9",
-    nameVersion: "TempMultiSender@1.0.0"
+  multiSenderV2: {
+    address: "0x655a8bc3875aedb2A4bc4aeeF5F84805207cB5DC",
+    nameVersion: "MultiSenderV2@2.1.0"
   },
 }

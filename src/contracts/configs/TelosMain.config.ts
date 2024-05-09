@@ -1,10 +1,6 @@
 import type { TChainConfig } from "../../types/IThePoolzInterface"
 
 export const TelosMainChainConfig: TChainConfig = {
-  multiSender: {
-    address: "0x7Ff9315f538dF7eC76Ec4815249Dd30519726460",
-    nameVersion: "MultiSender@1.0.0"
-  },
   whiteListAddress: "0xb16BBDf683fFd6D92290F7610bb10f22f9c71e9e",
   lockDealNFT: {
     address: "0x6d77B5147CDE6Fa287c1266A33e09a09651D36d0",
@@ -37,5 +33,9 @@ export const TelosMainChainConfig: TChainConfig = {
   simpleRefundBuilder: {
     address: "0x2dd5B5E374B2d32152507100a42CA15f7707F504",
     nameVersion: "SimpleRefundBuilder@0.9.0"
-  }
+  },
+  multiSenderV2: {
+    address: "0x9cfd8c7834Be0DfE41F3FE68C29124066D5Cd13b",
+    nameVersion: "MultiSenderV2@2.1.0"
+  },
 }

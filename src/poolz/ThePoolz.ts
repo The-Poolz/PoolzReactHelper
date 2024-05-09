@@ -38,9 +38,7 @@ class ThePoolz implements IThePoolzInterface {
   public refundProviderContract: IThePoolzInterface["refundProviderContract"]
   public simpleBuilderContract: IThePoolzInterface["simpleBuilderContract"]
   public simpleRefundBuilderContract: IThePoolzInterface["simpleRefundBuilderContract"]
-  public multiSenderContract: IThePoolzInterface["multiSenderContract"]
   public multiSenderV2Contract: IThePoolzInterface["multiSenderV2Contract"]
-  public tempMultiSenderContract: IThePoolzInterface["tempMultiSenderContract"]
   public delayVaultProviderContract: IThePoolzInterface["delayVaultProviderContract"]
   public delayVaultMigratorContract: IThePoolzInterface["delayVaultMigratorContract"]
   public tokenNFTConnectorContract: IThePoolzInterface["tokenNFTConnectorContract"]
@@ -105,9 +103,7 @@ class ThePoolz implements IThePoolzInterface {
       refundProvider,
       simpleBuilder,
       simpleRefundBuilder,
-      multiSender,
       multiSenderV2,
-      tempMultiSender,
       delayVaultProvider,
       delayVaultMigrator,
       tokenNFTConnector
@@ -293,36 +289,11 @@ class ThePoolz implements IThePoolzInterface {
           })
       )
     }
-    if (multiSender) {
-      abifetchPromises.push(
-        this.fetchContractAbi(multiSender.nameVersion)
-          .then((abi) => {
-            this.multiSenderContract = { ...multiSender, contract: new this.web3.eth.Contract(abi as AbiItem[], multiSender.address) }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
     if (multiSenderV2) {
       abifetchPromises.push(
         this.fetchContractAbi(multiSenderV2.nameVersion)
           .then((abi) => {
             this.multiSenderV2Contract = { ...multiSenderV2, contract: new this.web3.eth.Contract(abi as AbiItem[], multiSenderV2.address) }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (tempMultiSender) {
-      abifetchPromises.push(
-        this.fetchContractAbi(tempMultiSender.nameVersion)
-          .then((abi) => {
-            this.tempMultiSenderContract = {
-              ...tempMultiSender,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], tempMultiSender.address)
-            }
           })
           .catch((e) => {
             console.error(e)
