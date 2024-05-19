@@ -1,6 +1,24 @@
 import type { TChainConfig } from "../../types/IThePoolzInterface"
 
 export const MantaChainConfig: TChainConfig = {
+  chainInfo: {
+    name: "Manta Pacific Mainnet",
+    chain: "Manta Pacific",
+    chainId: 169,
+    nativeCurrency: {
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18
+    },
+    infoURL: "https://pacific-info.manta.network",
+    explorers: [
+      {
+        name: "manta-pacific Explorer",
+        url: "https://pacific-explorer.manta.network",
+        standard: "EIP3091"
+      }
+    ]
+  },
   lockDealNFT: {
     address: "0xb16BBDf683fFd6D92290F7610bb10f22f9c71e9e",
     nameVersion: "LockDealNFT@0.9.1-ironblocks"
@@ -40,5 +58,5 @@ export const MantaChainConfig: TChainConfig = {
   multiSenderV2: {
     address: "0x655a8bc3875aedb2A4bc4aeeF5F84805207cB5DC",
     nameVersion: "MultiSenderV2@2.1.0"
-  },
+  }
 }

@@ -1,14 +1,6 @@
 import Web3 from "web3"
 import { Contract } from "web3-eth-contract"
 
-export interface IChainInfo {
-  name: string
-  chain: string
-  nativeCurrency: { name: string; symbol: string; decimals: number }
-  infoURL: string
-  chainId: number
-}
-
 export type AcceptableContractNames =
   | "PoolzBack"
   | "LockedDeal"
@@ -158,4 +150,37 @@ export interface IChainConfig {
   tokenNFTConnector: Omit<NonNullable<IThePoolzInterface["tokenNFTConnectorContract"]>, "contract">
 }
 
-export type TChainConfig = Partial<IChainConfig>
+// copy chain data from  https://chainid.network/chains.json
+export interface IChainInfo {
+  name: string;
+  chain: string;
+  icon?: string;
+  rpc?: string[];
+  features?: Array<{
+    name: string;
+  }>;
+  faucets?: string[];
+  nativeCurrency: {
+    name: string;
+    symbol: string;
+    decimals: number;
+  };
+  infoURL?: string;
+  shortName?: string;
+  chainId: number;
+  networkId?: number;
+  slip44?: number;
+  ens?: {
+    registry: string;
+  };
+  explorers?: Array<{
+    name: string;
+    url: string;
+    icon?: string;
+    standard: string;
+  }>;
+}
+
+export type TChainConfig = Partial<IChainConfig> & {
+  chainInfo: IChainInfo;
+}

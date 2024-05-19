@@ -1,6 +1,24 @@
 import type { TChainConfig } from "../../types/IThePoolzInterface"
 
 export const BinanceTestChainConfig: TChainConfig = {
+  chainInfo: {
+    name: "BNB Smart Chain Testnet",
+    chain: "BSC",
+    chainId: 97,
+    nativeCurrency: {
+      name: "BNB Chain Native Token",
+      symbol: "tBNB",
+      decimals: 18
+    },
+    infoURL: "https://www.bnbchain.org/en",
+    explorers: [
+      {
+        name: "bscscan-testnet",
+        url: "https://testnet.bscscan.com",
+        standard: "EIP3091"
+      }
+    ]
+  },
   poolzAddress: "0xEEF0b7a6cd416006815ed3D66B670e1da73E116C",
   whiteListAddress: "0xC68CD044B5F888b8D3054C9dDD7a396b73f4418c",
 

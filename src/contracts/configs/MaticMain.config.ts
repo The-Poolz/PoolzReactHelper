@@ -1,6 +1,30 @@
 import type { TChainConfig } from "../../types/IThePoolzInterface"
 
 export const MaticMainChainConfig: TChainConfig = {
+  chainInfo: {
+    name: "Polygon Mainnet",
+    chain: "Polygon",
+    nativeCurrency: {
+      name: "MATIC",
+      symbol: "MATIC",
+      decimals: 18
+    },
+    infoURL: "https://polygon.technology/",
+    chainId: 137,
+    explorers: [
+      {
+        name: "polygonscan",
+        url: "https://polygonscan.com",
+        standard: "EIP3091"
+      },
+      {
+        name: "dexguru",
+        url: "https://polygon.dex.guru",
+        icon: "dexguru",
+        standard: "EIP3091"
+      }
+    ]
+  },
   poolzAddress: "0xDeab1420F6C024140bAB2a248A424F780Ed0964C",
   whiteListAddress: "0xD39eA2C72B99E65F1CDa47E727b453964B45e036",
   lockedDealV2: {

@@ -1,6 +1,24 @@
 import type { TChainConfig } from "../../types/IThePoolzInterface"
 
 export const TelosMainChainConfig: TChainConfig = {
+  chainInfo: {
+    name: "Telos EVM Mainnet",
+    chain: "TLOS",
+    nativeCurrency: {
+      name: "Telos",
+      symbol: "TLOS",
+      decimals: 18
+    },
+    infoURL: "https://telos.net",
+    chainId: 40,
+    explorers: [
+      {
+        name: "teloscan",
+        url: "https://teloscan.io",
+        standard: "EIP3091"
+      }
+    ]
+  },
   whiteListAddress: "0xb16BBDf683fFd6D92290F7610bb10f22f9c71e9e",
   lockDealNFT: {
     address: "0x6d77B5147CDE6Fa287c1266A33e09a09651D36d0",
@@ -37,5 +55,5 @@ export const TelosMainChainConfig: TChainConfig = {
   multiSenderV2: {
     address: "0x9cfd8c7834Be0DfE41F3FE68C29124066D5Cd13b",
     nameVersion: "MultiSenderV2@2.1.0"
-  },
+  }
 }

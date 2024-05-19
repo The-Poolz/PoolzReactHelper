@@ -1,6 +1,36 @@
 import type { TChainConfig } from "../../types/IThePoolzInterface"
 
 export const BaseChainConfig: TChainConfig = {
+  chainInfo: {
+    name: "Base",
+    chain: "ETH",
+    nativeCurrency: {
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18
+    },
+    chainId: 8453,
+    infoURL: "https://base.org",
+    explorers: [
+      {
+        name: "basescan",
+        url: "https://basescan.org",
+        standard: "none"
+      },
+      {
+        name: "basescout",
+        url: "https://base.blockscout.com",
+        icon: "blockscout",
+        standard: "EIP3091"
+      },
+      {
+        name: "dexguru",
+        url: "https://base.dex.guru",
+        icon: "dexguru",
+        standard: "EIP3091"
+      }
+    ]
+  },
   lockDealNFT: {
     address: "0xb16BBDf683fFd6D92290F7610bb10f22f9c71e9e",
     nameVersion: "LockDealNFT@0.9.1-ironblocks"
@@ -40,5 +70,5 @@ export const BaseChainConfig: TChainConfig = {
   multiSenderV2: {
     address: "0x120893ab6f67171d4e6b0e72c151ab96aebe44e4",
     nameVersion: "MultiSenderV2@2.1.0"
-  },
+  }
 }

@@ -1,6 +1,35 @@
 import type { TChainConfig } from "../../types/IThePoolzInterface"
 
 export const ArbitrumOneChainConfig: TChainConfig = {
+  chainInfo: {
+    name: "Arbitrum One",
+    chainId: 42161,
+    chain: "ETH",
+    nativeCurrency: {
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18
+    },
+    explorers: [
+      {
+        name: "Arbiscan",
+        url: "https://arbiscan.io",
+        standard: "EIP3091"
+      },
+      {
+        name: "Arbitrum Explorer",
+        url: "https://explorer.arbitrum.io",
+        standard: "EIP3091"
+      },
+      {
+        name: "dexguru",
+        url: "https://arbitrum.dex.guru",
+        icon: "dexguru",
+        standard: "EIP3091"
+      }
+    ],
+    infoURL: "https://arbitrum.io",
+  },
   lockedDealV2: {
     address: "0x7Ff9315f538dF7eC76Ec4815249Dd30519726460",
     nameVersion: "LockedDeal@2.3.3"
