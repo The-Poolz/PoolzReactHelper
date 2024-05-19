@@ -1,6 +1,24 @@
 import type { TChainConfig } from "../../types/IThePoolzInterface"
 
 export const MantaTestChainConfig: TChainConfig = {
+  chainInfo: {
+    name: "Manta Pacific Testnet",
+    chain: "Manta Pacific",
+    chainId: 3441005,
+    nativeCurrency: {
+      name: "Manta",
+      symbol: "MANTA",
+      decimals: 18
+    },
+    infoURL: "https://manta-testnet.caldera.dev/",
+    explorers: [
+      {
+        name: "manta-testnet Explorer",
+        url: "https://manta-testnet.calderaexplorer.xyz",
+        standard: "EIP3091"
+      }
+    ]
+  },
   lockDealNFT: {
     address: "0x011c8888C96fd3c1C1c43749ED581D17DE17F42C",
     nameVersion: "LockDealNFT@0.9.1-ironblocks"

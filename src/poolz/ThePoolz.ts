@@ -7,7 +7,6 @@ import ERC20 from "../contracts/abi/ERC20.json"
 import POOLZ from "../contracts/abi/ThePoolz.json"
 import WhiteList from "../contracts/abi/WhiteList.json"
 import SignUp from "../contracts/abi/SignUpPool.json"
-import CHAINS from "../constants/chains.json"
 
 class ThePoolz implements IThePoolzInterface {
   public account: IThePoolzInterface["account"]
@@ -353,7 +352,9 @@ class ThePoolz implements IThePoolzInterface {
 
   async getChaincoinInfo(chainId?: typeof this.chainId) {
     if (!chainId) chainId = this.chainId
-    return CHAINS.find((chain) => chain.chainId === chainId)
+    const chain = AVAILABLE_CHAINS.get(chainId)
+    if (!chain) return
+    return chain.chainInfo
   }
 
   async ERC20(token: string) {

@@ -1,6 +1,30 @@
 import type { TChainConfig } from "../../types/IThePoolzInterface"
 
 export const BinanceMainChainConfig: TChainConfig = {
+  chainInfo: {
+    name: "BNB Smart Chain Mainnet",
+    chain: "BSC",
+    nativeCurrency: {
+      name: "BNB Chain Native Token",
+      symbol: "BNB",
+      decimals: 18
+    },
+    infoURL: "https://www.bnbchain.org/en",
+    chainId: 56,
+    explorers: [
+      {
+        name: "bscscan",
+        url: "https://bscscan.com",
+        standard: "EIP3091"
+      },
+      {
+        name: "dexguru",
+        url: "https://bnb.dex.guru",
+        icon: "dexguru",
+        standard: "EIP3091"
+      }
+    ]
+  },
   poolzAddress: "0xCc8f6A82Ff034C15dFDAcBcab29F7Ea28C616EF7",
   lockedDealV2: {
     address: "0x436CE2ce8d8d2Ccc062f6e92faF410DB4d397905",
