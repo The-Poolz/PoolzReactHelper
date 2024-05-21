@@ -100,7 +100,9 @@ export interface IThePoolzInterface {
   delayVaultMigratorContract?: IContractInfo
   tokenNFTConnectorContract?: IContractInfo
 
+  init(): Promise<void>
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
+  ERC20(token: string): Promise<Contract>
   ERC20Balance(token: string, account: string): Promise<string>
   ERC20Allowance(token: string, account: string, spender: string): Promise<string>
   ERC20Approve(token: string, account: string, spender: string, amount: string): Promise<void>

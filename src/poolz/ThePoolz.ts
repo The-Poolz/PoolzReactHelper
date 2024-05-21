@@ -8,7 +8,10 @@ import POOLZ from "../contracts/abi/ThePoolz.json"
 import WhiteList from "../contracts/abi/WhiteList.json"
 import SignUp from "../contracts/abi/SignUpPool.json"
 
-class ThePoolz implements IThePoolzInterface {
+// ensure that the class does not have any extra properties that are not in the interface
+type EnforceInterface<T, U> = { [K in keyof U]: K extends keyof T ? T[K] : never };
+
+class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
   public account: IThePoolzInterface["account"]
   public chainId: IThePoolzInterface["chainId"] = DEFAULT_CHAIN_ID
   public web3: IThePoolzInterface["web3"]
