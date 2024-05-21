@@ -61,12 +61,12 @@ export const BinanceTestChainConfig: TChainConfig = {
     nameVersion: "RefundProvider@0.9.6"
   },
   simpleBuilder: {
-    address: "0x06daa28410A8e26fC86DF3c3d2Cfb2875F4887e8",
-    nameVersion: "SimpleBuilder@0.9.1-ironblocks"
+    address: "0xaE297EeC7A7782e81CC23E6A3B6C06621B12dF26",
+    nameVersion: "SimpleBuilder@1.1.1"
   },
   simpleRefundBuilder: {
-    address: "0x1C371DE722Bd7eCFA921AA9e3AD500c8fd9A64FC",
-    nameVersion: "SimpleRefundBuilder@0.9.5"
+    address: "0xC45C273Cf9aD9727f8b057C27E57253feF2c0ED6",
+    nameVersion: "SimpleRefundBuilder@1.1.1"
   },
   multiSenderV2: {
     address: "0xaF2F6E827728a9e0288d69b0ea97Bd188DfBb3b1",
@@ -81,8 +81,8 @@ export const BinanceTestChainConfig: TChainConfig = {
     nameVersion: "DelayVaultMigrator@0.9.1-ironblocks"
   },
   tokenNFTConnector: {
-    address: "0x0eED0587CE09C037aF79e340e3e2e53A09f81a52",
-    nameVersion: "TokenNFTConnector@1.1.0",
+    address: "0x99dfade11d9cd4c2b192efda205c50d982cd76a1",
+    nameVersion: "TokenNFTConnector@1.2.1",
     proxy: "0xF0f16f6A66462955cC9A1bAAaC0a801A5671be35"
   }
 }
