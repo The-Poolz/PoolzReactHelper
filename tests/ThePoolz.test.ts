@@ -103,27 +103,7 @@ describe("ThePoolz", () => {
         symbol: "ETH",
         decimals: 18
       },
-      chainId: 1,
-      infoURL: "https://base.org",
-      explorers: [
-        {
-          name: "basescan",
-          url: "https://basescan.org",
-          standard: "none"
-        },
-        {
-          name: "basescout",
-          url: "https://base.blockscout.com",
-          icon: "blockscout",
-          standard: "EIP3091"
-        },
-        {
-          name: "dexguru",
-          url: "https://base.dex.guru",
-          icon: "dexguru",
-          standard: "EIP3091"
-        }
-      ]
+      chainId: 1
     }
     const thePoolz = new ThePoolz("http://localhost:8545", { chainInfo, poolzAddress: "0x000" })
     await thePoolz.init()
