@@ -37,8 +37,6 @@ export interface IContractInfo {
   address: string
   nameVersion: NameVersion
   contract: Contract
-  proxy?: string
-  proxyContract?: Contract
 }
 export interface IERC20Info {
   address: string
@@ -154,35 +152,35 @@ export interface IChainConfig {
 
 // copy chain data from  https://chainid.network/chains.json
 export interface IChainInfo {
-  name: string;
-  chain: string;
-  icon?: string;
-  rpc?: string[];
+  name: string
+  chain: string
+  icon?: string
+  rpc?: string[]
   features?: Array<{
-    name: string;
-  }>;
-  faucets?: string[];
+    name: string
+  }>
+  faucets?: string[]
   nativeCurrency: {
-    name: string;
-    symbol: string;
-    decimals: number;
-  };
-  infoURL?: string;
-  shortName?: string;
-  chainId: number;
-  networkId?: number;
-  slip44?: number;
+    name: string
+    symbol: string
+    decimals: number
+  }
+  infoURL?: string
+  shortName?: string
+  chainId: number
+  networkId?: number
+  slip44?: number
   ens?: {
-    registry: string;
-  };
+    registry: string
+  }
   explorers?: Array<{
-    name: string;
-    url: string;
-    icon?: string;
-    standard: string;
-  }>;
+    name: string
+    url: string
+    icon?: string
+    standard: string
+  }>
 }
 
 export type TChainConfig = Partial<IChainConfig> & {
-  chainInfo: IChainInfo;
+  chainInfo: IChainInfo
 }
