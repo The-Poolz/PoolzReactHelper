@@ -82,7 +82,6 @@ export const BinanceTestChainConfig: TChainConfig = {
   },
   tokenNFTConnector: {
     address: "0x99dfade11d9cd4c2b192efda205c50d982cd76a1",
-    nameVersion: "TokenNFTConnector@1.2.1",
-    proxy: "0xF0f16f6A66462955cC9A1bAAaC0a801A5671be35"
+    nameVersion: "TokenNFTConnector@1.2.1"
   }
 }

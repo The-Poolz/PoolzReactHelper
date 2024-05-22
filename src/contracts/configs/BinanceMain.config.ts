@@ -82,5 +82,9 @@ export const BinanceMainChainConfig: TChainConfig = {
   delayVaultMigrator: {
     address: "0x10F1DA58d6d25B5909d5897ea3BA3E76fcE774A5",
     nameVersion: "DelayVaultMigrator@0.9.1-ironblocks"
+  },
+  tokenNFTConnector: {
+    address: "0x23f561B92AAa13d7C15A1038297Cd59bAe6C47c5",
+    nameVersion: "TokenNFTConnector@1.2.1"
   }
 }

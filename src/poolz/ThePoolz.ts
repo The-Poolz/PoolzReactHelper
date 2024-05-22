@@ -9,7 +9,7 @@ import WhiteList from "../contracts/abi/WhiteList.json"
 import SignUp from "../contracts/abi/SignUpPool.json"
 
 // ensure that the class does not have any extra properties that are not in the interface
-type EnforceInterface<T, U> = { [K in keyof U]: K extends keyof T ? T[K] : never };
+type EnforceInterface<T, U> = { [K in keyof U]: K extends keyof T ? T[K] : never }
 
 class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
   public account: IThePoolzInterface["account"]
@@ -336,8 +336,7 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
           .then((abi) => {
             this.tokenNFTConnectorContract = {
               ...tokenNFTConnector,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], tokenNFTConnector.address),
-              proxyContract: tokenNFTConnector.proxy ? new this.web3.eth.Contract(abi as AbiItem[], tokenNFTConnector.proxy) : undefined
+              contract: new this.web3.eth.Contract(abi as AbiItem[], tokenNFTConnector.address)
             }
           })
           .catch((e) => {
