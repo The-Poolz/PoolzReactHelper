@@ -56,19 +56,19 @@ export const MaticMainChainConfig: TChainConfig = {
     nameVersion: "TimedDealProvider@0.9.1-ironblocks"
   },
   collateralProvider: {
-    address: "0xd9f092eD4536E658A039019A7022C2Cff8BCB549",
-    nameVersion: "CollateralProvider@0.9.1-ironblocks"
+    address: "0x969d6a2a995e0a6e2f82803840581e21ee6f3a97",
+    nameVersion: "CollateralProvider@1.0.2"
   },
   refundProvider: {
-    address: "0xb6B0d332F3B4de249a0108bb58F0A60bb059d0Ee",
-    nameVersion: "RefundProvider@0.9.1-ironblocks"
+    address: "0x34fbf73bfe879b868ae2c0f205762798e29b7037",
+    nameVersion: "RefundProvider@1.0.2"
   },
   simpleBuilder: {
-    address: "0x19DC2A2F214cC7538AF8f138637b21D150eE1030",
-    nameVersion: "SimpleBuilder@0.9.1-ironblocks"
+    address: "0x8d82b419a15deb20c43934f5a40ecf876df37e93",
+    nameVersion: "SimpleBuilder@1.2.2"
   },
   simpleRefundBuilder: {
-    address: "0xaAA06C1b7D9Bd4577925a7535165e2F76E0f6969",
-    nameVersion: "SimpleRefundBuilder@0.9.1-ironblocks"
+    address: "0xa20262e67e46b40bdf6e647b3eac3acb504ad04d",
+    nameVersion: "SimpleRefundBuilder@1.2.2"
   }
 }
