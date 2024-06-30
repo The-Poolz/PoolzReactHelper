@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import type { Contract } from "web3-eth-contract"
 import type { AbiItem } from "web3-utils"
-import type { IThePoolzInterface, IERC20Info, TChainConfig } from "../types/IThePoolzInterface"
+import type { IThePoolzInterface, IERC20Info, TChainConfig, AbiRecord } from "../types/IThePoolzInterface"
 import { CUSTOMER_ACCOUNT_VARIABLE, DEFAULT_CHAIN_ID, AVAILABLE_CHAINS } from "../constants"
 import ERC20 from "../contracts/abi/ERC20.json"
 import POOLZ from "../contracts/abi/ThePoolz.json"
@@ -56,12 +56,12 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
     this.#isTrustWallet = !!provider?.isTrustWallet
     this.#overrides = overrides
   }
-  async init() {
+  async init(abiRecord: AbiRecord) {
     await this.initTrust()
     await this.initChainId()
     await this.initAccount()
     await this.getBalance()
-    await this.initPoolzContracts()
+    await this.initPoolzContracts(abiRecord)
   }
   private async initTrust() {
     if (!this.web3.currentProvider || !this.#isTrustWallet) return
@@ -84,7 +84,7 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
     this.balance = await this.web3.eth.getBalance(this.account)
   }
 
-  private async initPoolzContracts() {
+  private async initPoolzContracts(abiRecord: AbiRecord) {
     const chainConfig = AVAILABLE_CHAINS.get(this.chainId)
     if (!chainConfig) return
     if (this.#overrides) Object.assign(chainConfig, this.#overrides)

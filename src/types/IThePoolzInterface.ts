@@ -1,5 +1,6 @@
 import Web3 from "web3"
 import { Contract } from "web3-eth-contract"
+import { AbiItem } from "web3-utils"
 
 export type AcceptableContractNames =
   | "PoolzBack"
@@ -33,6 +34,7 @@ export type NameVersion =
   | "CPoolx"
   | "CWhiteList"
   | "CSignUp"
+
 export interface IContractInfo {
   address: string
   nameVersion: NameVersion
@@ -98,7 +100,7 @@ export interface IThePoolzInterface {
   delayVaultMigratorContract?: IContractInfo
   tokenNFTConnectorContract?: IContractInfo
 
-  init(): Promise<void>
+  init(abiRecord: AbiRecord): Promise<void>
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
   ERC20(token: string): Promise<Contract>
   ERC20Balance(token: string, account: string): Promise<string>
@@ -111,12 +113,12 @@ export interface IThePoolzInterface {
 export interface IThePoolzContextInterface {
   thePoolz: IThePoolzInterface
   setProvider: React.Dispatch<React.SetStateAction<typeof Web3.givenProvider>>
+  setRequiredContracts: React.Dispatch<React.SetStateAction<RequiredContract[]>>
 }
 
 export interface IChainConfig {
   poolzAddress: IThePoolzInterface["poolzAddress"]
   poolzContract: IThePoolzInterface["poolzContract"]
-  CPoolx: IThePoolzInterface["CPoolx"]
 
   lockedDealV2: Omit<NonNullable<IThePoolzInterface["lockedDealV2"]>, "contract">
 
@@ -149,6 +151,7 @@ export interface IChainConfig {
   delayVaultMigrator: Omit<NonNullable<IThePoolzInterface["delayVaultMigratorContract"]>, "contract">
   tokenNFTConnector: Omit<NonNullable<IThePoolzInterface["tokenNFTConnectorContract"]>, "contract">
 }
+
 
 // copy chain data from  https://chainid.network/chains.json
 export interface IChainInfo {
@@ -184,3 +187,7 @@ export interface IChainInfo {
 export type TChainConfig = Partial<IChainConfig> & {
   chainInfo: IChainInfo
 }
+
+export type RequiredContract = keyof Omit<IChainConfig, "poolzAddress" | "whiteListAddress" | "poolzBackWithdraw" | "signUpAddress">
+
+export type AbiRecord = Record<RequiredContract, AbiItem[]>
