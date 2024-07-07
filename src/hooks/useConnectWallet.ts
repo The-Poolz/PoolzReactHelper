@@ -1,13 +1,16 @@
 import { useMemo } from "react"
 import { useThePoolz, useSetProvider } from "./useThePoolz"
 import { TGivenProvider } from "../types/TConnectWallet"
+import ThePoolz from "../poolz/ThePoolz"
+import { EIP1193Provider, Web3APISpec } from "web3"
 
 const initionalState = {
   isMultipleWallets: false,
   isMetaMask: false,
   isCoinbaseWallet: false,
   isTrustWallet: false,
-  connectMetamask: async () => window.open(`https://metamask.app.link/dapp/${window.location.host}`, "_blank", "noreferrer noopener"),
+  connectMetamask: async () =>
+    window.open(`https://metamask.app.link/dapp/${window.location.host}`, "_blank", "noreferrer noopener"),
   connectCoinbaseWallet: async () => window.open(`https://www.coinbase.com/wallet`, "_blank", "noreferrer noopener"),
   connectTrustWallet: async () => window.open(`https://trustwallet.com/download`, "_blank", "noreferrer noopener")
 }
@@ -18,13 +21,8 @@ export const useConnectWallet = () => {
   const { web3 } = thePoolz
 
   return useMemo(() => {
-    const { isMetaMask, isCoinbaseWallet, isTrustWallet, providers, request } = (web3.givenProvider || {
-      isMetaMask: false,
-      isCoinbaseWallet: false,
-      isTrustWallet: false,
-      providers: [],
-      request: Promise.resolve
-    }) as TGivenProvider
+    const { isMetaMask, isCoinbaseWallet, isTrustWallet, providers, request } =
+      window.ethereum as EthereumProvider<Web3APISpec>
 
     if (Array.isArray(providers) && providers.length) {
       initionalState.isMultipleWallets = true
