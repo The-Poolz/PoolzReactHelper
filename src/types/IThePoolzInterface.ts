@@ -1,5 +1,4 @@
-import Web3 from "web3"
-import { Contract } from "web3-eth-contract"
+import Web3, { Contract, ContractAbi, EIP1193Provider, Web3APISpec } from "web3"
 
 export type AcceptableContractNames =
   | "PoolzBack"
@@ -36,7 +35,7 @@ export type NameVersion =
 export interface IContractInfo {
   address: string
   nameVersion: NameVersion
-  contract: Contract
+  contract: typeof Contract
 }
 export interface IERC20Info {
   address: string
@@ -54,7 +53,7 @@ export interface IThePoolzInterface {
   /**
    * @deprecated Use {@link CPoolx.contract} instead.
    */
-  poolzContract?: Contract
+  poolzContract?: typeof Contract
   CPoolx?: IContractInfo
 
   lockedDealV2?: IContractInfo
@@ -66,7 +65,7 @@ export interface IThePoolzInterface {
   /**
    * @deprecated Use {@link CWhiteList.contract} instead.
    */
-  whiteListContract?: Contract
+  whiteListContract?: typeof Contract
   CWhiteList?: IContractInfo
   /**
    * @deprecated Use {@link CSignUp.address} instead.
@@ -75,11 +74,11 @@ export interface IThePoolzInterface {
   /**
    * @deprecated Use {@link CSignUp.contract} instead.
    */
-  signUpContract?: Contract
+  signUpContract?: typeof Contract
   CSignUp?: IContractInfo
 
   poolzBackWithdraw?: string[]
-  poolzBackWithdrawContract?: Contract[]
+  poolzBackWithdrawContract?: (typeof Contract)[]
   // CBackWithdraw?: IContractInfo
 
   poolzTokenAddress?: string
@@ -100,17 +99,17 @@ export interface IThePoolzInterface {
 
   init(): Promise<void>
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
-  ERC20(token: string): Promise<Contract>
+  ERC20(token: string): Promise<Contract<ContractAbi>>
   ERC20Balance(token: string, account: string): Promise<string>
   ERC20Allowance(token: string, account: string, spender: string): Promise<string>
-  ERC20Approve(token: string, account: string, spender: string, amount: string): Promise<void>
+  ERC20Approve(token: string, account: string, spender: string, amount: string): Promise<unknown>
   ERC20Info(token: string): Promise<IERC20Info>
-  Contract(name: string, address: string): Promise<Contract | undefined>
+  Contract(contractName: string): Promise<Contract<ContractAbi> | undefined>
 }
 
 export interface IThePoolzContextInterface {
   thePoolz: IThePoolzInterface
-  setProvider: React.Dispatch<React.SetStateAction<typeof Web3.givenProvider>>
+  setProvider: React.Dispatch<React.SetStateAction<EIP1193Provider<Web3APISpec> | undefined>>
 }
 
 export interface IChainConfig {

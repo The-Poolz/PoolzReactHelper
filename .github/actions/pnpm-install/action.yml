@@ -1,0 +1,36 @@
+name: "PNPM install"
+description: "Run pnpm install with cache enabled"
+outputs:
+  cache-hit:
+    description: "A boolean value to indicate an exact match was found for the key"
+    value: ${{ steps.restore-cache.outputs.cache-hit }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+        run_install: false
+
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - name: Setup pnpm cache
+      id: restore-cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          ${{ env.STORE_PATH }}
+          node_modules
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: Install dependencies
+      if: steps.restore-cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: pnpm install --frozen-lockfile

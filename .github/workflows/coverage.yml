@@ -10,14 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
+      - name: PNPM install
+        uses: ./.github/actions/pnpm-install
 
       - name: Testing
         run: pnpm test
