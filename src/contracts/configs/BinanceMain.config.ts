@@ -9,6 +9,12 @@ export const BinanceMainChainConfig: TChainConfig = {
       symbol: "BNB",
       decimals: 18
     },
+    rpc: [
+      "https://bsc-dataseed1.bnbchain.org",
+      "https://bsc-dataseed2.bnbchain.org",
+      "https://bsc-dataseed3.bnbchain.org",
+      "https://bsc-dataseed4.bnbchain.org"
+    ],
     infoURL: "https://www.bnbchain.org/en",
     chainId: 56,
     explorers: [

@@ -11,6 +11,7 @@ export const BaseChainConfig: TChainConfig = {
     },
     chainId: 8453,
     infoURL: "https://base.org",
+    rpc: ["https://mainnet.base.org/"],
     explorers: [
       {
         name: "basescan",

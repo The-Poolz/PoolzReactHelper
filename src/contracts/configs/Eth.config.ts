@@ -11,6 +11,18 @@ export const EthMainChainConfig: TChainConfig = {
     },
     infoURL: "https://ethereum.org",
     chainId: 1,
+    rpc: [
+      "https://cloudflare-eth.com",
+      "https://ethereum-rpc.publicnode.com",
+      "wss://ethereum-rpc.publicnode.com",
+      "https://mainnet.gateway.tenderly.co",
+      "wss://mainnet.gateway.tenderly.co",
+      "https://rpc.blocknative.com/boost",
+      "https://rpc.flashbots.net",
+      "https://rpc.flashbots.net/fast",
+      "https://rpc.mevblocker.io",
+      "https://rpc.mevblocker.io/fast"
+    ],
     explorers: [
       {
         name: "etherscan",

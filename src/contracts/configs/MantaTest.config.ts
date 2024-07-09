@@ -11,6 +11,11 @@ export const MantaTestChainConfig: TChainConfig = {
       decimals: 18
     },
     infoURL: "https://manta-testnet.caldera.dev/",
+    rpc: [
+      "https://manta-testnet.calderachain.xyz/http",
+      "https://manta-pacific-testnet.drpc.org",
+      "wss://manta-pacific-testnet.drpc.org"
+    ],
     explorers: [
       {
         name: "manta-testnet Explorer",

@@ -10,6 +10,7 @@ export const ArbitrumOneChainConfig: TChainConfig = {
       symbol: "ETH",
       decimals: 18
     },
+    rpc: ["https://arbitrum-one.publicnode.com"],
     explorers: [
       {
         name: "Arbiscan",

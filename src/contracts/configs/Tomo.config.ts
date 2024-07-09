@@ -11,6 +11,9 @@ export const TomoChainConfig: TChainConfig = {
       decimals: 18
     },
     infoURL: "https://viction.xyz",
+    rpc: [
+      "https://rpc.viction.xyz"
+    ],
     explorers: [
       {
         name: "viction",

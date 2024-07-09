@@ -11,6 +11,15 @@ export const MaticMainChainConfig: TChainConfig = {
     },
     infoURL: "https://polygon.technology/",
     chainId: 137,
+    rpc: [
+      "https://polygon-rpc.com/",
+      "https://rpc-mainnet.matic.network",
+      "https://matic-mainnet.chainstacklabs.com",
+      "https://rpc-mainnet.maticvigil.com",
+      "https://rpc-mainnet.matic.quiknode.pro",
+      "https://matic-mainnet-full-rpc.bwarelabs.com",
+      "https://polygon-bor-rpc.publicnode.com",
+    ],
     explorers: [
       {
         name: "polygonscan",

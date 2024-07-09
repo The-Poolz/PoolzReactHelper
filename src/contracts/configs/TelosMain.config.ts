@@ -11,6 +11,11 @@ export const TelosMainChainConfig: TChainConfig = {
     },
     infoURL: "https://telos.net",
     chainId: 40,
+    rpc: [
+      "https://mainnet.telos.net/evm",
+      "https://telos.drpc.org",
+      "wss://telos.drpc.org"
+    ],
     explorers: [
       {
         name: "teloscan",

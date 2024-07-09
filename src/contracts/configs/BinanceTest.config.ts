@@ -11,6 +11,12 @@ export const BinanceTestChainConfig: TChainConfig = {
       decimals: 18
     },
     infoURL: "https://www.bnbchain.org/en",
+    rpc: [
+      "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
+      "https://data-seed-prebsc-2-s1.bnbchain.org:8545",
+      "https://data-seed-prebsc-1-s2.bnbchain.org:8545",
+      "https://data-seed-prebsc-2-s2.bnbchain.org:8545"
+    ],
     explorers: [
       {
         name: "bscscan-testnet",

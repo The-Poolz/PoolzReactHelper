@@ -10,6 +10,7 @@ export const AvalancheChainConfig: TChainConfig = {
       symbol: "AVAX",
       decimals: 18
     },
+    rpc: ["https://avalanche-c-chain-rpc.publicnode.com"],
     infoURL: "https://www.avax.network/",
     explorers: [
       {

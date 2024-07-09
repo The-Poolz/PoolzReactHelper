@@ -10,6 +10,11 @@ export const NeonChainConfig: TChainConfig = {
       decimals: 18
     },
     infoURL: "https://neonevm.org",
+    rpc: [
+      "https://neon-proxy-mainnet.solana.p2p.org",
+      "https://neon-evm.drpc.org",
+      "wss://neon-evm.drpc.org"
+    ],
     chainId: 245022934,
     explorers: [
       {

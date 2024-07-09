@@ -11,6 +11,11 @@ export const MantaChainConfig: TChainConfig = {
       decimals: 18
     },
     infoURL: "https://pacific-info.manta.network",
+    rpc: [
+      "https://pacific-rpc.manta.network/http",
+      "https://manta-pacific.drpc.org",
+      "wss://manta-pacific.drpc.org"
+    ],
     explorers: [
       {
         name: "manta-pacific Explorer",
