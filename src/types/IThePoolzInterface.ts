@@ -152,6 +152,34 @@ export interface IChainConfig {
   tokenNFTConnector: Omit<NonNullable<IThePoolzInterface["tokenNFTConnectorContract"]>, "contract">
 }
 
+export const contractMap: Record<keyof IChainConfig, keyof IThePoolzInterface>  = {
+  poolzAddress: "poolzAddress",
+  poolzContract: "poolzContract",
+  lockedDealV2: "lockedDealV2",
+  whiteListAddress: "whiteListAddress",
+  whiteListContract: "whiteListContract",
+  CWhiteList: "CWhiteList",
+  signUpAddress: "signUpAddress",
+  signUpContract: "signUpContract",
+  CSignUp: "CSignUp",
+  poolzBackWithdraw: "poolzBackWithdraw",
+  poolzBackWithdrawContract: "poolzBackWithdrawContract",
+  poolzTokenAddress: "poolzTokenAddress",
+  delayVault: "delayVaultContract",
+  lockDealNFT: "lockDealNFTContract",
+  vaultManager: "vaultManagerContract",
+  dealProvider: "dealProviderContract",
+  lockDealProvider: "lockDealProviderContract",
+  timedDealProvider: "timedDealProviderContract",
+  collateralProvider: "collateralProviderContract",
+  refundProvider: "refundProviderContract",
+  simpleBuilder: "simpleBuilderContract",
+  simpleRefundBuilder: "simpleRefundBuilderContract",
+  multiSenderV2: "multiSenderV2Contract",
+  delayVaultProvider: "delayVaultProviderContract",
+  delayVaultMigrator: "delayVaultMigratorContract",
+  tokenNFTConnector: "tokenNFTConnectorContract"
+}
 
 // copy chain data from  https://chainid.network/chains.json
 export interface IChainInfo {

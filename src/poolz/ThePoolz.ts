@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import type { Contract } from "web3-eth-contract"
 import type { AbiItem } from "web3-utils"
-import type { IThePoolzInterface, IERC20Info, TChainConfig, AbiRecord } from "../types/IThePoolzInterface"
+import { type IThePoolzInterface, type IERC20Info, type TChainConfig, type AbiRecord, type IContractInfo, contractMap, IChainConfig } from "../types/IThePoolzInterface"
 import { CUSTOMER_ACCOUNT_VARIABLE, DEFAULT_CHAIN_ID, AVAILABLE_CHAINS } from "../constants"
 import ERC20 from "../contracts/abi/ERC20.json"
 import POOLZ from "../contracts/abi/ThePoolz.json"
@@ -92,23 +92,8 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
       poolzTokenAddress,
       poolzAddress,
       whiteListAddress,
-      lockedDealV2,
       poolzBackWithdraw,
       signUpAddress,
-      delayVault,
-      lockDealNFT,
-      vaultManager,
-      dealProvider,
-      lockDealProvider,
-      timedDealProvider,
-      collateralProvider,
-      refundProvider,
-      simpleBuilder,
-      simpleRefundBuilder,
-      multiSenderV2,
-      delayVaultProvider,
-      delayVaultMigrator,
-      tokenNFTConnector
     } = chainConfig
 
     this.poolzTokenAddress = poolzTokenAddress
@@ -153,203 +138,18 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
       }
     }
 
-    const abifetchPromises = []
+    Object.entries(abiRecord).forEach(([key, value]) => {
+      const contractName = key as keyof IChainConfig
+      const contractInfo = chainConfig[contractName] as Omit<IContractInfo, "contract">
+      const thisItem = contractMap[contractName]
+      if(!thisItem) return
+      (this as any)[thisItem] = {
+        nameVersion: contractInfo.nameVersion,
+        address: contractInfo.address,
+        contract: new this.web3.eth.Contract(value as AbiItem[], contractInfo.address)
+      }
+    })
 
-    if (lockedDealV2) {
-      abifetchPromises.push(
-        this.fetchContractAbi(lockedDealV2.nameVersion)
-          .then((abi) => {
-            this.lockedDealV2 = { ...lockedDealV2, contract: new this.web3.eth.Contract(abi as AbiItem[], lockedDealV2.address) }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (delayVault) {
-      abifetchPromises.push(
-        this.fetchContractAbi(delayVault.nameVersion)
-          .then((abi) => {
-            this.delayVaultContract = { ...delayVault, contract: new this.web3.eth.Contract(abi as AbiItem[], delayVault.address) }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (lockDealNFT) {
-      abifetchPromises.push(
-        this.fetchContractAbi(lockDealNFT.nameVersion)
-          .then((abi) => {
-            this.lockDealNFTContract = { ...lockDealNFT, contract: new this.web3.eth.Contract(abi as AbiItem[], lockDealNFT.address) }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (vaultManager) {
-      abifetchPromises.push(
-        this.fetchContractAbi(vaultManager.nameVersion)
-          .then((abi) => {
-            this.vaultManagerContract = { ...vaultManager, contract: new this.web3.eth.Contract(abi as AbiItem[], vaultManager.address) }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (dealProvider) {
-      abifetchPromises.push(
-        this.fetchContractAbi(dealProvider.nameVersion)
-          .then((abi) => {
-            this.dealProviderContract = { ...dealProvider, contract: new this.web3.eth.Contract(abi as AbiItem[], dealProvider.address) }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (lockDealProvider) {
-      abifetchPromises.push(
-        this.fetchContractAbi(lockDealProvider.nameVersion)
-          .then((abi) => {
-            this.lockDealProviderContract = {
-              ...lockDealProvider,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], lockDealProvider.address)
-            }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (timedDealProvider) {
-      abifetchPromises.push(
-        this.fetchContractAbi(timedDealProvider.nameVersion)
-          .then((abi) => {
-            this.timedDealProviderContract = {
-              ...timedDealProvider,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], timedDealProvider.address)
-            }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (collateralProvider) {
-      abifetchPromises.push(
-        this.fetchContractAbi(collateralProvider.nameVersion)
-          .then((abi) => {
-            this.collateralProviderContract = {
-              ...collateralProvider,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], collateralProvider.address)
-            }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (refundProvider) {
-      abifetchPromises.push(
-        this.fetchContractAbi(refundProvider.nameVersion)
-          .then((abi) => {
-            this.refundProviderContract = {
-              ...refundProvider,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], refundProvider.address)
-            }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (simpleBuilder) {
-      abifetchPromises.push(
-        this.fetchContractAbi(simpleBuilder.nameVersion)
-          .then((abi) => {
-            this.simpleBuilderContract = { ...simpleBuilder, contract: new this.web3.eth.Contract(abi as AbiItem[], simpleBuilder.address) }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (simpleRefundBuilder) {
-      abifetchPromises.push(
-        this.fetchContractAbi(simpleRefundBuilder.nameVersion)
-          .then((abi) => {
-            this.simpleRefundBuilderContract = {
-              ...simpleRefundBuilder,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], simpleRefundBuilder.address)
-            }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (multiSenderV2) {
-      abifetchPromises.push(
-        this.fetchContractAbi(multiSenderV2.nameVersion)
-          .then((abi) => {
-            this.multiSenderV2Contract = { ...multiSenderV2, contract: new this.web3.eth.Contract(abi as AbiItem[], multiSenderV2.address) }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (delayVaultProvider) {
-      abifetchPromises.push(
-        this.fetchContractAbi(delayVaultProvider.nameVersion)
-          .then((abi) => {
-            this.delayVaultProviderContract = {
-              ...delayVaultProvider,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], delayVaultProvider.address)
-            }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (delayVaultMigrator) {
-      abifetchPromises.push(
-        this.fetchContractAbi(delayVaultMigrator.nameVersion)
-          .then((abi) => {
-            this.delayVaultMigratorContract = {
-              ...delayVaultMigrator,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], delayVaultMigrator.address)
-            }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-    if (tokenNFTConnector) {
-      abifetchPromises.push(
-        this.fetchContractAbi(tokenNFTConnector.nameVersion)
-          .then((abi) => {
-            this.tokenNFTConnectorContract = {
-              ...tokenNFTConnector,
-              contract: new this.web3.eth.Contract(abi as AbiItem[], tokenNFTConnector.address)
-            }
-          })
-          .catch((e) => {
-            console.error(e)
-          })
-      )
-    }
-
-    try {
-      await Promise.allSettled(abifetchPromises)
-    } catch (e) {
-      console.error(e)
-    }
   }
 
   async getChaincoinInfo(chainId?: typeof this.chainId) {

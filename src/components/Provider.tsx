@@ -43,9 +43,9 @@ const ThePoolzProvider = ({ children, overrides }: { children: React.ReactNode, 
   useEffect(() => {
     const fetchAbis = async () => {
       if(!requiredContracts.length) return
-      let newContractAbis: AbiRecord = {} as AbiRecord
+      let newContractAbis = contractAbis ? {...contractAbis} : {} as AbiRecord
       await Promise.all(requiredContracts.map(async (contractName) => {
-        if(contractAbis?.[contractName]) return
+        if(newContractAbis?.[contractName]) return
         const chainConfig = AVAILABLE_CHAINS.get(thePoolzInstance.chainId)
         if(!chainConfig) return
         const contract = chainConfig[contractName] as IContractInfo
