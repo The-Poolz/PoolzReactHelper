@@ -55,5 +55,9 @@ export const TelosMainChainConfig: TChainConfig = {
   multiSenderV2: {
     address: "0x9cfd8c7834Be0DfE41F3FE68C29124066D5Cd13b",
     nameVersion: "MultiSenderV2@2.1.0"
+  },
+  timedDealProvider: {
+    address: "0x9c8F78E0aeAB8190c9d1DF7BEd0B26c1EDcB8DE6",
+    nameVersion: "TimedDealProvider@0.9.1"
   }
 }
