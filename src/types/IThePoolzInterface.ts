@@ -1,5 +1,6 @@
 import Web3 from "web3"
 import { Contract } from "web3-eth-contract"
+import { AbiItem } from "web3-utils"
 
 export type AcceptableContractNames =
   | "PoolzBack"
@@ -33,6 +34,7 @@ export type NameVersion =
   | "CPoolx"
   | "CWhiteList"
   | "CSignUp"
+
 export interface IContractInfo {
   address: string
   nameVersion: NameVersion
@@ -98,7 +100,7 @@ export interface IThePoolzInterface {
   delayVaultMigratorContract?: IContractInfo
   tokenNFTConnectorContract?: IContractInfo
 
-  init(): Promise<void>
+  init(abiRecord: AbiRecord): Promise<void>
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
   ERC20(token: string): Promise<Contract>
   ERC20Balance(token: string, account: string): Promise<string>
@@ -111,12 +113,12 @@ export interface IThePoolzInterface {
 export interface IThePoolzContextInterface {
   thePoolz: IThePoolzInterface
   setProvider: React.Dispatch<React.SetStateAction<typeof Web3.givenProvider>>
+  setRequiredContracts: React.Dispatch<React.SetStateAction<RequiredContract[]>>
 }
 
 export interface IChainConfig {
   poolzAddress: IThePoolzInterface["poolzAddress"]
   poolzContract: IThePoolzInterface["poolzContract"]
-  CPoolx: IThePoolzInterface["CPoolx"]
 
   lockedDealV2: Omit<NonNullable<IThePoolzInterface["lockedDealV2"]>, "contract">
 
@@ -148,6 +150,35 @@ export interface IChainConfig {
   delayVaultProvider: Omit<NonNullable<IThePoolzInterface["delayVaultProviderContract"]>, "contract">
   delayVaultMigrator: Omit<NonNullable<IThePoolzInterface["delayVaultMigratorContract"]>, "contract">
   tokenNFTConnector: Omit<NonNullable<IThePoolzInterface["tokenNFTConnectorContract"]>, "contract">
+}
+
+export const contractMap: Record<keyof IChainConfig, keyof IThePoolzInterface>  = {
+  poolzAddress: "poolzAddress",
+  poolzContract: "poolzContract",
+  lockedDealV2: "lockedDealV2",
+  whiteListAddress: "whiteListAddress",
+  whiteListContract: "whiteListContract",
+  CWhiteList: "CWhiteList",
+  signUpAddress: "signUpAddress",
+  signUpContract: "signUpContract",
+  CSignUp: "CSignUp",
+  poolzBackWithdraw: "poolzBackWithdraw",
+  poolzBackWithdrawContract: "poolzBackWithdrawContract",
+  poolzTokenAddress: "poolzTokenAddress",
+  delayVault: "delayVaultContract",
+  lockDealNFT: "lockDealNFTContract",
+  vaultManager: "vaultManagerContract",
+  dealProvider: "dealProviderContract",
+  lockDealProvider: "lockDealProviderContract",
+  timedDealProvider: "timedDealProviderContract",
+  collateralProvider: "collateralProviderContract",
+  refundProvider: "refundProviderContract",
+  simpleBuilder: "simpleBuilderContract",
+  simpleRefundBuilder: "simpleRefundBuilderContract",
+  multiSenderV2: "multiSenderV2Contract",
+  delayVaultProvider: "delayVaultProviderContract",
+  delayVaultMigrator: "delayVaultMigratorContract",
+  tokenNFTConnector: "tokenNFTConnectorContract"
 }
 
 // copy chain data from  https://chainid.network/chains.json
@@ -184,3 +215,7 @@ export interface IChainInfo {
 export type TChainConfig = Partial<IChainConfig> & {
   chainInfo: IChainInfo
 }
+
+export type RequiredContract = keyof Omit<IChainConfig, "poolzAddress" | "whiteListAddress" | "poolzBackWithdraw" | "signUpAddress">
+
+export type AbiRecord = Record<RequiredContract, AbiItem[]>
