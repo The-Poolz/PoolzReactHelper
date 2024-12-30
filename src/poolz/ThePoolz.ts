@@ -44,6 +44,7 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
   public delayVaultProviderContract: IThePoolzInterface["delayVaultProviderContract"]
   public delayVaultMigratorContract: IThePoolzInterface["delayVaultMigratorContract"]
   public tokenNFTConnectorContract: IThePoolzInterface["tokenNFTConnectorContract"]
+  public dispenserProviderContract: IThePoolzInterface["dispenserProviderContract"]
 
   #provider: typeof Web3.givenProvider
   #contracts = new Map<string, Contract>()
@@ -108,7 +109,8 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
       multiSenderV2,
       delayVaultProvider,
       delayVaultMigrator,
-      tokenNFTConnector
+      tokenNFTConnector,
+      dispenserProvider
     } = chainConfig
 
     this.poolzTokenAddress = poolzTokenAddress
@@ -337,6 +339,20 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
             this.tokenNFTConnectorContract = {
               ...tokenNFTConnector,
               contract: new this.web3.eth.Contract(abi as AbiItem[], tokenNFTConnector.address)
+            }
+          })
+          .catch((e) => {
+            console.error(e)
+          })
+      )
+    }
+    if (dispenserProvider) {
+      abifetchPromises.push(
+        this.fetchContractAbi(dispenserProvider.nameVersion)
+          .then((abi) => {
+            this.dispenserProviderContract = {
+              ...dispenserProvider,
+              contract: new this.web3.eth.Contract(abi as AbiItem[], dispenserProvider.address)
             }
           })
           .catch((e) => {
