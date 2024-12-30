@@ -24,6 +24,7 @@ export type AcceptableContractNames =
   | "DelayVaultMigrator"
   | "TokenNFTConnector"
   | "MultiSenderV2"
+  | "DispenserProvider"
 
 export type VersionNumber = `${number}.${number}.${number}`
 
@@ -97,6 +98,7 @@ export interface IThePoolzInterface {
   delayVaultProviderContract?: IContractInfo
   delayVaultMigratorContract?: IContractInfo
   tokenNFTConnectorContract?: IContractInfo
+  dispenserProviderContract?: IContractInfo
 
   init(): Promise<void>
   getChaincoinInfo(k?: number): Promise<IChainInfo | undefined>
@@ -148,6 +150,8 @@ export interface IChainConfig {
   delayVaultProvider: Omit<NonNullable<IThePoolzInterface["delayVaultProviderContract"]>, "contract">
   delayVaultMigrator: Omit<NonNullable<IThePoolzInterface["delayVaultMigratorContract"]>, "contract">
   tokenNFTConnector: Omit<NonNullable<IThePoolzInterface["tokenNFTConnectorContract"]>, "contract">
+
+  dispenserProvider: Omit<NonNullable<IThePoolzInterface["dispenserProviderContract"]>, "contract">
 }
 
 // copy chain data from  https://chainid.network/chains.json
