@@ -11,14 +11,14 @@ interface ISiwe {
   IssuedAt: string
   ExpirationAt: string
 }
-type TProps = () => Partial<ISiwe>
+type TProps = () => Promise<Partial<ISiwe>>
 
 export const useTheSiwe = (props: TProps) => {
   const thePoolz = useThePoolz()
   const { web3, account } = thePoolz
 
-  const templateEip4361message = useCallback(() => {
-    const { Domain, URI, Statement, Version, ChainId, Nonce, IssuedAt, ExpirationAt } = props()
+  const templateEip4361message = useCallback(async () => {
+    const { Domain, URI, Statement, Version, ChainId, Nonce, IssuedAt, ExpirationAt } = await props()
     const { host: domain, href: uri } = window.location
     return `${Domain ?? domain} wants you to sign in with your Ethereum account:
 ${account}
@@ -36,7 +36,7 @@ Expiration Time: ${ExpirationAt ?? new Date(new Date().getTime() + 1000 * 60 * 6
   return useMemo(() => {
     const signInWithEthereum = async () => {
       if (!web3.currentProvider || !account) throw new Error("No web3 provider or account")
-      const eip4361message = templateEip4361message()
+      const eip4361message = await templateEip4361message()
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const signature = (await web3.currentProvider.request({

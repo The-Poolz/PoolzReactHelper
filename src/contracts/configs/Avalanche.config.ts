@@ -58,5 +58,9 @@ export const AvalancheChainConfig: TChainConfig = {
   simpleRefundBuilder: {
     address: "0xff1f0872f5462b30acdA92a08D2388612F7Bf7EE",
     nameVersion: "SimpleRefundBuilder@1.2.2"
+  },
+  multiSenderV2: {
+    address: "0x1E947Ec4F6B74c746F13604438cE1A3026f30553",
+    nameVersion: "MultiSenderV2@2.1.0"
   }
 }
