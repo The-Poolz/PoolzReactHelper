@@ -1,6 +1,6 @@
 {
   "name": "@poolzfinance/reacthelper",
-  "version": "2.1.11",
+  "version": "2.1.12",
   "description": "",
   "type": "module",
   "source": "src/index.ts",
