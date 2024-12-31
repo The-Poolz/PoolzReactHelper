@@ -5,7 +5,7 @@ import { useTheSiwe } from "./hooks/useTheSiwe"
 import { useSidNameForAddress } from "./hooks/useSid"
 
 export { ThePoolzProvider, useThePoolz, useConnectWallet, useSidNameForAddress, useTheSiwe }
-export type { IThePoolzInterface, IERC20Info } from "./types/IThePoolzInterface"
+export type { IThePoolzInterface, IERC20Info, IChainConfig, TChainConfig } from "./types/IThePoolzInterface"
 export * from "./utils"
 export * from "./constants"
 export type { Contract } from "web3-eth-contract"
