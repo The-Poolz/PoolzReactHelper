@@ -42,8 +42,8 @@ export interface IContractInfo {
 export interface IERC20Info {
   address: string
   decimals: number
-  symbol?: string
-  name?: string
+  symbol: string
+  name: string
 }
 export interface IThePoolzInterface {
   account?: string
@@ -52,6 +52,7 @@ export interface IThePoolzInterface {
   web3: Web3
 
   poolzAddress?: string
+  dispenserAddress?: string
   /**
    * @deprecated Use {@link CPoolx.contract} instead.
    */
@@ -117,6 +118,7 @@ export interface IThePoolzContextInterface {
 
 export interface IChainConfig {
   poolzAddress: IThePoolzInterface["poolzAddress"]
+  dispenserAddress: IThePoolzInterface["dispenserAddress"]
   poolzContract: IThePoolzInterface["poolzContract"]
   CPoolx: IThePoolzInterface["CPoolx"]
 

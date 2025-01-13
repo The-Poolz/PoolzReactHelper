@@ -18,6 +18,7 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
   public balance: IThePoolzInterface["balance"] = "0"
   public poolzTokenAddress: IThePoolzInterface["poolzTokenAddress"]
   public poolzAddress: IThePoolzInterface["poolzAddress"]
+  public dispenserAddress: IThePoolzInterface["dispenserAddress"]
   public poolzContract: IThePoolzInterface["poolzContract"]
   public CPoolx: IThePoolzInterface["CPoolx"]
 
@@ -92,6 +93,7 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
     const {
       poolzTokenAddress,
       poolzAddress,
+      dispenserAddress,
       whiteListAddress,
       lockedDealV2,
       poolzBackWithdraw,
@@ -114,7 +116,7 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
     } = chainConfig
 
     this.poolzTokenAddress = poolzTokenAddress
-
+    if (dispenserAddress) this.dispenserAddress = dispenserAddress
     if (poolzAddress) {
       const poolzContract = new this.web3.eth.Contract(POOLZ.abi as AbiItem[], poolzAddress)
       poolzContract.options.address = poolzAddress

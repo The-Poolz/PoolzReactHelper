@@ -20,6 +20,7 @@ export const BinanceTestChainConfig: TChainConfig = {
     ]
   },
   poolzAddress: "0xEEF0b7a6cd416006815ed3D66B670e1da73E116C",
+  dispenserAddress: "0x7352116Fc2C7E7FF172D9E7dA2F31250E537ACcb",
   whiteListAddress: "0xC68CD044B5F888b8D3054C9dDD7a396b73f4418c",
 
   lockedDealV2: {
