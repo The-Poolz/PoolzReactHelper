@@ -1,10 +1,10 @@
 import ThePoolzProvider from "./components/Provider"
-import { useThePoolz } from "./hooks/useThePoolz"
+import { useThePoolz, useSetProvider } from "./hooks/useThePoolz"
 import { useConnectWallet } from "./hooks/useConnectWallet"
 import { useTheSiwe } from "./hooks/useTheSiwe"
 import { useSidNameForAddress } from "./hooks/useSid"
 
-export { ThePoolzProvider, useThePoolz, useConnectWallet, useSidNameForAddress, useTheSiwe }
+export { ThePoolzProvider, useThePoolz, useSetProvider, useConnectWallet, useSidNameForAddress, useTheSiwe }
 export type { IThePoolzInterface, IERC20Info, IChainConfig, TChainConfig } from "./types/IThePoolzInterface"
 export * from "./utils"
 export * from "./constants"
