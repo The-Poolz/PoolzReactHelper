@@ -17,6 +17,9 @@ importers:
       web3-eth-contract:
         specifier: ^1.10.0
         version: 1.10.0
+      web3-types:
+        specifier: ^1.10.0
+        version: 1.10.0
       web3-utils:
         specifier: ^1.10.0
         version: 1.10.0
@@ -3836,6 +3839,10 @@ packages:
   web3-shh@1.10.0:
     resolution: {integrity: sha512-uNUUuNsO2AjX41GJARV9zJibs11eq6HtOe6Wr0FtRUcj8SN6nHeYIzwstAvJ4fXA53gRqFMTxdntHEt9aXVjpg==}
     engines: {node: '>=8.0.0'}
+
+  web3-types@1.10.0:
+    resolution: {integrity: sha512-0IXoaAFtFc8Yin7cCdQfB9ZmjafrbP6BO0f0KT/khMhXKUpoJ6yShrVhiNpyRBo8QQjuOagsWzwSK2H49I7sbw==}
+    engines: {node: '>=14', npm: '>=6.12.0'}
 
   web3-utils@1.10.0:
     resolution: {integrity: sha512-kSaCM0uMcZTNUSmn5vMEhlo02RObGNRRCkdX0V9UTAU0+lrvn0HSaudyCo6CQzuXUsnuY2ERJGCGPfeWmv19Rg==}
@@ -8593,6 +8600,8 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
+
+  web3-types@1.10.0: {}
 
   web3-utils@1.10.0:
     dependencies:
