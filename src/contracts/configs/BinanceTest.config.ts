@@ -86,7 +86,9 @@ export const BinanceTestChainConfig: TChainConfig = {
     nameVersion: "TokenNFTConnector@1.2.1"
   },
   dispenserProvider: {
-    address: "0x8080092b3BB79564EF59193f5417421A41E52b99",
-    nameVersion: "DispenserProvider@1.1.1"
+    // address: "0x8080092b3BB79564EF59193f5417421A41E52b99",
+    // nameVersion: "DispenserProvider@1.1.1"
+    address: "0x6830672d0A7A52d698eBC9bF8E7323dA181b4a28",
+    nameVersion: "DispenserProvider@1.1.3"
   }
 }
