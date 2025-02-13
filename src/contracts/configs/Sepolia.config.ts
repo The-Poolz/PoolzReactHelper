@@ -37,6 +37,10 @@ export const SepoliaTestChainConfig: TChainConfig = {
     address: "0x66d2111Eef097804dEc06e4F6FD23CA5e3BA5695",
     nameVersion: "LockDealProvider@1.0.4"
   },
+  timedDealProvider: {
+    address: "0x9c801e41dB904657e6ad63295FA8a5Ef32f1E789",
+    nameVersion: "TimedDealProvider@1.0.4"
+  },
   dispenserProvider: {
     address: "0x78012fc722660E22778af214f3bc560673f37721",
     nameVersion: "DispenserProvider@1.1.2"
