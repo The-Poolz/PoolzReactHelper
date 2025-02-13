@@ -1,6 +1,6 @@
 import type { TChainConfig } from "../../types/IThePoolzInterface"
 
-export const SepoliaChainConfig: TChainConfig = {
+export const SepoliaTestChainConfig: TChainConfig = {
   chainInfo: {
     name: "Sepolia",
     chainId: 11155111,
@@ -19,6 +19,7 @@ export const SepoliaChainConfig: TChainConfig = {
     ],
     infoURL: "https://sepolia.etherscan.io"
   },
+  dispenserAddress: "0x7352116Fc2C7E7FF172D9E7dA2F31250E537ACcb",
 
   lockedDealV2: {
     address: "0x7Ff9315f538dF7eC76Ec4815249Dd30519726460",
@@ -66,6 +67,6 @@ export const SepoliaChainConfig: TChainConfig = {
   },
   dispenserProvider: {
     address: "0x78012fc722660E22778af214f3bc560673f37721",
-    nameVersion: "DispenserProvider@1.1.3"
+    nameVersion: "DispenserProvider@1.1.2"
   }
 }
