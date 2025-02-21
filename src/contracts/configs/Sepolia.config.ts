@@ -34,12 +34,12 @@ export const SepoliaTestChainConfig: TChainConfig = {
     nameVersion: "DealProvider@1.0.4"
   },
   lockDealProvider: {
-    address: "0x66d2111Eef097804dEc06e4F6FD23CA5e3BA5695",
-    nameVersion: "LockDealProvider@1.0.4"
+    address: "0x398cc8B9d891fFEFA0E82EB0fb3845c19C887451",
+    nameVersion: "LockDealProvider@1.0.5"
   },
   timedDealProvider: {
-    address: "0x9c801e41dB904657e6ad63295FA8a5Ef32f1E789",
-    nameVersion: "TimedDealProvider@1.0.4"
+    address: "0xc30405F76FCb8913d9A2719d19A2b1B7017CaE5b",
+    nameVersion: "TimedDealProvider@1.0.5"
   },
   dispenserProvider: {
     address: "0x78012fc722660E22778af214f3bc560673f37721",
