@@ -42,16 +42,16 @@ export const BinanceTestChainConfig: TChainConfig = {
     nameVersion: "VaultManager@0.0.4-ironblocks"
   },
   dealProvider: {
-    address: "0x70B0F2fd774376063faCC9178307cF1E18Ea3aF0",
-    nameVersion: "DealProvider@0.9.1-ironblocks"
+    address: "0x99ad58d94ab699F6d02790E182a0A4c28D4739B5",
+    nameVersion: "DealProvider@1.0.6"
   },
   lockDealProvider: {
-    address: "0x1a66F57eEfdeC7757Ba76B1c42EA9a8e110EBB95",
-    nameVersion: "LockDealProvider@1.0.5"
+    address: "0x7e3e0C930b4Ae650D239964094b703deE75d33DD",
+    nameVersion: "LockDealProvider@1.0.6"
   },
   timedDealProvider: {
-    address: "0xE2f83a5120a562809bA30b3aeC063d91FcF3BDC2",
-    nameVersion: "TimedDealProvider@1.0.5"
+    address: "0xBE7C13C7F320979B44B01207Aa72Fe505fD87696",
+    nameVersion: "TimedDealProvider@1.0.6"
   },
   collateralProvider: {
     address: "0xb2b37652577A00655A45E6db8bB61251e47D4B8a",

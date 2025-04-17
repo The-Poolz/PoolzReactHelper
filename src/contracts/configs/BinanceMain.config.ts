@@ -48,16 +48,16 @@ export const BinanceMainChainConfig: TChainConfig = {
     nameVersion: "VaultManager@0.0.4-ironblocks"
   },
   dealProvider: {
-    address: "0x094C456cf51234810e9F34089F783ee42D81B7C1",
-    nameVersion: "DealProvider@0.9.1-ironblocks"
+    address: "0x09b158df31ec4edf2dcd2c1dbda60b69dad01347",
+    nameVersion: "DealProvider@1.0.6"
   },
   lockDealProvider: {
-    address: "0xEB21d2745E52f39C57c129b44d62cFca37aA0A0a",
-    nameVersion: "LockDealProvider@0.9.1-ironblocks"
+    address: "0x7b164fc59e5d992275fac8dbb7304307592aac8c",
+    nameVersion: "LockDealProvider@1.0.6"
   },
   timedDealProvider: {
-    address: "0x48247A03D67fAee33c9b6d9c4348C4C677d0095E",
-    nameVersion: "TimedDealProvider@0.9.1-ironblocks"
+    address: "0xb6D8C60B8098C15BF76f4180a6d3a0574917C930",
+    nameVersion: "TimedDealProvider@1.0.6"
   },
   collateralProvider: {
     address: "0xabc8a53b30b33190c959d304e1044b37c275d28d",
@@ -86,5 +86,9 @@ export const BinanceMainChainConfig: TChainConfig = {
   tokenNFTConnector: {
     address: "0x23f561B92AAa13d7C15A1038297Cd59bAe6C47c5",
     nameVersion: "TokenNFTConnector@1.2.1"
+  },
+  dispenserProvider: {
+    address: "0x93441BF11A3Cc2352253013990d68F5A2b1EC3ed",
+    nameVersion: "DispenserProvider@1.1.2"
   }
 }
