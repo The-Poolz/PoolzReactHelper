@@ -28,19 +28,23 @@ export const MoonbeamChainConfig: TChainConfig = {
     nameVersion: "LockDealNFT@1.0.4"
   },
   dealProvider: {
-    address: "0x3c845DbB07BdFdD73FbC5Df4bA47EdeA20BCa489",
-    nameVersion: "DealProvider@1.0.4"
+    address: "0xfB98B82D02C5E5241193Cab39956654A555F9A15",
+    nameVersion: "DealProvider@1.0.6"
   },
   lockDealProvider: {
-    address: "0x7521fF2baca97397C8936E35dAc225f6bc1070Cf",
-    nameVersion: "LockDealProvider@1.0.4"
+    address: "0x1E947Ec4F6B74c746F13604438cE1A3026f30553",
+    nameVersion: "LockDealProvider@1.0.6"
   },
   timedDealProvider: {
-    address: "0x9c8F78E0aeAB8190c9d1DF7BEd0B26c1EDcB8DE6",
-    nameVersion: "TimedDealProvider@1.0.4"
+    address: "0x57cbaC84d9345eDd42a0CA31e50bda301268cD7d",
+    nameVersion: "TimedDealProvider@1.0.6"
   },
   simpleBuilder: {
     address: "0xA2A0bEEfda596Fdb321240dD283D8cBf65b252f1",
     nameVersion: "SimpleBuilder@1.2.2"
+  },
+  dispenserProvider: {
+    address: "0xa562824D34E555f16544B23305C6CD778B17993c",
+    nameVersion: "DispenserProvider@1.1.2"
   }
 }

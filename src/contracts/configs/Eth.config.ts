@@ -51,20 +51,24 @@ export const EthMainChainConfig: TChainConfig = {
     nameVersion: "LockDealNFT@1.0.2"
   },
   dealProvider: {
-    address: "0xA3F5abB71a5665741D3dA685a4e8899e9d4E2532",
-    nameVersion: "DealProvider@1.0.2"
+    address: "0xf8449c81E2d132e429caa1cb744E1ba7235C20DE",
+    nameVersion: "DealProvider@1.0.6"
   },
   lockDealProvider: {
-    address: "0x6c6f6D7Ec412EfEF553F5d2f273A72F872A67CeB",
-    nameVersion: "LockDealProvider@1.0.2"
+    address: "0x83d9a44395b6a4Aa3a907a445CB049C50fF5b962",
+    nameVersion: "LockDealProvider@1.0.6"
   },
   timedDealProvider: {
-    address: "0xe18542a10b8a2B48BC8F1A18fA77613d2a1b2D67",
-    nameVersion: "TimedDealProvider@1.0.2"
+    address: "0x313a8Dd9d9399fc625Ec946b328F45020d15A699",
+    nameVersion: "TimedDealProvider@1.0.6"
   },
   simpleBuilder: {
     address: "0x39dDEE2Ee5dF625Ef91d509Ab40E926bbD83CD0C",
     nameVersion: "SimpleBuilder@1.2.2"
+  },
+  dispenserProvider: {
+    address: "0xf5e1D15FdCbB8efC617632dCBAcBC74b96a3ccA7",
+    nameVersion: "DispenserProvider@1.1.2"
   }
   // delayVault: { address: "0x674c9FDc5DcBD525cd3ea2C3A2caE6cfe79727C5", nameVersion: "DelayVault@1.2.2" }
 }

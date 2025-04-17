@@ -48,16 +48,16 @@ export const ArbitrumOneChainConfig: TChainConfig = {
     nameVersion: "VaultManager@0.0.4-ironblocks"
   },
   dealProvider: {
-    address: "0x756cd0834c2610f583b8324934a0269e3fef6f72",
-    nameVersion: "DealProvider@0.9.1-ironblocks"
+    address: "0x9C218bBCdae2dD2B85f08b0a3a7D31a6e6E6bffd",
+    nameVersion: "DealProvider@1.0.6"
   },
   lockDealProvider: {
-    address: "0xff1f0872f5462b30acda92a08d2388612f7bf7ee",
-    nameVersion: "LockDealProvider@0.9.1-ironblocks"
+    address: "0xB0841e6FD7d51D5148ABcc19EB24c7E361fDa8c0",
+    nameVersion: "LockDealProvider@1.0.6"
   },
   timedDealProvider: {
-    address: "0xf027b2d8ea77fca82d8b2b90d2e6705bb398c855",
-    nameVersion: "TimedDealProvider@0.9.1-ironblocks"
+    address: "0xF0Bd7c3D038FF9F67Fc64903A3EAC82600Dd37D0",
+    nameVersion: "TimedDealProvider@1.0.6"
   },
   collateralProvider: {
     address: "0x2051f98ca620a4d3e6024f144382d3537452b557",
@@ -74,5 +74,9 @@ export const ArbitrumOneChainConfig: TChainConfig = {
   simpleRefundBuilder: {
     address: "0x120893ab6f67171d4e6b0e72c151ab96aebe44e4",
     nameVersion: "SimpleRefundBuilder@0.9.5"
+  },
+  dispenserProvider: {
+    address: "0x62BD0CF6B93De01a518975B0b117c886c1F1d973",
+    nameVersion: "DispenserProvider@1.1.2"
   }
 }

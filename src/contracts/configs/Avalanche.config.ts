@@ -32,16 +32,16 @@ export const AvalancheChainConfig: TChainConfig = {
     nameVersion: "LockDealNFT@1.0.4"
   },
   dealProvider: {
-    address: "0x65f62efEb1A43064081443791d8C10Db0A1FB511",
-    nameVersion: "DealProvider@1.0.4"
+    address: "0xa562824D34E555f16544B23305C6CD778B17993c",
+    nameVersion: "DealProvider@1.0.6"
   },
   lockDealProvider: {
-    address: "0x960c76BeC76ebB223B3e29B35a70c40925f38d66",
-    nameVersion: "LockDealProvider@1.0.4"
+    address: "0xB1Ecee4191daaD9381DD38A545b31DDcDba7A9A9",
+    nameVersion: "LockDealProvider@1.0.6"
   },
   timedDealProvider: {
-    address: "0x2dd5B5E374B2d32152507100a42CA15f7707F504",
-    nameVersion: "TimedDealProvider@1.0.4"
+    address: "0x25ea5cf98A46dbaBefd042B6cEebc501b659be78",
+    nameVersion: "TimedDealProvider@1.0.6"
   },
   simpleBuilder: {
     address: "0x756CD0834C2610f583B8324934A0269E3fef6f72",
@@ -62,5 +62,9 @@ export const AvalancheChainConfig: TChainConfig = {
   multiSenderV2: {
     address: "0x1E947Ec4F6B74c746F13604438cE1A3026f30553",
     nameVersion: "MultiSenderV2@2.1.0"
+  },
+  dispenserProvider: {
+    address: "0x655a8bc3875aedb2A4bc4aeeF5F84805207cB5DC",
+    nameVersion: "DispenserProvider@1.1.2"
   }
 }

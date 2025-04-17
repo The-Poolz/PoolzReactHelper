@@ -28,16 +28,16 @@ export const MantaChainConfig: TChainConfig = {
     nameVersion: "VaultManager@0.0.4-ironblocks"
   },
   dealProvider: {
-    address: "0x2Bb9cFF524C76eb2eA27bC6cDbB93447115D8dcC",
-    nameVersion: "DealProvider@0.9.1-ironblocks"
+    address: "0xD985eFADECBC4A11C731f3086cbad8edE5e3e341",
+    nameVersion: "DealProvider@1.0.6"
   },
   lockDealProvider: {
-    address: "0x6d77B5147CDE6Fa287c1266A33e09a09651D36d0",
-    nameVersion: "LockDealProvider@0.9.1-ironblocks"
+    address: "0x25ea5cf98A46dbaBefd042B6cEebc501b659be78",
+    nameVersion: "LockDealProvider@1.0.6"
   },
   timedDealProvider: {
-    address: "0x3c845DbB07BdFdD73FbC5Df4bA47EdeA20BCa489",
-    nameVersion: "TimedDealProvider@0.9.1-ironblocks"
+    address: "0xaEb7A13D3608C673E99685798f9ba5ACE41119d3",
+    nameVersion: "TimedDealProvider@1.0.6"
   },
   collateralProvider: {
     address: "0x7521fF2baca97397C8936E35dAc225f6bc1070Cf",
@@ -58,5 +58,9 @@ export const MantaChainConfig: TChainConfig = {
   multiSenderV2: {
     address: "0x655a8bc3875aedb2A4bc4aeeF5F84805207cB5DC",
     nameVersion: "MultiSenderV2@2.1.0"
+  },
+  dispenserProvider: {
+    address: "0xEe25294438bc5542fEAFACC3E08Bb4658EB3C43f",
+    nameVersion: "DispenserProvider@1.1.2"
   }
 }

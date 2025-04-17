@@ -29,12 +29,12 @@ export const TelosMainChainConfig: TChainConfig = {
     nameVersion: "VaultManager@0.0.4"
   },
   dealProvider: {
-    address: "0x3c845DbB07BdFdD73FbC5Df4bA47EdeA20BCa489",
-    nameVersion: "DealProvider@0.9.1"
+    address: "0xEE099538ED077F831cB9Af44fFD51Ec7Fd95c7DE",
+    nameVersion: "DealProvider@1.0.6"
   },
   lockDealProvider: {
-    address: "0x7521fF2baca97397C8936E35dAc225f6bc1070Cf",
-    nameVersion: "LockDealProvider@0.9.1"
+    address: "0xff1f0872f5462b30acdA92a08D2388612F7Bf7EE",
+    nameVersion: "LockDealProvider@1.0.6"
   },
   collateralProvider: {
     address: "0xA2A0bEEfda596Fdb321240dD283D8cBf65b252f1",
@@ -57,7 +57,11 @@ export const TelosMainChainConfig: TChainConfig = {
     nameVersion: "MultiSenderV2@2.1.0"
   },
   timedDealProvider: {
-    address: "0x9c8F78E0aeAB8190c9d1DF7BEd0B26c1EDcB8DE6",
-    nameVersion: "TimedDealProvider@0.9.1"
+    address: "0x2051f98ca620a4d3E6024f144382d3537452B557",
+    nameVersion: "TimedDealProvider@1.0.6"
+  },
+  dispenserProvider: {
+    address: "0xaA40d75Fc2CdAFC61A7c52Ac207e17d694102ef2",
+    nameVersion: "DispenserProvider@1.1.2"
   }
 }
