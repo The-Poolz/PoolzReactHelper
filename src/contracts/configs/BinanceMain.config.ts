@@ -52,11 +52,11 @@ export const BinanceMainChainConfig: TChainConfig = {
     nameVersion: "DealProvider@1.0.6"
   },
   lockDealProvider: {
-    address: "0x7b164fc59e5d992275fac8dbb7304307592aac8c",
+    address: "0x2942ee88A75B0c87fC9eEB8DDc9066De84937786",
     nameVersion: "LockDealProvider@1.0.6"
   },
   timedDealProvider: {
-    address: "0xb6D8C60B8098C15BF76f4180a6d3a0574917C930",
+    address: "0x43b4CD03ED2504599Ed3Fb56780149A7E7960282",
     nameVersion: "TimedDealProvider@1.0.6"
   },
   collateralProvider: {
