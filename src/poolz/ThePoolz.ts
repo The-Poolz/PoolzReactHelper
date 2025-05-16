@@ -5,6 +5,7 @@ import type { IThePoolzInterface, IERC20Info, TChainConfig } from "../types/IThe
 import { CUSTOMER_ACCOUNT_VARIABLE, DEFAULT_CHAIN_ID, AVAILABLE_CHAINS } from "../constants"
 import ERC20 from "../contracts/abi/ERC20.json"
 import POOLZ from "../contracts/abi/ThePoolz.json"
+import InvestProvider from "../contracts/abi/InvestProvider.json"
 import WhiteList from "../contracts/abi/WhiteList.json"
 import SignUp from "../contracts/abi/SignUpPool.json"
 
@@ -18,9 +19,12 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
   public balance: IThePoolzInterface["balance"] = "0"
   public poolzTokenAddress: IThePoolzInterface["poolzTokenAddress"]
   public poolzAddress: IThePoolzInterface["poolzAddress"]
+  public investProviderAddress: IThePoolzInterface["investProviderAddress"]
   public dispenserAddress: IThePoolzInterface["dispenserAddress"]
   public poolzContract: IThePoolzInterface["poolzContract"]
   public CPoolx: IThePoolzInterface["CPoolx"]
+  public investProviderContract: IThePoolzInterface["investProviderContract"]
+  public CInvestProvider: IThePoolzInterface["CInvestProvider"]
 
   public whiteListAddress: IThePoolzInterface["whiteListAddress"]
   public whiteListContract: IThePoolzInterface["whiteListContract"]
@@ -112,7 +116,8 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
       delayVaultProvider,
       delayVaultMigrator,
       tokenNFTConnector,
-      dispenserProvider
+      dispenserProvider,
+      investProviderAddress
     } = chainConfig
 
     this.poolzTokenAddress = poolzTokenAddress
@@ -128,6 +133,19 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
         address: poolzAddress,
         nameVersion: "CPoolx",
         contract: poolzContract
+      }
+    }
+    if (investProviderAddress) {
+      const investProviderContract = new this.web3.eth.Contract(InvestProvider.abi as AbiItem[], investProviderAddress)
+      investProviderContract.options.address = investProviderAddress
+      // deprecated
+      this.investProviderAddress = investProviderAddress
+      // deprecated
+      this.investProviderContract = investProviderContract
+      this.CInvestProvider = {
+        address: investProviderAddress,
+        nameVersion: "CInvestProvider",
+        contract: investProviderContract
       }
     }
     if (whiteListAddress) {
