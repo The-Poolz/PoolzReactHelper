@@ -34,6 +34,7 @@ export type NameVersion =
   | "CPoolx"
   | "CWhiteList"
   | "CSignUp"
+  | "CInvestProvider"
 export interface IContractInfo {
   address: string
   nameVersion: NameVersion
@@ -51,6 +52,7 @@ export interface IThePoolzInterface {
   balance: string
   web3: Web3
 
+  investProviderAddress?: string
   poolzAddress?: string
   dispenserAddress?: string
   /**
@@ -58,6 +60,12 @@ export interface IThePoolzInterface {
    */
   poolzContract?: Contract
   CPoolx?: IContractInfo
+
+  /**
+   * @deprecated Use {@link CInvestProvider.contract} instead.
+   */
+  investProviderContract?: Contract
+  CInvestProvider?: IContractInfo
 
   lockedDealV2?: IContractInfo
 
@@ -118,6 +126,9 @@ export interface IThePoolzContextInterface {
 
 export interface IChainConfig {
   poolzAddress: IThePoolzInterface["poolzAddress"]
+  investProviderAddress: IThePoolzInterface["investProviderAddress"]
+  investProviderContract: IThePoolzInterface["investProviderContract"]
+  CInvestProvider: IThePoolzInterface["CInvestProvider"]
   dispenserAddress: IThePoolzInterface["dispenserAddress"]
   poolzContract: IThePoolzInterface["poolzContract"]
   CPoolx: IThePoolzInterface["CPoolx"]
