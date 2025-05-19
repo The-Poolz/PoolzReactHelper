@@ -88,8 +88,15 @@ describe("ThePoolz", () => {
     const thePoolz = new ThePoolz(null)
     await thePoolz.init()
   })
+
   test("Binance chain", async () => {
     mockChainId = Promise.resolve(56)
+    const thePoolz = new ThePoolz("http://localhost:8545")
+    await thePoolz.init()
+  })
+
+  test("Binance chain", async () => {
+    mockChainId = Promise.resolve(97)
     const thePoolz = new ThePoolz("http://localhost:8545")
     await thePoolz.init()
   })
