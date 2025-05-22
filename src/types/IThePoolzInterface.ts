@@ -61,6 +61,9 @@ export interface IThePoolzInterface {
   poolzContract?: Contract
   CPoolx?: IContractInfo
 
+  /**
+   * @deprecated Use {@link CInvestProvider.contract} instead.
+   */
   investProviderContract?: Contract
   CInvestProvider?: IContractInfo
 
@@ -124,6 +127,8 @@ export interface IThePoolzContextInterface {
 export interface IChainConfig {
   poolzAddress: IThePoolzInterface["poolzAddress"]
   investProviderAddress: IThePoolzInterface["investProviderAddress"]
+  investProviderContract: IThePoolzInterface["investProviderContract"]
+  CInvestProvider: IThePoolzInterface["CInvestProvider"]
   dispenserAddress: IThePoolzInterface["dispenserAddress"]
   poolzContract: IThePoolzInterface["poolzContract"]
   CPoolx: IThePoolzInterface["CPoolx"]

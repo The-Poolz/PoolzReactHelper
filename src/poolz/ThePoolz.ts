@@ -136,16 +136,16 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
       }
     }
     if (investProviderAddress) {
-      const investContract = new this.web3.eth.Contract(InvestProvider.abi as AbiItem[], investProviderAddress)
-      investContract.options.address = investProviderAddress
+      const investProviderContract = new this.web3.eth.Contract(InvestProvider.abi as AbiItem[], investProviderAddress)
+      investProviderContract.options.address = investProviderAddress
       // deprecated
       this.investProviderAddress = investProviderAddress
       // deprecated
-      this.investProviderContract = investContract
+      this.investProviderContract = investProviderContract
       this.CInvestProvider = {
         address: investProviderAddress,
         nameVersion: "CInvestProvider",
-        contract: investContract
+        contract: investProviderContract
       }
     }
     if (whiteListAddress) {
