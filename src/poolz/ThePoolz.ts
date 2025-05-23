@@ -191,102 +191,33 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
       }
     }
 
-    if (lockedDealV2) {
-      this.lockedDealV2 = {
-        ...lockedDealV2,
-        contract: new this.web3.eth.Contract(LockedDealV2.abi as AbiItem[], lockedDealV2.address)
+    const contractsToInit = [
+      { key: "lockedDealV2", config: lockedDealV2, abi: LockedDealV2.abi },
+      { key: "delayVaultContract", config: delayVault, abi: DelayVault.abi },
+      { key: "lockDealNFTContract", config: lockDealNFT, abi: LockDealNFT.abi },
+      { key: "vaultManagerContract", config: vaultManager, abi: VaultManager.abi },
+      { key: "dealProviderContract", config: dealProvider, abi: DealProvider.abi },
+      { key: "lockDealProviderContract", config: lockDealProvider, abi: LockDealProvider.abi },
+      { key: "timedDealProviderContract", config: timedDealProvider, abi: TimedDealProvider.abi },
+      { key: "collateralProviderContract", config: collateralProvider, abi: CollateralProvider.abi },
+      { key: "refundProviderContract", config: refundProvider, abi: RefundProvider.abi },
+      { key: "simpleBuilderContract", config: simpleBuilder, abi: SimpleBuilder.abi },
+      { key: "simpleRefundBuilderContract", config: simpleRefundBuilder, abi: SimpleRefundBuilder.abi },
+      { key: "multiSenderV2Contract", config: multiSenderV2, abi: MultiSenderV2.abi },
+      { key: "delayVaultProviderContract", config: delayVaultProvider, abi: DelayVaultProvider.abi },
+      { key: "delayVaultMigratorContract", config: delayVaultMigrator, abi: DelayVaultMigrator.abi },
+      { key: "tokenNFTConnectorContract", config: tokenNFTConnector, abi: TokenNFTConnector.abi },
+      { key: "dispenserProviderContract", config: dispenserProvider, abi: DispenserProvider.abi }
+    ]
+
+    contractsToInit.forEach(({ key, config, abi }) => {
+      if (!config) return
+      const _this = this as Record<string, any>
+      _this[key] = {
+        ...config,
+        contract: new this.web3.eth.Contract(abi as AbiItem[], config.address)
       }
-    }
-    if (delayVault) {
-      this.delayVaultContract = {
-        ...delayVault,
-        contract: new this.web3.eth.Contract(DelayVault.abi as AbiItem[], delayVault.address)
-      }
-    }
-    if (lockDealNFT) {
-      this.lockDealNFTContract = {
-        ...lockDealNFT,
-        contract: new this.web3.eth.Contract(LockDealNFT.abi as AbiItem[], lockDealNFT.address)
-      }
-    }
-    if (vaultManager) {
-      this.vaultManagerContract = {
-        ...vaultManager,
-        contract: new this.web3.eth.Contract(VaultManager.abi as AbiItem[], vaultManager.address)
-      }
-    }
-    if (dealProvider) {
-      this.dealProviderContract = {
-        ...dealProvider,
-        contract: new this.web3.eth.Contract(DealProvider.abi as AbiItem[], dealProvider.address)
-      }
-    }
-    if (lockDealProvider) {
-      this.lockDealProviderContract = {
-        ...lockDealProvider,
-        contract: new this.web3.eth.Contract(LockDealProvider.abi as AbiItem[], lockDealProvider.address)
-      }
-    }
-    if (timedDealProvider) {
-      this.timedDealProviderContract = {
-        ...timedDealProvider,
-        contract: new this.web3.eth.Contract(TimedDealProvider.abi as AbiItem[], timedDealProvider.address)
-      }
-    }
-    if (collateralProvider) {
-      this.collateralProviderContract = {
-        ...collateralProvider,
-        contract: new this.web3.eth.Contract(CollateralProvider.abi as AbiItem[], collateralProvider.address)
-      }
-    }
-    if (refundProvider) {
-      this.refundProviderContract = {
-        ...refundProvider,
-        contract: new this.web3.eth.Contract(RefundProvider.abi as AbiItem[], refundProvider.address)
-      }
-    }
-    if (simpleBuilder) {
-      this.simpleBuilderContract = {
-        ...simpleBuilder,
-        contract: new this.web3.eth.Contract(SimpleBuilder.abi as AbiItem[], simpleBuilder.address)
-      }
-    }
-    if (simpleRefundBuilder) {
-      this.simpleRefundBuilderContract = {
-        ...simpleRefundBuilder,
-        contract: new this.web3.eth.Contract(SimpleRefundBuilder.abi as AbiItem[], simpleRefundBuilder.address)
-      }
-    }
-    if (multiSenderV2) {
-      this.multiSenderV2Contract = {
-        ...multiSenderV2,
-        contract: new this.web3.eth.Contract(MultiSenderV2.abi as AbiItem[], multiSenderV2.address)
-      }
-    }
-    if (delayVaultProvider) {
-      this.delayVaultProviderContract = {
-        ...delayVaultProvider,
-        contract: new this.web3.eth.Contract(DelayVaultProvider.abi as AbiItem[], delayVaultProvider.address)
-      }
-    }
-    if (delayVaultMigrator) {
-      this.delayVaultMigratorContract = {
-        ...delayVaultMigrator,
-        contract: new this.web3.eth.Contract(DelayVaultMigrator.abi as AbiItem[], delayVaultMigrator.address)
-      }
-    }
-    if (tokenNFTConnector) {
-      this.tokenNFTConnectorContract = {
-        ...tokenNFTConnector,
-        contract: new this.web3.eth.Contract(TokenNFTConnector.abi as AbiItem[], tokenNFTConnector.address)
-      }
-    }
-    if (dispenserProvider) {
-      this.dispenserProviderContract = {
-        ...dispenserProvider,
-        contract: new this.web3.eth.Contract(DispenserProvider.abi as AbiItem[], dispenserProvider.address)
-      }
-    }
+    })
   }
 
   async getChaincoinInfo(chainId?: typeof this.chainId) {
