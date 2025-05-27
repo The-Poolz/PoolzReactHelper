@@ -66,5 +66,13 @@
     "web3-eth-contract": "^1.10.0",
     "web3-types": "^1.10.0",
     "web3-utils": "^1.10.0"
+  },
+  "overrides": {
+    "ws": "8.18.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "ws": "8.18.0"
+    }
   }
 }
