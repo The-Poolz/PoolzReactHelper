@@ -25,6 +25,7 @@ export const BinanceMainChainConfig: TChainConfig = {
       }
     ]
   },
+  investProviderAddress: "0x80E7DCA0B053D044B0ff477C48e891B0aF01d545",
   poolzAddress: "0xCc8f6A82Ff034C15dFDAcBcab29F7Ea28C616EF7",
   lockedDealV2: {
     address: "0x436CE2ce8d8d2Ccc062f6e92faF410DB4d397905",
