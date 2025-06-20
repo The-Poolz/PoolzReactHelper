@@ -1,4 +1,4 @@
-import ThePoolzProvider from "./components/Provider"
+import ThePoolzProvider from "./components/ThePoolzProvider"
 import { useThePoolz, useSetProvider } from "./hooks/useThePoolz"
 import { useConnectWallet } from "./hooks/useConnectWallet"
 import { useTheSiwe } from "./hooks/useTheSiwe"
@@ -10,3 +10,4 @@ export type { IThePoolzInterface, IERC20Info, IChainConfig, TChainConfig } from 
 export * from "./utils"
 export * from "./constants"
 export type { Contract } from "web3-eth-contract"
+export { useAccount, useBalance } from "wagmi"
