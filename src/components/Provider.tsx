@@ -18,12 +18,23 @@ const ThePoolzProvider = ({ children, overrides }: { children: React.ReactNode, 
       await instance.init()
       setThePoolzInstance(instance)
     }
+
     init().catch(console.error)
-    provider
-      .on("accountsChanged", init)
-      .on("chainChanged", init)
 
+    if (typeof provider?.on === "function") {
+      provider.on("accountsChanged", init)
+      provider.on("chainChanged", init)
+    }
 
+    return () => {
+      if (typeof provider?.removeListener === "function") {
+        provider.removeListener("accountsChanged", init)
+        provider.removeListener("chainChanged", init)
+      } else if (typeof provider?.off === "function") {
+        provider.off("accountsChanged", init)
+        provider.off("chainChanged", init)
+      }
+    }
   }, [provider, setThePoolzInstance]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
