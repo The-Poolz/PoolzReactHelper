@@ -1,36 +1,45 @@
-import React from "react"
-import Web3 from "web3"
-import ThePoolzContext from "./Context"
-import ThePoolz from "../poolz/ThePoolz"
-import { TChainConfig } from "../types/IThePoolzInterface"
+import React, { useMemo } from "react"
+import { WagmiProvider, createConfig, http } from "wagmi"
+import { QueryClientProvider } from "@tanstack/react-query"
+import { useChains } from "@poolzfinance/strapi"
+import { mainnet } from "viem/chains"
+import { queryClient } from "../utils/query-client"
+import { PoolzAppContext } from "./Context"
+import { WALLET_CONNECT_CONFIG } from "../constants/wagmi"
+import { coinbaseWallet, injected, walletConnect } from "wagmi/connectors"
+import { validateAndMapChains } from "../utils/chain-mapper"
 
-const ThePoolzProvider = ({ children, overrides }: { children: React.ReactNode, overrides?: TChainConfig }) => {
-  const [thePoolzInstance, setThePoolzInstance] = React.useState(new ThePoolz(Web3.givenProvider))
-  const [provider, setProvider] = React.useState(Web3.givenProvider)
+const Provider = ({ children }: { children: React.ReactNode }) => {
+  const { data: chainsData } = useChains()
 
-  const contextValue = React.useMemo(() => ({ thePoolz: thePoolzInstance, setProvider }), [thePoolzInstance, setProvider])
-
-  React.useEffect(() => {
-    if (!provider) return
-
-    const init = async () => {
-      const instance = new ThePoolz(provider, overrides)
-      await instance.init()
-      setThePoolzInstance(instance)
+  const chains = useMemo(() => {
+    if (!chainsData) return []
+    try {
+      return validateAndMapChains(chainsData)
+    } catch {
+      return []
     }
-    init().catch(console.error)
-    provider
-      .on("accountsChanged", init)
-      .on("chainChanged", init)
+  }, [chainsData])
 
+  const chainsForConfig = (chains.length ? chains : [mainnet]) as [typeof mainnet, ...typeof chains]
 
-  }, [provider, setThePoolzInstance]) // eslint-disable-line react-hooks/exhaustive-deps
+  const wagmiConfig = useMemo(
+    () =>
+      createConfig({
+        chains: chainsForConfig,
+        connectors: [injected(), walletConnect(WALLET_CONNECT_CONFIG), coinbaseWallet({ appName: "Poolz" })],
+        transports: Object.fromEntries(chainsForConfig.map((c) => [c.id, http()]))
+      }),
+    [chainsForConfig]
+  )
 
   return (
-    <ThePoolzContext.Provider value={contextValue}>
-      {children}
-    </ThePoolzContext.Provider>
+    <PoolzAppContext.Provider value={{ chains }}>
+      <WagmiProvider config={wagmiConfig}>
+        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      </WagmiProvider>
+    </PoolzAppContext.Provider>
   )
 }
 
-export default ThePoolzProvider
+export default Provider

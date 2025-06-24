@@ -1,6 +1,8 @@
-import { createContext } from "react"
-import { IThePoolzContextInterface } from "../types/IThePoolzInterface"
+import { createContext, useContext } from "react"
 
-const ThePoolzContext = createContext<IThePoolzContextInterface>(null as any)
+const ThePoolzContext = createContext<any>(null as any)
+
+export const PoolzAppContext = createContext<{ chains: any[] }>({ chains: [] })
+export const usePoolzApp = () => useContext(PoolzAppContext)
 
 export default ThePoolzContext
