@@ -1,13 +1,5 @@
-import ThePoolzProvider from "./components/ThePoolzProvider"
-import { useThePoolz, useSetProvider } from "./hooks/useThePoolz"
-import { useConnectWallet } from "./hooks/useConnectWallet"
-import { useTheSiwe } from "./hooks/useTheSiwe"
-import { useSidNameForAddress } from "./hooks/useSid"
-import { useSyncProviders } from "./hooks/useSyncProviders"
+export { CUSTOMER_ACCOUNT_VARIABLE, DEFAULT_CHAIN_ID } from "./constants"
+export { WALLET_CONNECT_CONFIG } from "./constants/wagmi"
 
-export { ThePoolzProvider, useThePoolz, useSetProvider, useConnectWallet, useSidNameForAddress, useTheSiwe, useSyncProviders }
-export type { IThePoolzInterface, IERC20Info, IChainConfig, TChainConfig } from "./types/IThePoolzInterface"
-export * from "./utils"
-export * from "./constants"
-export type { Contract } from "web3-eth-contract"
-export { useAccount, useBalance } from "wagmi"
+export { validateAndMapChains } from "./utils/chain-mapper"
+export { queryClient } from "./utils/query-client"
