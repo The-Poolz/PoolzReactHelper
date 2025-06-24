@@ -35,6 +35,9 @@ jest.mock("web3", () => {
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
+    ok: true,
+    status: 200,
+    statusText: "OK",
     json: () => Promise.resolve([{ ABI: { rates: { CAD: 1.42 } } }])
   })
 ) as jest.Mock
@@ -115,5 +118,23 @@ describe("ThePoolz", () => {
     const thePoolz = new ThePoolz("http://localhost:8545", { chainInfo, poolzAddress: "0x000" })
     await thePoolz.init()
     expect(thePoolz.CPoolx?.address).toEqual("0x000")
+  })
+
+  test("Contract ABI fetch failure", async () => {
+    expect.assertions(1)
+    ;(fetch as jest.Mock).mockImplementationOnce(() => Promise.reject(new Error("network")))
+    const thePoolz = new ThePoolz({ isTrustWallet: true })
+    await thePoolz.init()
+    await expect(thePoolz.Contract("ERC20", "0x000")).rejects.toThrow("network")
+  })
+
+  test("Contract ABI invalid data", async () => {
+    expect.assertions(1)
+    ;(fetch as jest.Mock).mockImplementationOnce(() =>
+      Promise.resolve({ ok: true, status: 200, statusText: "OK", json: () => Promise.resolve([]) })
+    )
+    const thePoolz = new ThePoolz({ isTrustWallet: true })
+    await thePoolz.init()
+    await expect(thePoolz.Contract("ERC20", "0x000")).rejects.toThrow("ABI for ERC20 not found")
   })
 })

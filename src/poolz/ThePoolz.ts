@@ -271,11 +271,24 @@ class ThePoolz implements EnforceInterface<IThePoolzInterface, ThePoolz> {
       const contract = new this.web3.eth.Contract(abi as AbiItem[], address)
       this.#contracts.set(collectionName, contract)
       return contract
-    } catch (e) {}
+    } catch (e) {
+      throw new Error(`Failed to create contract ${name} at ${address}: ${(e as Error).message}`)
+    }
   }
+  /**
+   * Fetches ABI by contract name version from Poolz database.
+   * Throws an error when the request fails or the ABI is missing.
+   */
   private async fetchContractAbi(nameVersion: string) {
     const response = await fetch(`https://poolzfinancedata.com/contracts?_where[0][NameVersion]=${nameVersion}`)
-    return (await response.json())[0].ABI
+    if (!response.ok) {
+      throw new Error(`Unable to fetch ABI for ${nameVersion}: ${response.status} ${response.statusText}`)
+    }
+    const data = await response.json()
+    if (!Array.isArray(data) || !data[0]?.ABI) {
+      throw new Error(`ABI for ${nameVersion} not found`)
+    }
+    return data[0].ABI
   }
 }
 
