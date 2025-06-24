@@ -84,3 +84,7 @@ export default function App() {
 ```
 
 Demo: [SandBox](https://codesandbox.io/s/reacthelper-t9vhd5)
+
+## Provider requirements
+
+`ThePoolzProvider` relies on a wallet provider that exposes `on` and `removeListener` methods for the `accountsChanged` and `chainChanged` events. Most EIP‑1193 providers such as MetaMask implement these methods. If your provider does not, you can either add stub implementations or manually invoke `setProvider` whenever the account or chain changes.
