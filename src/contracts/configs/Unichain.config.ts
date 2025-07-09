@@ -13,7 +13,7 @@ export const UnichainConfig: TChainConfig = {
     rpc: ["https://unichain-rpc.publicnode.com"],
     explorers: [
       {
-        name: "unichain-pacific Explorer",
+        name: "Unichain explorer",
         url: "https://unichain.blockscout.com/",
         standard: "EIP3091"
       }
