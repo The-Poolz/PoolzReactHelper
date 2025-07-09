@@ -16,6 +16,7 @@ import { COTIDevnetChainConfig } from "../contracts/configs/COTIDevnet"
 import { SepoliaTestChainConfig } from "../contracts/configs/Sepolia.config"
 import { COTITestnetChainConfig } from "../contracts/configs/COTITestnet.config"
 import { COTIMainnetChainConfig } from "../contracts/configs/COTIMainnet.config"
+import { UnichainConfig } from "../contracts/configs/Unichain.config"
 
 export const DEFAULT_CHAIN_ID = 1
 export const UINT_MINUS_ONE = "115792089237316195423570985008687907853269984665640564039457584007913129639935"
@@ -38,5 +39,6 @@ AVAILABLE_CHAINS.set(13068200, COTIDevnetChainConfig)
 AVAILABLE_CHAINS.set(11155111, SepoliaTestChainConfig)
 AVAILABLE_CHAINS.set(7082400, COTITestnetChainConfig)
 AVAILABLE_CHAINS.set(2632500, COTIMainnetChainConfig)
+AVAILABLE_CHAINS.set(130, UnichainConfig)
 
 export const CUSTOMER_ACCOUNT_VARIABLE = "__CUSTOMER_ACCOUNT__"
