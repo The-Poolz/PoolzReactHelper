@@ -42,5 +42,9 @@ export const UnichainConfig: TChainConfig = {
   dispenserProvider: {
     address: "0x960c76BeC76ebB223B3e29B35a70c40925f38d66",
     nameVersion: "DispenserProvider@1.1.2"
+  },
+  multiSenderV2: {
+    address: "0x756CD0834C2610f583B8324934A0269E3fef6f72",
+    nameVersion: "MultiSenderV2@2.1.0"
   }
 }
