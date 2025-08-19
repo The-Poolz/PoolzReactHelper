@@ -1,3 +1,5 @@
+move to v2: https://github.com/The-Poolz/ReactHelperV2
+
 # ReactHelper
 
 ### Reporting Bugs / Feature Requests
